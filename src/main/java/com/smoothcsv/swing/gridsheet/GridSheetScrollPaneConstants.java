@@ -1,0 +1,11 @@
+package com.smoothcsv.swing.gridsheet;
+
+public interface GridSheetScrollPaneConstants {
+
+  String FROZEN_LEFTUPPER_VIEWPORT = "FROZEN_LEFTUPPER_VIEWPORT";
+  String FROZEN_LEFT_VIEWPORT = "FROZEN_LEFT_VIEWPORT";
+  String FROZEN_UPPER_VIEWPORT = "FROZEN_UPPER_VIEWPORT";
+
+  String FROZEN_COLUMN_HEADER = "FROZEN_COLUMN_HEADER";
+  String FROZEN_ROW_HEADER = "FROZEN_ROW_HEADER";
+}
