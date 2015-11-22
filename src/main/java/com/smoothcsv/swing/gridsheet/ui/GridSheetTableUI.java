@@ -1,3 +1,16 @@
+/*
+ * Copyright 2015 kohii
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.smoothcsv.swing.gridsheet.ui;
 
 import java.awt.Dimension;
@@ -191,8 +204,9 @@ public class GridSheetTableUI extends GridSheetTableNoActionUI {
     private boolean moveWithinSelectedRange(GridSheetTable table, int dx, int dy,
         GridSheetSelectionModel sm) {
       boolean stayInSelection = !sm.isSingleCellSelected();
-      GridSheetUtils.moveAnchor(table.getGridSheetPane(), dx != 0 ? Orientation.HORIZONTAL
-          : Orientation.VERTICAL, dx < 0 || dy < 0, stayInSelection, true);
+      GridSheetUtils.moveAnchor(table.getGridSheetPane(),
+          dx != 0 ? Orientation.HORIZONTAL : Orientation.VERTICAL, dx < 0 || dy < 0,
+          stayInSelection, true);
       return stayInSelection;
     }
 
@@ -214,8 +228,7 @@ public class GridSheetTableUI extends GridSheetTableNoActionUI {
       anchorRow = gridSheetPane.getSelectionModel().getRowAnchorIndex();
       anchorColumn = gridSheetPane.getSelectionModel().getColumnAnchorIndex();
 
-      if (key == SCROLL_LEFT_CHANGE_SELECTION
-          || // Paging Actions
+      if (key == SCROLL_LEFT_CHANGE_SELECTION || // Paging Actions
           key == SCROLL_LEFT_EXTEND_SELECTION || key == SCROLL_RIGHT_CHANGE_SELECTION
           || key == SCROLL_RIGHT_EXTEND_SELECTION || key == SCROLL_UP_CHANGE_SELECTION
           || key == SCROLL_UP_EXTEND_SELECTION || key == SCROLL_DOWN_CHANGE_SELECTION
@@ -266,9 +279,8 @@ public class GridSheetTableUI extends GridSheetTableNoActionUI {
             if (newColumn == -1) {
               boolean ltr = table.getComponentOrientation().isLeftToRight();
 
-              newColumn =
-                  forwards ? (ltr ? gridSheetPane.getColumnCount() : 0) : (ltr ? 0 : gridSheetPane
-                      .getColumnCount());
+              newColumn = forwards ? (ltr ? gridSheetPane.getColumnCount() : 0)
+                  : (ltr ? 0 : gridSheetPane.getColumnCount());
 
             }
             this.dx = newColumn - anchorColumn;
@@ -276,16 +288,12 @@ public class GridSheetTableUI extends GridSheetTableNoActionUI {
           }
         }
       }
-      if (key == NEXT_ROW
-          || // Navigate Actions
+      if (key == NEXT_ROW || // Navigate Actions
           key == NEXT_ROW_CELL || key == NEXT_ROW_EXTEND_SELECTION || key == NEXT_COLUMN
           || key == NEXT_COLUMN_CELL || key == NEXT_COLUMN_EXTEND_SELECTION || key == PREVIOUS_ROW
-          || key == PREVIOUS_ROW_CELL
-          || key == PREVIOUS_ROW_EXTEND_SELECTION
-          || key == PREVIOUS_COLUMN
-          || key == PREVIOUS_COLUMN_CELL
-          || key == PREVIOUS_COLUMN_EXTEND_SELECTION
-          || // Paging Actions.
+          || key == PREVIOUS_ROW_CELL || key == PREVIOUS_ROW_EXTEND_SELECTION
+          || key == PREVIOUS_COLUMN || key == PREVIOUS_COLUMN_CELL
+          || key == PREVIOUS_COLUMN_EXTEND_SELECTION || // Paging Actions.
           key == SCROLL_LEFT_CHANGE_SELECTION || key == SCROLL_LEFT_EXTEND_SELECTION
           || key == SCROLL_RIGHT_CHANGE_SELECTION || key == SCROLL_RIGHT_EXTEND_SELECTION
           || key == SCROLL_UP_CHANGE_SELECTION || key == SCROLL_UP_EXTEND_SELECTION
@@ -513,7 +521,8 @@ public class GridSheetTableUI extends GridSheetTableNoActionUI {
         sm.setValueIsAdjusting(true);
         sm.clearHeaderSelection();
         if (extend) {
-          sm.changeLeadSelection(focusedRow, column, GridSheetSelectionModel.CHANGE_ONLY_HORIZONTAL);
+          sm.changeLeadSelection(focusedRow, column,
+              GridSheetSelectionModel.CHANGE_ONLY_HORIZONTAL);
         } else {
           sm.setSelectionInterval(focusedRow, column, focusedRow, column);
         }
@@ -728,7 +737,8 @@ public class GridSheetTableUI extends GridSheetTableNoActionUI {
         Actions.FIRST_COLUMN_EXTEND_SELECTION);
     map.put(KeyStroke.getKeyStroke(KeyEvent.VK_END, KeyEvent.SHIFT_DOWN_MASK),
         Actions.LAST_COLUMN_EXTEND_SELECTION);
-    map.put(KeyStroke.getKeyStroke(KeyEvent.VK_HOME, ctrlShift), Actions.FIRST_ROW_EXTEND_SELECTION);
+    map.put(KeyStroke.getKeyStroke(KeyEvent.VK_HOME, ctrlShift),
+        Actions.FIRST_ROW_EXTEND_SELECTION);
     map.put(KeyStroke.getKeyStroke(KeyEvent.VK_HOME, ctrlShift), Actions.LAST_ROW_EXTEND_SELECTION);
 
     map.put(KeyStroke.getKeyStroke(KeyEvent.VK_TAB, 0), Actions.NEXT_COLUMN_CELL);
@@ -740,8 +750,10 @@ public class GridSheetTableUI extends GridSheetTableNoActionUI {
 
     // ctrl + arrow key
     map.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, shortcutKeyMask), Actions.NEXT_COLUMN_EDGE);
-    map.put(KeyStroke.getKeyStroke(KeyEvent.VK_KP_RIGHT, shortcutKeyMask), Actions.NEXT_COLUMN_EDGE);
-    map.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, shortcutKeyMask), Actions.PREVIOUS_COLUMN_EDGE);
+    map.put(KeyStroke.getKeyStroke(KeyEvent.VK_KP_RIGHT, shortcutKeyMask),
+        Actions.NEXT_COLUMN_EDGE);
+    map.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, shortcutKeyMask),
+        Actions.PREVIOUS_COLUMN_EDGE);
     map.put(KeyStroke.getKeyStroke(KeyEvent.VK_KP_LEFT, shortcutKeyMask),
         Actions.PREVIOUS_COLUMN_EDGE);
     map.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, shortcutKeyMask), Actions.NEXT_ROW_EDGE);
@@ -803,7 +815,8 @@ public class GridSheetTableUI extends GridSheetTableNoActionUI {
     putActionToMap(map, new Actions(Actions.LAST_ROW_EXTEND_SELECTION, true, true, true, true));
 
     putActionToMap(map, new Actions(Actions.SCROLL_UP_CHANGE_SELECTION, false, false, true, false));
-    putActionToMap(map, new Actions(Actions.SCROLL_DOWN_CHANGE_SELECTION, false, true, true, false));
+    putActionToMap(map,
+        new Actions(Actions.SCROLL_DOWN_CHANGE_SELECTION, false, true, true, false));
     putActionToMap(map, new Actions(Actions.SCROLL_UP_EXTEND_SELECTION, true, false, true, false));
     putActionToMap(map, new Actions(Actions.SCROLL_DOWN_EXTEND_SELECTION, true, true, true, false));
 
@@ -824,10 +837,10 @@ public class GridSheetTableUI extends GridSheetTableNoActionUI {
     map.put(TransferHandler.getPasteAction().getValue(Action.NAME),
         TransferHandler.getPasteAction());
 
-    putActionToMap(map, new Actions(Actions.SCROLL_LEFT_CHANGE_SELECTION, false, false, false,
-        false));
-    putActionToMap(map, new Actions(Actions.SCROLL_RIGHT_CHANGE_SELECTION, false, true, false,
-        false));
+    putActionToMap(map,
+        new Actions(Actions.SCROLL_LEFT_CHANGE_SELECTION, false, false, false, false));
+    putActionToMap(map,
+        new Actions(Actions.SCROLL_RIGHT_CHANGE_SELECTION, false, true, false, false));
     putActionToMap(map,
         new Actions(Actions.SCROLL_LEFT_EXTEND_SELECTION, true, false, false, false));
     putActionToMap(map,
@@ -838,8 +851,8 @@ public class GridSheetTableUI extends GridSheetTableNoActionUI {
     putActionToMap(map, new Actions(Actions.PREVIOUS_ROW_EDGE, false, false, true));
     putActionToMap(map, new Actions(Actions.NEXT_ROW_EDGE, false, true, true));
 
-    putActionToMap(map, new Actions(Actions.PREVIOUS_COLUMN_EDGE_EXTEND_SELECTION, true, false,
-        false));
+    putActionToMap(map,
+        new Actions(Actions.PREVIOUS_COLUMN_EDGE_EXTEND_SELECTION, true, false, false));
     putActionToMap(map, new Actions(Actions.NEXT_COLUMN_EDGE_EXTEND_SELECTION, true, true, false));
     putActionToMap(map, new Actions(Actions.PREVIOUS_ROW_EDGE_EXTEND_SELECTION, true, false, true));
     putActionToMap(map, new Actions(Actions.NEXT_ROW_EDGE_EXTEND_SELECTION, true, true, true));

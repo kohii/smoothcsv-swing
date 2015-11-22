@@ -1,3 +1,16 @@
+/*
+ * Copyright 2015 kohii
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.smoothcsv.swing.gridsheet;
 
 import java.applet.Applet;
@@ -45,9 +58,6 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.plaf.UIResource;
 
-import lombok.Getter;
-import sun.swing.PrintingStatus;
-
 import com.smoothcsv.commons.constants.Direction;
 import com.smoothcsv.swing.gridsheet.event.GridSheetSelectionEvent;
 import com.smoothcsv.swing.gridsheet.event.GridSheetSelectionListener;
@@ -59,9 +69,12 @@ import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetCellRenderer;
 import com.smoothcsv.swing.gridsheet.renderer.GridSheetCellRenderer;
 import com.smoothcsv.swing.gridsheet.ui.GridSheetTableNoActionUI;
 
+import lombok.Getter;
+import sun.swing.PrintingStatus;
+
 @SuppressWarnings("serial")
-public class GridSheetTable extends AbstractGridSheetComponent implements Scrollable,
-    CellEditorListener, GridSheetSelectionListener {
+public class GridSheetTable extends AbstractGridSheetComponent
+    implements Scrollable, CellEditorListener, GridSheetSelectionListener {
   //
   // Static Constants
   //
@@ -256,8 +269,8 @@ public class GridSheetTable extends AbstractGridSheetComponent implements Scroll
      */
     public String toString() {
       return getClass().getName() + "[dropPoint=" + getDropPoint() + "," + "row=" + row + ","
-          + "column=" + col + "," + "insertRow=" + isInsertRow + "," + "insertColumn="
-          + isInsertCol + "]";
+          + "column=" + col + "," + "insertRow=" + isInsertRow + "," + "insertColumn=" + isInsertCol
+          + "]";
     }
   }
 
@@ -389,8 +402,8 @@ public class GridSheetTable extends AbstractGridSheetComponent implements Scroll
    * @see #unconfigureEnclosingScrollPane
    */
   public void removeNotify() {
-    KeyboardFocusManager.getCurrentKeyboardFocusManager().removePropertyChangeListener(
-        "permanentFocusOwner", editorRemover);
+    KeyboardFocusManager.getCurrentKeyboardFocusManager()
+        .removePropertyChangeListener("permanentFocusOwner", editorRemover);
     editorRemover = null;
     // unconfigureEnclosingScrollPane();
     super.removeNotify();
@@ -1392,10 +1405,9 @@ public class GridSheetTable extends AbstractGridSheetComponent implements Scroll
         // Convert the event to the renderer's coordinate system
         Rectangle cellRect = getCellRect(hitRowIndex, hitColumnIndex, false);
         p.translate(-cellRect.x, -cellRect.y);
-        MouseEvent newEvent =
-            new MouseEvent(component, event.getID(), event.getWhen(), event.getModifiers(), p.x,
-                p.y, event.getXOnScreen(), event.getYOnScreen(), event.getClickCount(),
-                event.isPopupTrigger(), MouseEvent.NOBUTTON);
+        MouseEvent newEvent = new MouseEvent(component, event.getID(), event.getWhen(),
+            event.getModifiers(), p.x, p.y, event.getXOnScreen(), event.getYOnScreen(),
+            event.getClickCount(), event.isPopupTrigger(), MouseEvent.NOBUTTON);
 
         tip = ((JComponent) component).getToolTipText(newEvent);
       }
@@ -2412,8 +2424,8 @@ public class GridSheetTable extends AbstractGridSheetComponent implements Scroll
    * Discards the editor object and frees the real estate it used for cell rendering.
    */
   private void removeEditor() {
-    KeyboardFocusManager.getCurrentKeyboardFocusManager().removePropertyChangeListener(
-        "permanentFocusOwner", editorRemover);
+    KeyboardFocusManager.getCurrentKeyboardFocusManager()
+        .removePropertyChangeListener("permanentFocusOwner", editorRemover);
     editorRemover = null;
 
     if (cellEditor != null) {
@@ -2618,7 +2630,7 @@ public class GridSheetTable extends AbstractGridSheetComponent implements Scroll
    */
   public boolean print(PrintMode printMode, MessageFormat headerFormat, MessageFormat footerFormat,
       boolean showPrintDialog, PrintRequestAttributeSet attr, boolean interactive)
-      throws PrinterException, HeadlessException {
+          throws PrinterException, HeadlessException {
 
     return print(printMode, headerFormat, footerFormat, showPrintDialog, attr, interactive, null);
   }

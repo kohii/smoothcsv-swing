@@ -1,3 +1,16 @@
+/*
+ * Copyright 2015 kohii
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.smoothcsv.swing.gridsheet;
 
 import java.awt.Component;
@@ -20,8 +33,8 @@ import com.smoothcsv.swing.gridsheet.ui.GridSheetTableNoActionUI;
 
 public class GridSheetUtils {
 
-  public static void moveAnchor(GridSheetPane gridSheetPane, Orientation orientation, boolean reverse,
-      boolean stayInSelection, boolean scroll) {
+  public static void moveAnchor(GridSheetPane gridSheetPane, Orientation orientation,
+      boolean reverse, boolean stayInSelection, boolean scroll) {
     CellIterator itr =
         new CellIterator(gridSheetPane, stayInSelection, true, reverse, orientation, false);
     itr.next();
@@ -37,10 +50,9 @@ public class GridSheetUtils {
 
   public static void sizeWidthToFitHeadr(GridSheetPane gridSheetPane, int vc, int maxWidth) {
     GridSheetColumnHeader header = gridSheetPane.getColumnHeader();
-    int headerWidth =
-        gridSheetPane.getColumnHeader().getDefaultRenderer()
-            .getGridCellRendererComponent(header, header.getHeaderValue(vc), false, false, vc)
-            .getPreferredSize().width;
+    int headerWidth = gridSheetPane.getColumnHeader().getDefaultRenderer()
+        .getGridCellRendererComponent(header, header.getHeaderValue(vc), false, false, vc)
+        .getPreferredSize().width;
 
     gridSheetPane.getColumn(vc).setWidth(Math.min(maxWidth, headerWidth + 3));
   }
@@ -74,10 +86,9 @@ public class GridSheetUtils {
   public static void sizeWidthToFit(GridSheetPane gridSheetPane, int vc, int maxWidth,
       int maxRowsToScan) {
     GridSheetColumnHeader header = gridSheetPane.getColumnHeader();
-    int max =
-        gridSheetPane.getColumnHeader().getDefaultRenderer()
-            .getGridCellRendererComponent(header, header.getHeaderValue(vc), false, false, vc)
-            .getPreferredSize().width;
+    int max = gridSheetPane.getColumnHeader().getDefaultRenderer()
+        .getGridCellRendererComponent(header, header.getHeaderValue(vc), false, false, vc)
+        .getPreferredSize().width;
     int limit = maxWidth;
     int maxRow = maxRowsToScan;
 

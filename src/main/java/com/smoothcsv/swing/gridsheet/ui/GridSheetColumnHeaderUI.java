@@ -1,3 +1,16 @@
+/*
+ * Copyright 2015 kohii
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.smoothcsv.swing.gridsheet.ui;
 
 import java.awt.Component;
@@ -16,8 +29,6 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputListener;
 import javax.swing.plaf.ComponentUI;
 
-import sun.swing.SwingUtilities2;
-
 import com.smoothcsv.swing.gridsheet.GridSheetColumnHeader;
 import com.smoothcsv.swing.gridsheet.GridSheetPane;
 import com.smoothcsv.swing.gridsheet.GridSheetScrollPane;
@@ -27,6 +38,8 @@ import com.smoothcsv.swing.gridsheet.model.GridSheetColumn;
 import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
 import com.smoothcsv.swing.gridsheet.renderer.GridSheetHeaderRenderer;
 import com.smoothcsv.swing.utils.SwingUtils;
+
+import sun.swing.SwingUtilities2;
 
 public class GridSheetColumnHeaderUI extends AbstractGridUI {
 
@@ -257,8 +270,7 @@ public class GridSheetColumnHeaderUI extends AbstractGridUI {
         GridSheetSelectionModel sm = gridSheetPane.getSelectionModel();
         int minIndex;
         int maxIndex;
-        if (dragged
-            && sm.isColumnHeaderSelected()
+        if (dragged && sm.isColumnHeaderSelected()
             && (minIndex = sm.getMinColumnSelectionIndex()) < (maxIndex =
                 sm.getMaxColumnSelectionIndex())
             && sm.isColumnSelected(gridSheetPane.viewIndexForColumn(resizingColumn))) {
@@ -487,18 +499,16 @@ public class GridSheetColumnHeaderUI extends AbstractGridUI {
       int frozenAreaWidth = dPoint.x - frozenPoint.x;
 
       Rectangle leftRect = new Rectangle(frozenPoint.x, 0, frozenAreaWidth, viewportRect.height);
-      Rectangle rightRect =
-          new Rectangle(dPoint.x + scrolledDistance.x + frozenPoint.x, 0, viewportRect.width
-              - frozenAreaWidth, viewportRect.height);
+      Rectangle rightRect = new Rectangle(dPoint.x + scrolledDistance.x + frozenPoint.x, 0,
+          viewportRect.width - frozenAreaWidth, viewportRect.height);
 
       // Paint cells.
       paintFrozenGridAndCells(g, rightRect, clip, ltr, scrolledDistance, frozenPoint, false);
       paintFrozenGridAndCells(g, leftRect, clip, ltr, scrolledDistance, frozenPoint, true);
 
       // paint line.
-      Rectangle verticalLineRect =
-          new Rectangle(dPoint.x + scrolledDistance.x - 1 - frozenPoint.x, scrolledDistance.y, 1,
-              viewportRect.height);
+      Rectangle verticalLineRect = new Rectangle(dPoint.x + scrolledDistance.x - 1 - frozenPoint.x,
+          scrolledDistance.y, 1, viewportRect.height);
       paintFrozenLine(g, clip, verticalLineRect);
     }
   }
@@ -549,9 +559,8 @@ public class GridSheetColumnHeaderUI extends AbstractGridUI {
     GridSheetHeaderRenderer renderer = header.getDefaultRenderer();
 
     // TODO
-    boolean hasFocus =
-        !header.isPaintingForPrint() && (columnIndex == getSelectedColumnIndex())
-            && header.hasFocus();
+    boolean hasFocus = !header.isPaintingForPrint() && (columnIndex == getSelectedColumnIndex())
+        && header.hasFocus();
     return renderer.getGridCellRendererComponent(header, header.getHeaderValue(columnIndex), false,
         hasFocus, columnIndex);
   }

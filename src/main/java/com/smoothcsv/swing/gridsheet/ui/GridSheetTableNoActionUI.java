@@ -1,3 +1,16 @@
+/*
+ * Copyright 2015 kohii
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.smoothcsv.swing.gridsheet.ui;
 
 import java.awt.Component;
@@ -46,8 +59,8 @@ import com.smoothcsv.swing.utils.SwingUtils;
 
 public class GridSheetTableNoActionUI extends AbstractGridUI {
 
-  private static final StringBuilder BASELINE_COMPONENT_KEY = new StringBuilder(
-      "Grid.baselineComponent");
+  private static final StringBuilder BASELINE_COMPONENT_KEY =
+      new StringBuilder("Grid.baselineComponent");
 
   private static final Cursor AUTOFILL_CURSOR = Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR);
 
@@ -169,12 +182,11 @@ public class GridSheetTableNoActionUI extends AbstractGridUI {
           && SwingUtilities.isLeftMouseButton(e)) {
         // autofill to the last row
         GridSheetSelectionModel sm = table.getGridSheetPane().getSelectionModel();
-        GridSheetCellRange autofillBaseRange =
-            new GridSheetCellRange(sm.getMainMinRowSelectionIndex(),
-                sm.getMainMaxRowSelectionIndex(), sm.getMainMinColumnSelectionIndex(),
-                sm.getMainMaxColumnSelectionIndex());
-        table.autofill(autofillBaseRange, Direction.DOWN, table.getGridSheetPane().getRowCount()
-            - autofillBaseRange.getLastRow() - 1);
+        GridSheetCellRange autofillBaseRange = new GridSheetCellRange(
+            sm.getMainMinRowSelectionIndex(), sm.getMainMaxRowSelectionIndex(),
+            sm.getMainMinColumnSelectionIndex(), sm.getMainMaxColumnSelectionIndex());
+        table.autofill(autofillBaseRange, Direction.DOWN,
+            table.getGridSheetPane().getRowCount() - autofillBaseRange.getLastRow() - 1);
         mouseMoved(e);
         e.consume();
       }
@@ -250,10 +262,9 @@ public class GridSheetTableNoActionUI extends AbstractGridUI {
       if (table.getCursor() == AUTOFILL_CURSOR) {
         // start autofill
         GridSheetSelectionModel sm = table.getGridSheetPane().getSelectionModel();
-        autofillBaseRange =
-            new GridSheetCellRange(sm.getMainMinRowSelectionIndex(),
-                sm.getMainMaxRowSelectionIndex(), sm.getMainMinColumnSelectionIndex(),
-                sm.getMainMaxColumnSelectionIndex());
+        autofillBaseRange = new GridSheetCellRange(sm.getMainMinRowSelectionIndex(),
+            sm.getMainMaxRowSelectionIndex(), sm.getMainMinColumnSelectionIndex(),
+            sm.getMainMaxColumnSelectionIndex());
         autofillBaseRect = table.getCellRect(autofillBaseRange);
       } else {
         Point p = e.getPoint();
@@ -474,10 +485,10 @@ public class GridSheetTableNoActionUI extends AbstractGridUI {
       int rightBottomSelectionColumn = sm.getMainMaxColumnSelectionIndex();
       Rectangle rightBottomCellRect =
           table.getCellRect(rightBottomSelectionRow, rightBottomSelectionColumn, false);
-      Rectangle autofillRect =
-          new Rectangle(rightBottomCellRect.x + rightBottomCellRect.width - 5,
-              rightBottomCellRect.y + rightBottomCellRect.height - 5, 6, 6);
-      if ((autofillRect.contains(p) && !table.isEditing()) != (table.getCursor() == AUTOFILL_CURSOR)) {
+      Rectangle autofillRect = new Rectangle(rightBottomCellRect.x + rightBottomCellRect.width - 5,
+          rightBottomCellRect.y + rightBottomCellRect.height - 5, 6, 6);
+      if ((autofillRect.contains(p)
+          && !table.isEditing()) != (table.getCursor() == AUTOFILL_CURSOR)) {
         swapCursor();
       }
     }
@@ -675,8 +686,8 @@ public class GridSheetTableNoActionUI extends AbstractGridUI {
     GridSheetColorProvider colorProvider = gridSheetPane.getColorProvider();
     if (colorProvider == null || colorProvider instanceof UIResource) {
       colorProvider = (GridSheetColorProvider) UIManager.get("Grid.colorProvider");
-      gridSheetPane.setColorProvider(colorProvider != null ? colorProvider
-          : DefaultGridSheetColorProvider.getInstance());
+      gridSheetPane.setColorProvider(
+          colorProvider != null ? colorProvider : DefaultGridSheetColorProvider.getInstance());
     }
 
     // Color sbg = table.getSelectionBackground();
@@ -772,9 +783,8 @@ public class GridSheetTableNoActionUI extends AbstractGridUI {
     }
     renderer.setFont(table.getFont());
     int rowMargin = 1;
-    return renderer.getBaseline(Integer.MAX_VALUE, getGridSheetPane().getModel()
-        .getDefaultRowHeight() - rowMargin)
-        + rowMargin / 2;
+    return renderer.getBaseline(Integer.MAX_VALUE,
+        getGridSheetPane().getModel().getDefaultRowHeight() - rowMargin) + rowMargin / 2;
   }
 
   /**
@@ -826,9 +836,8 @@ public class GridSheetTableNoActionUI extends AbstractGridUI {
    * of rows. The preferred width is the sum of the preferred widths of each column.
    */
   public Dimension getPreferredSize(JComponent c) {
-    Dimension d =
-        new Dimension(getGridSheetPane().getTotalColumnWidth(), getGridSheetPane()
-            .getTotalRowHeight());
+    Dimension d = new Dimension(getGridSheetPane().getTotalColumnWidth(),
+        getGridSheetPane().getTotalRowHeight());
     GridSheetScrollPane scrollPane = GridSheetUtils.getAncestorScrollPane(table);
     if (scrollPane.isFrozen()) {
       Point frozenPoint = scrollPane.getFrozenPoint();
@@ -902,10 +911,9 @@ public class GridSheetTableNoActionUI extends AbstractGridUI {
 
       Rectangle upperLeftRect =
           new Rectangle(frozenPoint.x, frozenPoint.y, frozenAreaWidth, frozenAreaHeight);
-      Rectangle lowerRightRect =
-          new Rectangle(dPoint.x + scrolledDistance.x + frozenPoint.x, dPoint.y
-              + scrolledDistance.y + frozenPoint.y, viewportRect.width - frozenAreaWidth,
-              viewportRect.height - frozenAreaHeight);
+      Rectangle lowerRightRect = new Rectangle(dPoint.x + scrolledDistance.x + frozenPoint.x,
+          dPoint.y + scrolledDistance.y + frozenPoint.y, viewportRect.width - frozenAreaWidth,
+          viewportRect.height - frozenAreaHeight);
       Rectangle upperRightRect =
           new Rectangle(lowerRightRect.x, upperLeftRect.y, lowerRightRect.width, frozenAreaHeight);
       Rectangle lowerLeftRect =
@@ -926,12 +934,10 @@ public class GridSheetTableNoActionUI extends AbstractGridUI {
       // clip.x -= frozenPoint.x;
       // clip.y -= frozenPoint.y;
       // paint line.
-      Rectangle horizontalLineRect =
-          new Rectangle(scrolledDistance.x, dPoint.y + scrolledDistance.y - 1 - frozenPoint.y,
-              viewportRect.width, 1);
-      Rectangle verticalLineRect =
-          new Rectangle(dPoint.x + scrolledDistance.x - 1 - frozenPoint.x, scrolledDistance.y, 1,
-              viewportRect.height);
+      Rectangle horizontalLineRect = new Rectangle(scrolledDistance.x,
+          dPoint.y + scrolledDistance.y - 1 - frozenPoint.y, viewportRect.width, 1);
+      Rectangle verticalLineRect = new Rectangle(dPoint.x + scrolledDistance.x - 1 - frozenPoint.x,
+          scrolledDistance.y, 1, viewportRect.height);
       paintFrozenLine(g, clip, horizontalLineRect);
       paintFrozenLine(g, clip, verticalLineRect);
 
@@ -1437,7 +1443,7 @@ public class GridSheetTableNoActionUI extends AbstractGridUI {
     // Object obj = table.getValueAt(rows[row], cols[col]);
     // String val = ((obj == null) ? "" : obj.toString());
     // plainBuf.append(val + "\t");
-    // htmlBuf.append("  <td>" + val + "</td>\n");
+    // htmlBuf.append(" <td>" + val + "</td>\n");
     // }
     // // we want a newline at the end of each line and not a tab
     // plainBuf.deleteCharAt(plainBuf.length() - 1).append("\n");
@@ -1468,7 +1474,7 @@ public class GridSheetTableNoActionUI extends AbstractGridUI {
     return table.getGridSheetPane();
   }
 
-  public static class BasicColorProvider extends DefaultGridSheetColorProvider implements
-      UIResource {
+  public static class BasicColorProvider extends DefaultGridSheetColorProvider
+      implements UIResource {
   }
 }

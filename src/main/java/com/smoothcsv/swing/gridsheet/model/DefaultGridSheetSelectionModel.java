@@ -1,3 +1,16 @@
+/*
+ * Copyright 2015 kohii
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.smoothcsv.swing.gridsheet.model;
 
 import java.util.ArrayList;
@@ -181,9 +194,9 @@ public class DefaultGridSheetSelectionModel implements GridSheetSelectionModel {
 
     if (minRowIndex < 0 || minColumnIndex < 0 || gridSheetPane.getRowCount() <= maxRowIndex
         || gridSheetPane.getColumnCount() <= maxColumnIndex) {
-      throw new IllegalArgumentException(String.format(
-          "rowAnchor=%d, columnAnchor=%d, rowLead=%d, columnLead=%d", rowAnchor, columnAnchor,
-          rowLead, columnLead));
+      throw new IllegalArgumentException(
+          String.format("rowAnchor=%d, columnAnchor=%d, rowLead=%d, columnLead=%d", rowAnchor,
+              columnAnchor, rowLead, columnLead));
     }
 
     if (minRowIndex != this.minRowIndex || maxRowIndex != this.maxRowIndex) {
@@ -218,9 +231,9 @@ public class DefaultGridSheetSelectionModel implements GridSheetSelectionModel {
     if (minRowIndex < 0 || minColumnIndex < 0 || gridSheetPane.getRowCount() <= maxRowIndex
         || gridSheetPane.getColumnCount() <= maxColumnIndex || minRowIndex > maxRowIndex
         || minColumnIndex > maxColumnIndex) {
-      throw new IllegalArgumentException(String.format(
-          "minRowIndex=%d, minColumnIndex=%d, maxRowIndex=%d, maxColumnIndex=%d", minRowIndex,
-          minColumnIndex, maxRowIndex, maxColumnIndex));
+      throw new IllegalArgumentException(
+          String.format("minRowIndex=%d, minColumnIndex=%d, maxRowIndex=%d, maxColumnIndex=%d",
+              minRowIndex, minColumnIndex, maxRowIndex, maxColumnIndex));
     }
 
     if (!isAdditionallySelected() && minRowIndex == this.minRowIndex
@@ -301,9 +314,9 @@ public class DefaultGridSheetSelectionModel implements GridSheetSelectionModel {
 
     if (minRowIndex < 0 || minColumnIndex < 0 || gridSheetPane.getRowCount() <= maxRowIndex
         || gridSheetPane.getColumnCount() <= maxColumnIndex) {
-      throw new IllegalArgumentException(String.format(
-          "rowAnchor=%d, columnAnchor=%d, rowLead=%d, columnLead=%d", rowAnchor, columnAnchor,
-          rowLead, columnLead));
+      throw new IllegalArgumentException(
+          String.format("rowAnchor=%d, columnAnchor=%d, rowLead=%d, columnLead=%d", rowAnchor,
+              columnAnchor, rowLead, columnLead));
     }
 
     if (minRowIndex != this.minRowIndex || maxRowIndex != this.maxRowIndex) {
@@ -520,7 +533,8 @@ public class DefaultGridSheetSelectionModel implements GridSheetSelectionModel {
     if (isColumnHeaderSelected()) {
       return true;
     }
-    if (minRowIndex <= row && row <= maxRowIndex && minColumnIndex < gridSheetPane.getColumnCount()) {
+    if (minRowIndex <= row && row <= maxRowIndex
+        && minColumnIndex < gridSheetPane.getColumnCount()) {
       return true;
     }
     if (additionalSelections == null) {
@@ -793,9 +807,8 @@ public class DefaultGridSheetSelectionModel implements GridSheetSelectionModel {
    * Notifies listeners that we have ended a series of adjustments.
    */
   protected void fireValueChanged(boolean isAdjusting) {
-    if (lastChangedRowIndex == MIN && lastChangedColumnIndex == MIN
-        && !hasRowHeaderSelectionChanged && !hasColumnHeaderSelectionChanged
-        && !hasCornerHeaderSelectionChanged) {
+    if (lastChangedRowIndex == MIN && lastChangedColumnIndex == MIN && !hasRowHeaderSelectionChanged
+        && !hasColumnHeaderSelectionChanged && !hasCornerHeaderSelectionChanged) {
       return;
     }
 
@@ -844,9 +857,8 @@ public class DefaultGridSheetSelectionModel implements GridSheetSelectionModel {
       for (int i = listeners.length - 2; i >= 0; i -= 2) {
         if (listeners[i] == GridSheetSelectionListener.class) {
           if (e == null) {
-            e =
-                new GridSheetSelectionEvent(this, firstRowIndex, firstColumnIndex, lastRowIndex,
-                    lastColumnIndex, isAdjusting);
+            e = new GridSheetSelectionEvent(this, firstRowIndex, firstColumnIndex, lastRowIndex,
+                lastColumnIndex, isAdjusting);
           }
           ((GridSheetSelectionListener) listeners[i + 1]).selectionChanged(e);
         }
@@ -860,9 +872,8 @@ public class DefaultGridSheetSelectionModel implements GridSheetSelectionModel {
         for (int i = listeners.length - 2; i >= 0; i -= 2) {
           if (listeners[i] == GridSheetRowHeaderSelectionListener.class) {
             if (e == null) {
-              e =
-                  new GridSheetHeaderSelectionEvent(this, firstRowIndex, lastRowIndex,
-                      isRowHeaderSelected(), isAdjusting);
+              e = new GridSheetHeaderSelectionEvent(this, firstRowIndex, lastRowIndex,
+                  isRowHeaderSelected(), isAdjusting);
             }
             ((GridSheetRowHeaderSelectionListener) listeners[i + 1]).headersSelectionChanged(e);
           }
@@ -877,9 +888,8 @@ public class DefaultGridSheetSelectionModel implements GridSheetSelectionModel {
         for (int i = listeners.length - 2; i >= 0; i -= 2) {
           if (listeners[i] == GridSheetColumnHeaderSelectionListener.class) {
             if (e == null) {
-              e =
-                  new GridSheetHeaderSelectionEvent(this, firstColumnIndex, lastColumnIndex,
-                      isColumnHeaderSelected(), isAdjusting);
+              e = new GridSheetHeaderSelectionEvent(this, firstColumnIndex, lastColumnIndex,
+                  isColumnHeaderSelected(), isAdjusting);
             }
             ((GridSheetColumnHeaderSelectionListener) listeners[i + 1]).headersSelectionChanged(e);
           }
@@ -894,9 +904,8 @@ public class DefaultGridSheetSelectionModel implements GridSheetSelectionModel {
         for (int i = listeners.length - 2; i >= 0; i -= 2) {
           if (listeners[i] == GridSheetCornerHeaderSelectionListener.class) {
             if (e == null) {
-              e =
-                  new GridSheetHeaderSelectionEvent(this, -1, -1, isRowHeaderSelected()
-                      && isColumnHeaderSelected(), isAdjusting);
+              e = new GridSheetHeaderSelectionEvent(this, -1, -1,
+                  isRowHeaderSelected() && isColumnHeaderSelected(), isAdjusting);
             }
             ((GridSheetCornerHeaderSelectionListener) listeners[i + 1]).headersSelectionChanged(e);
           }
@@ -941,9 +950,9 @@ public class DefaultGridSheetSelectionModel implements GridSheetSelectionModel {
     hasColumnHeaderSelectionChanged = false;
     hasCornerHeaderSelectionChanged = false;
 
-    fireValueChanged(oldFirstAdjustedRowIndex, oldFirstAdjustedColumnIndex,
-        oldLastAdjustedRowIndex, oldLastAdjustedColumnIndex, oldRowHeaderSelectionChanged,
-        oldColumnHeaderSelectionChanged, oldCornerHeaderSelectionChanged);
+    fireValueChanged(oldFirstAdjustedRowIndex, oldFirstAdjustedColumnIndex, oldLastAdjustedRowIndex,
+        oldLastAdjustedColumnIndex, oldRowHeaderSelectionChanged, oldColumnHeaderSelectionChanged,
+        oldCornerHeaderSelectionChanged);
   }
 
   // private
@@ -964,7 +973,8 @@ public class DefaultGridSheetSelectionModel implements GridSheetSelectionModel {
     for (int i = 0; i < additionalSelections.size(); i++) {
       GridSheetCellRange as = additionalSelections.get(i);
       if ((as.getFirstRow() <= row && row <= as.getLastRow() || isColumnHeaderSelected())
-          && (as.getFirstColumn() <= column && column <= as.getLastColumn() || isRowHeaderSelected())) {
+          && (as.getFirstColumn() <= column && column <= as.getLastColumn()
+              || isRowHeaderSelected())) {
         return true;
       }
     }
@@ -1144,7 +1154,8 @@ public class DefaultGridSheetSelectionModel implements GridSheetSelectionModel {
     forEachSelectedColumnsAsBlock(rowIndex, callback, false);
   }
 
-  public void forEachSelectedColumnsAsBlock(int rowIndex, IntRangeConsumer callback, boolean reverse) {
+  public void forEachSelectedColumnsAsBlock(int rowIndex, IntRangeConsumer callback,
+      boolean reverse) {
 
     if (additionalSelections != null) {
       int iMin = clipToColumnSize(getMinColumnSelectionIndex());

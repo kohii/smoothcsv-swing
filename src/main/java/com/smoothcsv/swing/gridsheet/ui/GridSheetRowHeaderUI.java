@@ -1,3 +1,16 @@
+/*
+ * Copyright 2015 kohii
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.smoothcsv.swing.gridsheet.ui;
 
 import java.awt.Component;
@@ -34,8 +47,8 @@ import com.smoothcsv.swing.utils.SwingUtils;
 
 public class GridSheetRowHeaderUI extends AbstractGridUI {
 
-  private static final StringBuilder BASELINE_COMPONENT_KEY = new StringBuilder(
-      "GridRowHeader.baselineComponent");
+  private static final StringBuilder BASELINE_COMPONENT_KEY =
+      new StringBuilder("GridRowHeader.baselineComponent");
 
   //
   // Instance Variables
@@ -418,9 +431,8 @@ public class GridSheetRowHeaderUI extends AbstractGridUI {
     }
     renderer.setFont(header.getFont());
     int rowMargin = 1;
-    return renderer.getBaseline(Integer.MAX_VALUE, getGridSheetPane().getModel()
-        .getDefaultRowHeight() - rowMargin)
-        + rowMargin / 2;
+    return renderer.getBaseline(Integer.MAX_VALUE,
+        getGridSheetPane().getModel().getDefaultRowHeight() - rowMargin) + rowMargin / 2;
   }
 
   /**
@@ -516,18 +528,16 @@ public class GridSheetRowHeaderUI extends AbstractGridUI {
       int frozenAreaHeight = dPoint.y - frozenPoint.y;
 
       Rectangle upperRect = new Rectangle(0, frozenPoint.y, viewportRect.width, frozenAreaHeight);
-      Rectangle lowerRect =
-          new Rectangle(0, dPoint.y + scrolledDistance.y + frozenPoint.y, viewportRect.width,
-              viewportRect.height - frozenAreaHeight);
+      Rectangle lowerRect = new Rectangle(0, dPoint.y + scrolledDistance.y + frozenPoint.y,
+          viewportRect.width, viewportRect.height - frozenAreaHeight);
 
       // Paint cells.
       paintFrozenGridAndCells(g, lowerRect, clip, scrolledDistance, frozenPoint, false);
       paintFrozenGridAndCells(g, upperRect, clip, scrolledDistance, frozenPoint, true);
 
       // paint line.
-      Rectangle horizontalLineRect =
-          new Rectangle(scrolledDistance.x, dPoint.y + scrolledDistance.y - 1 - frozenPoint.y,
-              viewportRect.width, 1);
+      Rectangle horizontalLineRect = new Rectangle(scrolledDistance.x,
+          dPoint.y + scrolledDistance.y - 1 - frozenPoint.y, viewportRect.width, 1);
       paintFrozenLine(g, clip, horizontalLineRect);
     }
   }
@@ -658,7 +668,7 @@ public class GridSheetRowHeaderUI extends AbstractGridUI {
     // Object obj = table.getValueAt(rows[row], cols[col]);
     // String val = ((obj == null) ? "" : obj.toString());
     // plainBuf.append(val + "\t");
-    // htmlBuf.append("  <td>" + val + "</td>\n");
+    // htmlBuf.append(" <td>" + val + "</td>\n");
     // }
     // // we want a newline at the end of each line and not a tab
     // plainBuf.deleteCharAt(plainBuf.length() - 1).append("\n");
