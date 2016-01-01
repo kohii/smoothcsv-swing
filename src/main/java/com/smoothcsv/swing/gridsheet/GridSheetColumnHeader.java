@@ -27,8 +27,8 @@ import com.smoothcsv.swing.gridsheet.event.GridSheetColumnHeaderSelectionListene
 import com.smoothcsv.swing.gridsheet.event.GridSheetColumnModelEvent;
 import com.smoothcsv.swing.gridsheet.event.GridSheetHeaderSelectionEvent;
 import com.smoothcsv.swing.gridsheet.model.GridSheetColumn;
-import com.smoothcsv.swing.gridsheet.model.GridSheetModel;
 import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
+import com.smoothcsv.swing.gridsheet.model.IGridSheetModel;
 import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetHeaderRenderer;
 import com.smoothcsv.swing.gridsheet.renderer.GridSheetHeaderRenderer;
 import com.smoothcsv.swing.gridsheet.ui.GridSheetColumnHeaderUI;
@@ -133,8 +133,6 @@ public class GridSheetColumnHeader extends AbstractGridSheetHeaderComponent impl
    */
   public Rectangle getHeaderRect(int column) {
     Rectangle r = new Rectangle();
-
-    GridSheetModel model = gridSheetPane.getModel();
 
     r.height = getHeight();
 

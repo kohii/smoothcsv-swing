@@ -23,8 +23,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.plaf.LayerUI;
 
-import lombok.Getter;
-
 import com.smoothcsv.swing.gridsheet.event.GridSheetDataEvent;
 import com.smoothcsv.swing.gridsheet.event.GridSheetStructureEvent;
 import com.smoothcsv.swing.gridsheet.model.DefaultGridSheetSelectionModel;
@@ -32,9 +30,12 @@ import com.smoothcsv.swing.gridsheet.model.GridSheetColumn;
 import com.smoothcsv.swing.gridsheet.model.GridSheetModel;
 import com.smoothcsv.swing.gridsheet.model.GridSheetRow;
 import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
+import com.smoothcsv.swing.gridsheet.model.IGridSheetModel;
 import com.smoothcsv.swing.gridsheet.model.IGridSheetStructure;
 import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetColorProvider;
 import com.smoothcsv.swing.gridsheet.renderer.GridSheetColorProvider;
+
+import lombok.Getter;
 
 public class GridSheetPane extends JPanel implements IGridSheetStructure {
 
@@ -47,7 +48,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
    * <code>GridSheetPane</code>.
    */
   @Getter
-  protected GridSheetModel model;
+  protected IGridSheetModel model;
 
   private int[] columnModelIndices;
   private int[] rowModelIndices;
@@ -318,12 +319,12 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
    * @see #getStructure
    * @beaninfo bound: true description: The model that is the source of the data for this view.
    */
-  public void setModel(GridSheetModel dataModel) {
+  public void setModel(IGridSheetModel dataModel) {
     if (dataModel == null) {
       throw new IllegalArgumentException("Cannot set a null GridModel");
     }
     if (this.model != dataModel) {
-      GridSheetModel old = this.model;
+      IGridSheetModel old = this.model;
       if (old != null) {
         old.removeValueChangeListener(this::cellValueChanged);
         old.removeStructureChangeListener(this::structureChanged);
@@ -859,7 +860,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.smoothcsv.swing.components.gridsheet.model.IGridSheetStructure#getColumn(int)
    */
   @Override
@@ -869,7 +870,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.smoothcsv.swing.components.gridsheet.model.IGridSheetStructure#getRow(int)
    */
   @Override
@@ -879,7 +880,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.smoothcsv.swing.components.gridsheet.model.IGridSheetStructure#getColumnCount()
    */
   @Override
@@ -889,7 +890,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.smoothcsv.swing.components.gridsheet.model.IGridSheetStructure#getRowCount()
    */
   @Override
@@ -899,7 +900,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see
    * com.smoothcsv.swing.components.gridsheet.model.IGridSheetStructure#addColumn(com.smoothcsv.
    * swing.components.gridsheet.model.GridSheetColumn)
@@ -911,7 +912,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see
    * com.smoothcsv.swing.components.gridsheet.model.IGridSheetStructure#addColumn(java.util.List)
    */
@@ -928,7 +929,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.smoothcsv.swing.components.gridsheet.model.IGridSheetStructure#insertColumn(int,
    * com.smoothcsv.swing.components.gridsheet.model.GridSheetColumn)
    */
@@ -939,7 +940,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.smoothcsv.swing.components.gridsheet.model.IGridSheetStructure#insertColumn(int,
    * java.util.List)
    */
@@ -950,7 +951,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.smoothcsv.swing.components.gridsheet.model.IGridSheetStructure#insertColumn(int, int)
    */
   @Override
@@ -960,7 +961,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.smoothcsv.swing.components.gridsheet.model.IGridSheetStructure#removeColumn(int)
    */
   @Override
@@ -970,7 +971,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.smoothcsv.swing.components.gridsheet.model.IGridSheetStructure#addRow(com.smoothcsv.
    * swing.components.gridsheet.model.GridSheetRow)
    */
@@ -981,7 +982,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.smoothcsv.swing.components.gridsheet.model.IGridSheetStructure#addRow(java.util.List)
    */
   @Override
@@ -996,7 +997,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.smoothcsv.swing.components.gridsheet.model.IGridSheetStructure#insertRow(int,
    * com.smoothcsv.swing.components.gridsheet.model.GridSheetRow)
    */
@@ -1007,7 +1008,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.smoothcsv.swing.components.gridsheet.model.IGridSheetStructure#insertRow(int,
    * java.util.List)
    */
@@ -1018,7 +1019,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.smoothcsv.swing.components.gridsheet.model.IGridSheetStructure#insertRow(int, int)
    */
   @Override
@@ -1028,7 +1029,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.smoothcsv.swing.components.gridsheet.model.IGridSheetStructure#removeRow(int)
    */
   @Override
@@ -1038,7 +1039,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.smoothcsv.swing.components.gridsheet.model.IGridSheetStructure#getColumnName(int)
    */
   @Override
@@ -1048,7 +1049,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.smoothcsv.swing.components.gridsheet.model.IGridSheetStructure#getRowName(int)
    */
   @Override
@@ -1058,7 +1059,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.smoothcsv.swing.components.gridsheet.model.IGridSheetStructure#getTotalColumnWidth()
    */
   @Override
@@ -1068,7 +1069,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.smoothcsv.swing.components.gridsheet.model.IGridSheetStructure#getTotalRowHeight()
    */
   @Override
@@ -1123,4 +1124,83 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
     }
   }
 
+  /*
+   * (non-Javadoc)
+   *
+   * @see com.smoothcsv.swing.gridsheet.model.IGridSheetStructure#getDefaultRowHeight()
+   */
+  @Override
+  public int getDefaultRowHeight() {
+    return model.getDefaultRowHeight();
+  }
+
+  /*
+   * (non-Javadoc)
+   *
+   * @see com.smoothcsv.swing.gridsheet.model.IGridSheetStructure#setDefaultRowHeight(int)
+   */
+  @Override
+  public void setDefaultRowHeight(int defaultRowHeight) {
+    model.setDefaultRowHeight(defaultRowHeight);
+  }
+
+  /*
+   * (non-Javadoc)
+   *
+   * @see com.smoothcsv.swing.gridsheet.model.IGridSheetStructure#getDefaultColumnWidth()
+   */
+  @Override
+  public int getDefaultColumnWidth() {
+    return model.getDefaultColumnWidth();
+  }
+
+  /*
+   * (non-Javadoc)
+   *
+   * @see com.smoothcsv.swing.gridsheet.model.IGridSheetStructure#setDefaultColumnWidth(int)
+   */
+  @Override
+  public void setDefaultColumnWidth(int defaultColumnWidth) {
+    model.setDefaultColumnWidth(defaultColumnWidth);
+  }
+
+  /*
+   * (non-Javadoc)
+   *
+   * @see com.smoothcsv.swing.gridsheet.model.IGridSheetStructure#getMinRowHeight()
+   */
+  @Override
+  public int getMinRowHeight() {
+    return model.getMinRowHeight();
+  }
+
+  /*
+   * (non-Javadoc)
+   *
+   * @see com.smoothcsv.swing.gridsheet.model.IGridSheetStructure#getMaxRowHeight()
+   */
+  @Override
+  public int getMaxRowHeight() {
+    return model.getMaxRowHeight();
+  }
+
+  /*
+   * (non-Javadoc)
+   *
+   * @see com.smoothcsv.swing.gridsheet.model.IGridSheetStructure#getMaxColumnWidth()
+   */
+  @Override
+  public int getMaxColumnWidth() {
+    return model.getMaxColumnWidth();
+  }
+
+  /*
+   * (non-Javadoc)
+   *
+   * @see com.smoothcsv.swing.gridsheet.model.IGridSheetStructure#getMinColumnWidth()
+   */
+  @Override
+  public int getMinColumnWidth() {
+    return model.getMinColumnWidth();
+  }
 }

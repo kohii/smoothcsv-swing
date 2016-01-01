@@ -38,8 +38,6 @@ import javax.swing.event.MouseInputListener;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.UIResource;
 
-import sun.swing.SwingUtilities2;
-
 import com.smoothcsv.commons.constants.Direction;
 import com.smoothcsv.swing.gridsheet.GridSheetCellEditor;
 import com.smoothcsv.swing.gridsheet.GridSheetColumnHeader;
@@ -51,11 +49,14 @@ import com.smoothcsv.swing.gridsheet.model.GridSheetCellRange;
 import com.smoothcsv.swing.gridsheet.model.GridSheetColumn;
 import com.smoothcsv.swing.gridsheet.model.GridSheetModel;
 import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
+import com.smoothcsv.swing.gridsheet.model.IGridSheetModel;
 import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetCellRenderer;
 import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetColorProvider;
 import com.smoothcsv.swing.gridsheet.renderer.GridSheetCellRenderer;
 import com.smoothcsv.swing.gridsheet.renderer.GridSheetColorProvider;
 import com.smoothcsv.swing.utils.SwingUtils;
+
+import sun.swing.SwingUtilities2;
 
 public class GridSheetTableNoActionUI extends AbstractGridUI {
 
@@ -825,7 +826,7 @@ public class GridSheetTableNoActionUI extends AbstractGridUI {
    */
   public Dimension getMinimumSize(JComponent c) {
     GridSheetPane gridSheetPane = getGridSheetPane();
-    GridSheetModel structure = gridSheetPane.getModel();
+    IGridSheetModel structure = gridSheetPane.getModel();
     int width = gridSheetPane.getColumnCount() * structure.getMinColumnWidth();
     int height = gridSheetPane.getRowCount() * structure.getMinRowHeight();
     return new Dimension(width, height);
@@ -853,7 +854,7 @@ public class GridSheetTableNoActionUI extends AbstractGridUI {
    */
   public Dimension getMaximumSize(JComponent c) {
     GridSheetPane gridSheetPane = getGridSheetPane();
-    GridSheetModel structure = gridSheetPane.getModel();
+    IGridSheetModel structure = gridSheetPane.getModel();
     int width = structure.getColumnCount() * structure.getMaxColumnWidth();
     int height = structure.getRowCount() * structure.getMaxRowHeight();
     return new Dimension(width, height);
@@ -1168,7 +1169,6 @@ public class GridSheetTableNoActionUI extends AbstractGridUI {
       g.drawLine(damagedArea.x, y - 1, tableWidth - 1, y - 1);
     }
 
-    GridSheetModel model = gridSheetPane.getModel();
     int tableHeight = damagedArea.y + damagedArea.height;
     int x;
     if (table.getComponentOrientation().isLeftToRight()) {
@@ -1203,7 +1203,7 @@ public class GridSheetTableNoActionUI extends AbstractGridUI {
       int correctionY) {
     int cellMargin = 1;
     GridSheetPane gridSheetPane = getGridSheetPane();
-    GridSheetModel model = gridSheetPane.getModel();
+    IGridSheetModel model = gridSheetPane.getModel();
 
     Rectangle cellRect;
     GridSheetColumn aColumn;

@@ -19,17 +19,17 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import com.smoothcsv.swing.gridsheet.event.GridSheetDataEvent;
 import com.smoothcsv.swing.gridsheet.event.GridSheetStructureEvent;
+
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author kohii
  *
  */
-public class GridSheetModel implements IGridSheetData, IGridSheetStructure {
+public class GridSheetModel implements IGridSheetModel {
 
   private static final int MIN = -1;
   private static final int MAX = Integer.MAX_VALUE;
@@ -149,10 +149,12 @@ public class GridSheetModel implements IGridSheetData, IGridSheetStructure {
   // Data change event
   //
 
+  @Override
   public void addValueChangeListener(Consumer<GridSheetDataEvent> l) {
     dataUpdateListeners.add(l);
   }
 
+  @Override
   public void removeValueChangeListener(Consumer<GridSheetDataEvent> l) {
     dataUpdateListeners.remove(l);
   }
@@ -479,10 +481,12 @@ public class GridSheetModel implements IGridSheetData, IGridSheetStructure {
 
   // Events -------------------------
 
+  @Override
   public void addStructureChangeListener(Consumer<GridSheetStructureEvent> l) {
     structureChangelistenerList.add(l);
   }
 
+  @Override
   public void removeStructureChangeListener(Consumer<GridSheetStructureEvent> l) {
     structureChangelistenerList.remove(l);
   }

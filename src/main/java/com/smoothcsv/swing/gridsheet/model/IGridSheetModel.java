@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 kohii
+ * Copyright 2015 kohii.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,19 +15,18 @@ package com.smoothcsv.swing.gridsheet.model;
 
 import java.util.function.Consumer;
 
-import com.smoothcsv.swing.gridsheet.event.GridSheetDataEvent;
+import com.smoothcsv.swing.gridsheet.event.GridSheetStructureEvent;
 
 /**
  * @author kohii
  *
  */
-public interface IGridSheetData {
+public interface IGridSheetModel extends IGridSheetData, IGridSheetStructure {
 
-  Object getValueAt(int row, int column);
 
-  void setValueAt(Object aValue, int row, int column);
+  // Listeners --------------------
 
-  void addValueChangeListener(Consumer<GridSheetDataEvent> l);
+  void addStructureChangeListener(Consumer<GridSheetStructureEvent> l);
 
-  void removeValueChangeListener(Consumer<GridSheetDataEvent> l);
+  void removeStructureChangeListener(Consumer<GridSheetStructureEvent> l);
 }

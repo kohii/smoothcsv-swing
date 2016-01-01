@@ -13,7 +13,6 @@
  */
 package com.smoothcsv.swing.gridsheet.model;
 
-
 /**
  *
  * @author kohii
@@ -65,16 +64,31 @@ public interface IGridSheetStructure {
 
   GridSheetRow deleteRow(int index);
 
-
   // Name ------------------------
 
   String getColumnName(int column);
 
   String getRowName(int row);
 
-  // get structure info ------------------
+  // get or set structure info ------------------
 
   int getTotalColumnWidth();
 
   int getTotalRowHeight();
+
+  int getDefaultRowHeight();
+
+  void setDefaultRowHeight(int defaultRowHeight);
+
+  int getDefaultColumnWidth();
+
+  void setDefaultColumnWidth(int defaultColumnWidth);
+
+  int getMinRowHeight();
+
+  int getMaxRowHeight();
+
+  int getMaxColumnWidth();
+
+  int getMinColumnWidth();
 }

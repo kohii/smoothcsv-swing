@@ -63,8 +63,9 @@ import com.smoothcsv.swing.gridsheet.event.GridSheetSelectionEvent;
 import com.smoothcsv.swing.gridsheet.event.GridSheetSelectionListener;
 import com.smoothcsv.swing.gridsheet.model.GridSheetCellRange;
 import com.smoothcsv.swing.gridsheet.model.GridSheetColumn;
-import com.smoothcsv.swing.gridsheet.model.GridSheetModel;
 import com.smoothcsv.swing.gridsheet.model.GridSheetRow;
+import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
+import com.smoothcsv.swing.gridsheet.model.IGridSheetModel;
 import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetCellRenderer;
 import com.smoothcsv.swing.gridsheet.renderer.GridSheetCellRenderer;
 import com.smoothcsv.swing.gridsheet.ui.GridSheetTableNoActionUI;
@@ -288,7 +289,7 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * default model. The <code>autoCreateColumnsFromModel</code> flag is set to false if
    * <code>cm</code> is non-null, otherwise it is set to true and the column model is populated with
    * suitable <code>GridColumns</code> for the columns in <code>dm</code>.
-   * 
+   *
    * @param renderer
    * @param gridSheetPane
    */
@@ -1042,7 +1043,6 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * @see #getIntercellSpacing
    */
   public Rectangle getCellRect(int row, int column, boolean includeSpacing) {
-    GridSheetModel model = gridSheetPane.getModel();
     Rectangle r = new Rectangle();
     if (row < 0) {
       // y = height = 0;
@@ -1789,7 +1789,7 @@ public class GridSheetTable extends AbstractGridSheetComponent
 
   /*
    * Return the row at the top of the visibleRect
-   * 
+   *
    * May return -1
    */
   private int getLeadingRow(Rectangle visibleRect) {
@@ -1805,7 +1805,7 @@ public class GridSheetTable extends AbstractGridSheetComponent
 
   /*
    * Return the column at the leading edge of the visibleRect.
-   * 
+   *
    * May return -1
    */
   private int getLeadingCol(Rectangle visibleRect) {
@@ -1821,7 +1821,7 @@ public class GridSheetTable extends AbstractGridSheetComponent
 
   /*
    * Return the row at the bottom of the visibleRect.
-   * 
+   *
    * May return -1
    */
   private int getTrailingRow(Rectangle visibleRect) {
@@ -1838,7 +1838,7 @@ public class GridSheetTable extends AbstractGridSheetComponent
 
   /*
    * Return the column at the trailing edge of the visibleRect.
-   * 
+   *
    * May return -1
    */
   private int getTrailingCol(Rectangle visibleRect) {
@@ -2274,6 +2274,11 @@ public class GridSheetTable extends AbstractGridSheetComponent
   //
   // Editing Support
   //
+  public boolean startEdit() {
+    GridSheetSelectionModel sm = getGridSheetPane().getSelectionModel();
+    return editCellAt(sm.getRowAnchorIndex(), sm.getColumnAnchorIndex());
+  }
+
   /**
    * Programmatically starts editing the cell at <code>row</code> and <code>column</code>, if those
    * indices are in the valid range, and the cell at those indices is editable. Note that this is a
