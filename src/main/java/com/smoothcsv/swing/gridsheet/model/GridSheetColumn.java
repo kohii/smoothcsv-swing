@@ -80,9 +80,9 @@ public class GridSheetColumn {
   }
 
   public void setName(String name) {
-    if (Objects.equals(name, this.name)) {
+    if (!Objects.equals(name, this.name)) {
       this.name = name;
-      // model.fireVisibleColumnsUpdated(); TODO
+      model.fireVisibleColumnsUpdated();
     }
   }
 }
