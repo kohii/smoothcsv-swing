@@ -19,6 +19,7 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dialog;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.KeyboardFocusManager;
@@ -130,8 +131,8 @@ public class SwingUtils {
   public static void autofitColumnWidth(JTable table, int vc, int buf) {
     TableColumn tc = table.getColumnModel().getColumn(vc);
 
-    int max =
-        table.getTableHeader().getDefaultRenderer()
+    int max = table.getTableHeader() == null ? 1
+        : table.getTableHeader().getDefaultRenderer()
             .getTableCellRendererComponent(table, tc.getHeaderValue(), false, false, 0, vc)
             .getPreferredSize().width;
 
@@ -196,8 +197,8 @@ public class SwingUtils {
       public void focusLost(FocusEvent focusevent) {
         String cur = textField.getText();
         if (StringUtils.isEmpty(cur)) {
-          ((JTextField) focusevent.getSource()).setText(StringUtils.isEmpty(text) ? defaultText
-              : (text));
+          ((JTextField) focusevent.getSource())
+              .setText(StringUtils.isEmpty(text) ? defaultText : (text));
         }
       }
 
@@ -407,7 +408,8 @@ public class SwingUtils {
   }
 
   @SuppressWarnings("serial")
-  public static void installUndoManager(JTextComponent textComponent, final UndoManager undoManager) {
+  public static void installUndoManager(JTextComponent textComponent,
+      final UndoManager undoManager) {
 
     Document doc = textComponent.getDocument();
     doc.addUndoableEditListener(new UndoableEditListener() {
@@ -601,5 +603,20 @@ public class SwingUtils {
   public static void expandFontSize(JComponent comp, float f) {
     Font font = comp.getFont();
     comp.setFont(font.deriveFont(font.getSize() * f));
+  }
+
+  public static int getLineHeight(JComponent comp) {
+    FontMetrics fm = comp.getFontMetrics(comp.getFont());
+    return fm.getHeight();
+  }
+
+  public static void walkComponents(Container container, Consumer<Component> callback) {
+    Component[] children = ((Container) container).getComponents();
+    for (Component component : children) {
+      callback.accept(component);
+      if (component instanceof Container) {
+        walkComponents((Container) component, callback);
+      }
+    }
   }
 }

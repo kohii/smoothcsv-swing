@@ -14,13 +14,13 @@
 package com.smoothcsv.swing.components;
 
 import java.awt.Font;
-import java.awt.FontMetrics;
 
 import javax.swing.Action;
 import javax.swing.JTextArea;
 import javax.swing.text.DefaultEditorKit;
 
 import com.smoothcsv.commons.exception.UnexpectedException;
+import com.smoothcsv.swing.utils.SwingUtils;
 
 /**
  * @author kohii
@@ -52,8 +52,7 @@ public class ExTextArea extends JTextArea {
   }
 
   protected void calcLineHeight() {
-    FontMetrics fm = getFontMetrics(getFont());
-    lineHeight = fm.getHeight();
+    lineHeight = SwingUtils.getLineHeight(this);
   }
 
   @Override

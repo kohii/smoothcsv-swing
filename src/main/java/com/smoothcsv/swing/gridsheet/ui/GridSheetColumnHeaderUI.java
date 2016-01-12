@@ -334,6 +334,8 @@ public class GridSheetColumnHeaderUI extends AbstractGridUI {
    * @see #installUI
    */
   protected void installDefaults() {
+    LookAndFeel.installColorsAndFont(header, "GridHeader.background", "GridHeader.foreground",
+        "GridHeader.font");
     LookAndFeel.installProperty(header, "opaque", Boolean.TRUE);
   }
 

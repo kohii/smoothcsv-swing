@@ -34,8 +34,6 @@ import javax.swing.event.MouseInputListener;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.UIResource;
 
-import sun.swing.SwingUtilities2;
-
 import com.smoothcsv.swing.gridsheet.GridSheetPane;
 import com.smoothcsv.swing.gridsheet.GridSheetRowHeader;
 import com.smoothcsv.swing.gridsheet.GridSheetScrollPane;
@@ -44,6 +42,8 @@ import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
 import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetHeaderRenderer;
 import com.smoothcsv.swing.gridsheet.renderer.GridSheetHeaderRenderer;
 import com.smoothcsv.swing.utils.SwingUtils;
+
+import sun.swing.SwingUtilities2;
 
 public class GridSheetRowHeaderUI extends AbstractGridUI {
 
@@ -351,6 +351,8 @@ public class GridSheetRowHeaderUI extends AbstractGridUI {
    * @see #installUI
    */
   protected void installDefaults() {
+    LookAndFeel.installColorsAndFont(header, "GridHeader.background", "GridHeader.foreground",
+        "GridHeader.font");
     LookAndFeel.installProperty(header, "opaque", Boolean.TRUE);
 
     // // install the scrollpane border
