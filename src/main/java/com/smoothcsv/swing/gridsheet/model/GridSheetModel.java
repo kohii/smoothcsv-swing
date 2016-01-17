@@ -53,6 +53,7 @@ public class GridSheetModel implements IGridSheetModel {
   private int lastAdjustedColumnIndex = MIN;
   private boolean adjustdStructureChanged = false;
 
+  public GridSheetModel() {}
 
   /**
    * @param dataList
@@ -290,7 +291,7 @@ public class GridSheetModel implements IGridSheetModel {
   private int maxRowHeight = 300;
   @Getter
   @Setter
-  private int defaultColumnWidth = 40;
+  private int defaultColumnWidth = 60;
   @Getter
   @Setter
   private int defaultRowHeight = 17;
@@ -580,7 +581,7 @@ public class GridSheetModel implements IGridSheetModel {
   }
 
   protected GridSheetRow createDefaultRow() {
-    return new GridSheetRow(defaultRowHeight, this);
+    return new GridSheetRow(this);
   }
 
   // for SmoothCSV ////////////////////////////////////////

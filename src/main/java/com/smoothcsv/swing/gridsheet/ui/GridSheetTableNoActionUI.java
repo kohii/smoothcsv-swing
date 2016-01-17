@@ -47,7 +47,6 @@ import com.smoothcsv.swing.gridsheet.GridSheetTable;
 import com.smoothcsv.swing.gridsheet.GridSheetUtils;
 import com.smoothcsv.swing.gridsheet.model.GridSheetCellRange;
 import com.smoothcsv.swing.gridsheet.model.GridSheetColumn;
-import com.smoothcsv.swing.gridsheet.model.GridSheetModel;
 import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
 import com.smoothcsv.swing.gridsheet.model.IGridSheetModel;
 import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetCellRenderer;

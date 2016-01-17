@@ -15,7 +15,6 @@ package com.smoothcsv.swing.gridsheet.model;
 
 public class GridSheetRow {
 
-
   private int height;
 
   private boolean visible = true;
@@ -30,8 +29,8 @@ public class GridSheetRow {
     this(-1);
   }
 
-  protected GridSheetRow(int height, GridSheetModel model) {
-    this(height);
+  protected GridSheetRow(GridSheetModel model) {
+    this();
     this.model = model;
   }
 
@@ -51,7 +50,11 @@ public class GridSheetRow {
   }
 
   public int getHeight() {
-    return visible ? height : -1;
+    if (!visible) {
+      return 0;
+    }
+
+    return height == -1 ? model.getDefaultRowHeight() : height;
   }
 
   public void setHeight(int height) {

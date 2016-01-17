@@ -555,18 +555,6 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
       return;
     }
 
-    // if (e.getType() == GridSheetModelEvent.INSERT) {
-    // tableRowsInserted(e);
-    // return;
-    // }
-    //
-    // if (e.getType() == GridSheetModelEvent.DELETE) {
-    // tableRowsDeleted(e);
-    // return;
-    // }
-
-    // int modelColumn = e.getColumn();
-
     Rectangle dirtyRegion;
     if (e.getFirstRow() == GridSheetDataEvent.ALL_CELLS) {
       // 1 or more rows changed
@@ -584,7 +572,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
       dirtyRegion = table.getCellRect(e.getFirstRow(), e.getFirstColumn(), true);
     }
 
-    if (e.getLastRow() != Integer.MAX_VALUE) {
+    if (e.getLastRow() != GridSheetDataEvent.TO_THE_END) {
       dirtyRegion = dirtyRegion.union(table.getCellRect(e.getLastRow(), e.getLastColumn(), true));
       table.repaint(dirtyRegion.x, dirtyRegion.y, dirtyRegion.width, dirtyRegion.height);
     } else {
