@@ -39,7 +39,7 @@ import com.smoothcsv.swing.gridsheet.GridSheetRowHeader;
 import com.smoothcsv.swing.gridsheet.GridSheetScrollPane;
 import com.smoothcsv.swing.gridsheet.GridSheetUtils;
 import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
-import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetHeaderRenderer;
+import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetHeaderCellRenderer;
 import com.smoothcsv.swing.gridsheet.renderer.GridSheetHeaderRenderer;
 import com.smoothcsv.swing.utils.SwingUtils;
 
@@ -427,7 +427,7 @@ public class GridSheetRowHeaderUI extends AbstractGridUI {
     UIDefaults lafDefaults = UIManager.getLookAndFeelDefaults();
     Component renderer = (Component) lafDefaults.get(BASELINE_COMPONENT_KEY);
     if (renderer == null) {
-      GridSheetHeaderRenderer tcr = new DefaultGridSheetHeaderRenderer();
+      GridSheetHeaderRenderer tcr = new DefaultGridSheetHeaderCellRenderer();
       renderer = tcr.getGridCellRendererComponent(header, "a", false, false, -1);
       lafDefaults.put(BASELINE_COMPONENT_KEY, renderer);
     }

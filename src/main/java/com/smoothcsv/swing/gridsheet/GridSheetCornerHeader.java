@@ -25,7 +25,7 @@ import javax.swing.JComponent;
 import com.smoothcsv.swing.gridsheet.event.GridSheetCornerHeaderSelectionListener;
 import com.smoothcsv.swing.gridsheet.event.GridSheetHeaderSelectionEvent;
 import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
-import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetHeaderRenderer;
+import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetHeaderCellRenderer;
 import com.smoothcsv.swing.gridsheet.renderer.GridSheetHeaderRenderer;
 
 @SuppressWarnings("serial")
@@ -188,7 +188,7 @@ public class GridSheetCornerHeader extends AbstractGridSheetHeaderComponent
    * @since 1.3
    */
   protected GridSheetHeaderRenderer createDefaultRenderer() {
-    return new DefaultGridSheetHeaderRenderer();
+    return new DefaultGridSheetHeaderCellRenderer();
   }
 
 

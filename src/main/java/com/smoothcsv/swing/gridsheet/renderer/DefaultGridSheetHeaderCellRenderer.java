@@ -26,11 +26,11 @@ import com.smoothcsv.swing.gridsheet.AbstractGridSheetHeaderComponent;
  *
  */
 @SuppressWarnings("serial")
-public class DefaultGridSheetHeaderRenderer extends JLabel implements GridSheetHeaderRenderer {
+public class DefaultGridSheetHeaderCellRenderer extends JLabel implements GridSheetHeaderRenderer {
 
   private static Color DEFAULT_COLOR = new Color(237, 237, 237);
 
-  public DefaultGridSheetHeaderRenderer() {
+  public DefaultGridSheetHeaderCellRenderer() {
     setOpaque(true);
     setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
     setHorizontalAlignment(JLabel.CENTER);

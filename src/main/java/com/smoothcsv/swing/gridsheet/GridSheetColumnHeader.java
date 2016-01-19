@@ -29,7 +29,7 @@ import com.smoothcsv.swing.gridsheet.event.GridSheetHeaderSelectionEvent;
 import com.smoothcsv.swing.gridsheet.model.GridSheetColumn;
 import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
 import com.smoothcsv.swing.gridsheet.model.IGridSheetModel;
-import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetHeaderRenderer;
+import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetHeaderCellRenderer;
 import com.smoothcsv.swing.gridsheet.renderer.GridSheetHeaderRenderer;
 import com.smoothcsv.swing.gridsheet.ui.GridSheetColumnHeaderUI;
 
@@ -252,7 +252,7 @@ public class GridSheetColumnHeader extends AbstractGridSheetHeaderComponent impl
    * @since 1.3
    */
   protected GridSheetHeaderRenderer createDefaultRenderer() {
-    return new DefaultGridSheetHeaderRenderer();
+    return new DefaultGridSheetHeaderCellRenderer();
   }
 
   /**
