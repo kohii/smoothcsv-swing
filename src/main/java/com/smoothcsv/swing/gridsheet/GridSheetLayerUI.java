@@ -48,7 +48,7 @@ public class GridSheetLayerUI extends LayerUI<GridSheetTable> {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see javax.swing.plaf.LayerUI#paint(java.awt.Graphics, javax.swing.JComponent)
    */
   @Override
@@ -92,7 +92,7 @@ public class GridSheetLayerUI extends LayerUI<GridSheetTable> {
     if (!isAdditionallySelected) {
       GridSheetCellRange autofillRange = table.getAutofillRange();
       if (autofillRange != null) {
-        // Draw selection borders
+        // Draw auto fill borders
         g2.setColor(Color.BLACK);
         Rectangle rect = table.getCellRect(autofillRange);
         rect.x -= 1;
