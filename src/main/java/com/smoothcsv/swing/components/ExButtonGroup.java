@@ -42,6 +42,7 @@ public class ExButtonGroup<V> extends ButtonGroup {
   @Setter
   private ActionListener action;
 
+  @SafeVarargs
   public ExButtonGroup(final ExRadioButton<V>... radioButtons) {
     this.radioButtons = radioButtons;
     if (radioButtons == null) {
@@ -139,6 +140,7 @@ public class ExButtonGroup<V> extends ButtonGroup {
 
   public void addSelectionListener(Consumer<ExRadioButton<V>> listener) {
     ItemListener itemListener = new ItemListener() {
+      @SuppressWarnings("unchecked")
       @Override
       public void itemStateChanged(ItemEvent e) {
         if (e.getStateChange() == ItemEvent.SELECTED) {
