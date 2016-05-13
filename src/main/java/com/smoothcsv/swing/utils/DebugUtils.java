@@ -20,7 +20,6 @@ import javax.swing.KeyStroke;
 
 /**
  * @author kohii
- *
  */
 public class DebugUtils {
 

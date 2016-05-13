@@ -17,18 +17,23 @@ import lombok.Getter;
 
 /**
  * @author kohii
- *
  */
 @SuppressWarnings("serial")
 public class GridSheetDataEvent extends java.util.EventObject {
 
-  /** Identifies the header. */
+  /**
+   * Identifies the header.
+   */
   public static final int HEADER_INDEX = -1;
 
-  /** Specifies all cells. */
+  /**
+   * Specifies all cells.
+   */
   public static final int ALL_CELLS = -2;
 
-  /** Specifies all cells. */
+  /**
+   * Specifies all cells.
+   */
   public static final int TO_THE_END = Integer.MAX_VALUE;
 
   @Getter
@@ -43,7 +48,7 @@ public class GridSheetDataEvent extends java.util.EventObject {
   private boolean structureChanged;
 
   public GridSheetDataEvent(Object source, int firstRow, int firstColumn, int lastRow,
-      int lastColumn, boolean structureChanged) {
+                            int lastColumn, boolean structureChanged) {
     super(source);
     this.firstRow = firstRow;
     this.firstColumn = firstColumn;
@@ -53,7 +58,7 @@ public class GridSheetDataEvent extends java.util.EventObject {
   }
 
   public GridSheetDataEvent(Object source, int firstRow, int firstColumn, int lastRow,
-      int lastColumn) {
+                            int lastColumn) {
     this(source, firstRow, firstColumn, lastRow, lastColumn, false);
   }
 

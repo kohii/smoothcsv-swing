@@ -13,12 +13,13 @@
  */
 package com.smoothcsv.swing.components;
 
+import com.smoothcsv.swing.utils.SwingUtils;
+
 import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -29,10 +30,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 
-import com.smoothcsv.swing.utils.SwingUtils;
-
 /**
- *
  * @author kohii
  */
 public class ReadOnlyTable extends JTable {
@@ -69,7 +67,7 @@ public class ReadOnlyTable extends JTable {
 
       @Override
       public Component getTableCellRendererComponent(JTable table, Object value,
-          boolean isSelected, boolean hasFocus, int row, int column) {
+                                                     boolean isSelected, boolean hasFocus, int row, int column) {
         super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
         setBorder(null);
         return this;

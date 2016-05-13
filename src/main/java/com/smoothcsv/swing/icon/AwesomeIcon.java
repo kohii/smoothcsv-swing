@@ -13,6 +13,8 @@
  */
 package com.smoothcsv.swing.icon;
 
+import com.smoothcsv.commons.exception.UnexpectedException;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -23,17 +25,13 @@ import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
-
 import javax.swing.Icon;
-
-import com.smoothcsv.commons.exception.UnexpectedException;
 
 /**
  * Create icon from Font-Awesome 4.0.3
  *
- * @see http://fortawesome.github.io/Font-Awesome/
  * @author kohii
- *
+ * @see http://fortawesome.github.io/Font-Awesome/
  */
 public class AwesomeIcon implements Icon, AwesomeIconConstants {
 
@@ -78,41 +76,40 @@ public class AwesomeIcon implements Icon, AwesomeIconConstants {
   }
 
   /**
-   * @see http://fortawesome.github.io/Font-Awesome/cheatsheet/
    * @param code
    * @return
+   * @see http://fortawesome.github.io/Font-Awesome/cheatsheet/
    */
   public static AwesomeIcon create(char code) {
     return create(code, defaultIconSize, defaultIconColor);
   }
 
   /**
-   * @see http://fortawesome.github.io/Font-Awesome/cheatsheet/
    * @param code
    * @param color
-   *
    * @return
+   * @see http://fortawesome.github.io/Font-Awesome/cheatsheet/
    */
   public static AwesomeIcon create(char code, Color color) {
     return new AwesomeIcon(code, defaultIconSize, color);
   }
 
   /**
-   * @see http://fortawesome.github.io/Font-Awesome/cheatsheet/
    * @param code
    * @param size
    * @return
+   * @see http://fortawesome.github.io/Font-Awesome/cheatsheet/
    */
   public static AwesomeIcon create(char code, int size) {
     return new AwesomeIcon(code, size, defaultIconColor);
   }
 
   /**
-   * @see http://fortawesome.github.io/Font-Awesome/cheatsheet/
    * @param code
    * @param size
    * @param color
    * @return
+   * @see http://fortawesome.github.io/Font-Awesome/cheatsheet/
    */
   public static AwesomeIcon create(char code, int size, Color color) {
     return new AwesomeIcon(code, size, color);

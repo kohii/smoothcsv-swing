@@ -22,7 +22,6 @@ import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
 
 /**
- *
  * @author kohii
  */
 public class ClipboardUtils {

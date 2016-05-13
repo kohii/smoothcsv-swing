@@ -13,6 +13,8 @@
  */
 package com.smoothcsv.swing.components;
 
+import com.smoothcsv.commons.utils.HtmlUtils;
+
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Desktop;
@@ -21,11 +23,8 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
-
-import com.smoothcsv.commons.utils.HtmlUtils;
 
 
 public class LinkLabel extends JLabel {

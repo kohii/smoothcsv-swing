@@ -13,13 +13,6 @@
  */
 package com.smoothcsv.swing.gridsheet.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.IntConsumer;
-
-import javax.swing.event.EventListenerList;
-
 import com.smoothcsv.commons.functions.IntRangeConsumer;
 import com.smoothcsv.swing.gridsheet.GridSheetPane;
 import com.smoothcsv.swing.gridsheet.event.GridSheetColumnHeaderSelectionListener;
@@ -30,6 +23,12 @@ import com.smoothcsv.swing.gridsheet.event.GridSheetHeaderSelectionEvent;
 import com.smoothcsv.swing.gridsheet.event.GridSheetRowHeaderSelectionListener;
 import com.smoothcsv.swing.gridsheet.event.GridSheetSelectionEvent;
 import com.smoothcsv.swing.gridsheet.event.GridSheetSelectionListener;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.IntConsumer;
+import javax.swing.event.EventListenerList;
 
 public class DefaultGridSheetSelectionModel implements GridSheetSelectionModel {
 
@@ -226,7 +225,7 @@ public class DefaultGridSheetSelectionModel implements GridSheetSelectionModel {
   }
 
   public void setSelectionIntervalNoChangeAnchor(int minRowIndex, int minColumnIndex,
-      int maxRowIndex, int maxColumnIndex) {
+                                                 int maxRowIndex, int maxColumnIndex) {
 
     if (minRowIndex < 0 || minColumnIndex < 0 || gridSheetPane.getRowCount() <= maxRowIndex
         || gridSheetPane.getColumnCount() <= maxColumnIndex || minRowIndex > maxRowIndex
@@ -837,17 +836,17 @@ public class DefaultGridSheetSelectionModel implements GridSheetSelectionModel {
   }
 
   protected void fireValueChanged(int firstRowIndex, int firstColumnIndex, int lastRowIndex,
-      int lastColumnIndex, boolean hasRowHeaderSelectionChanged,
-      boolean hasColumnHeaderSelectionChanged, boolean hasCornerHeaderSelectionChanged) {
+                                  int lastColumnIndex, boolean hasRowHeaderSelectionChanged,
+                                  boolean hasColumnHeaderSelectionChanged, boolean hasCornerHeaderSelectionChanged) {
     fireValueChanged(firstRowIndex, firstColumnIndex, lastRowIndex, lastColumnIndex,
         hasRowHeaderSelectionChanged, hasColumnHeaderSelectionChanged,
         hasCornerHeaderSelectionChanged, getValueIsAdjusting());
   }
 
   protected void fireValueChanged(int firstRowIndex, int firstColumnIndex, int lastRowIndex,
-      int lastColumnIndex, boolean hasRowHeaderSelectionChanged,
-      boolean hasColumnHeaderSelectionChanged, boolean hasCornerHeaderSelectionChanged,
-      boolean isAdjusting) {
+                                  int lastColumnIndex, boolean hasRowHeaderSelectionChanged,
+                                  boolean hasColumnHeaderSelectionChanged, boolean hasCornerHeaderSelectionChanged,
+                                  boolean isAdjusting) {
     if (lastRowIndex < firstRowIndex && lastColumnIndex < firstColumnIndex) {
       return;
     }
@@ -974,7 +973,7 @@ public class DefaultGridSheetSelectionModel implements GridSheetSelectionModel {
       GridSheetCellRange as = additionalSelections.get(i);
       if ((as.getFirstRow() <= row && row <= as.getLastRow() || isColumnHeaderSelected())
           && (as.getFirstColumn() <= column && column <= as.getLastColumn()
-              || isRowHeaderSelected())) {
+          || isRowHeaderSelected())) {
         return true;
       }
     }
@@ -1155,7 +1154,7 @@ public class DefaultGridSheetSelectionModel implements GridSheetSelectionModel {
   }
 
   public void forEachSelectedColumnsAsBlock(int rowIndex, IntRangeConsumer callback,
-      boolean reverse) {
+                                            boolean reverse) {
 
     if (additionalSelections != null) {
       int iMin = clipToColumnSize(getMinColumnSelectionIndex());

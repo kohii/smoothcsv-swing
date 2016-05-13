@@ -18,7 +18,6 @@ import lombok.Setter;
 
 /**
  * @author kohii
- *
  */
 public class ExTableColumn {
 
@@ -64,7 +63,7 @@ public class ExTableColumn {
 
       @Override
       public void setValue(Object value, Object rowData, ExTableColumn column, int rowIndex,
-          int columnIndex) {
+                           int columnIndex) {
         throw new UnsupportedOperationException();
       }
     }, false);

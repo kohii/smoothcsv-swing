@@ -15,7 +15,6 @@ package com.smoothcsv.swing.gridsheet;
 
 import java.awt.Color;
 import java.awt.Point;
-
 import javax.swing.BorderFactory;
 import javax.swing.JScrollPane;
 import javax.swing.JViewport;
@@ -38,7 +37,6 @@ public class GridSheetScrollPane extends JScrollPane {
 
   /**
    * Creates a <code>GridScrollPane</code> that displays the contents of the specified component
-   *
    */
   public GridSheetScrollPane(GridSheetPane gridSheetPane) {
     super(VERTICAL_SCROLLBAR_AS_NEEDED, HORIZONTAL_SCROLLBAR_AS_NEEDED);

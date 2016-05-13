@@ -14,7 +14,6 @@
 package com.smoothcsv.swing.model;
 
 import java.util.ArrayList;
-
 import javax.swing.AbstractListModel;
 import javax.swing.ListModel;
 import javax.swing.event.ListDataEvent;
@@ -23,7 +22,6 @@ import javax.swing.event.ListDataListener;
 
 /**
  * @author kohii
- *
  */
 @SuppressWarnings("serial")
 public class FilteredListModel<E> extends AbstractListModel<E> {

@@ -13,15 +13,13 @@
  */
 package com.smoothcsv.swing.components;
 
-import java.awt.Color;
-
-import javax.swing.JToggleButton;
-
 import com.smoothcsv.swing.icon.AwesomeIcon;
+
+import java.awt.Color;
+import javax.swing.JToggleButton;
 
 /**
  * @author kohii
- *
  */
 public class AwesomeIconToggleButton extends JToggleButton {
 

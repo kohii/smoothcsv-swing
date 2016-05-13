@@ -13,21 +13,19 @@
  */
 package com.smoothcsv.swing.gridsheet.model;
 
+import com.smoothcsv.swing.gridsheet.event.GridSheetDataEvent;
+import com.smoothcsv.swing.gridsheet.event.GridSheetStructureEvent;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
 
-import com.smoothcsv.swing.gridsheet.event.GridSheetDataEvent;
-import com.smoothcsv.swing.gridsheet.event.GridSheetStructureEvent;
-
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * @author kohii
- *
  */
 public class GridSheetModel implements IGridSheetModel {
 
@@ -107,10 +105,10 @@ public class GridSheetModel implements IGridSheetModel {
   /**
    * Returns an attribute value for the cell at <code>row</code> and <code>column</code>.
    *
-   * @param row the row whose value is to be queried
+   * @param row    the row whose value is to be queried
    * @param column the column whose value is to be queried
    * @return the value Object at the specified cell
-   * @exception ArrayIndexOutOfBoundsException if an invalid row or column was given
+   * @throws ArrayIndexOutOfBoundsException if an invalid row or column was given
    */
   public Object getValueAt(int row, int column) {
     List rowData = dataList.get(row);
@@ -126,9 +124,9 @@ public class GridSheetModel implements IGridSheetModel {
    * notification.
    *
    * @param aValue the new value; this can be null
-   * @param row the row whose value is to be changed
+   * @param row    the row whose value is to be changed
    * @param column the column whose value is to be changed
-   * @exception ArrayIndexOutOfBoundsException if an invalid row or column was given
+   * @throws ArrayIndexOutOfBoundsException if an invalid row or column was given
    */
   @SuppressWarnings("unchecked")
   public void setValueAt(Object aValue, int row, int column) {
@@ -174,7 +172,7 @@ public class GridSheetModel implements IGridSheetModel {
   }
 
   protected void fireDataUpdated(int firstRow, int firstColumn, int lastRow, int lastColumn,
-      boolean structureChanged) {
+                                 boolean structureChanged) {
     if (adjusting) {
       markAsDirty(firstRow, firstColumn);
       markAsDirty(lastRow, lastColumn);
@@ -351,7 +349,7 @@ public class GridSheetModel implements IGridSheetModel {
   @Override
   public void insertColumn(int index, GridSheetColumn column) {
     columns.add(index, column);
-    fireColumnsInserted(index, new GridSheetColumn[] {column});
+    fireColumnsInserted(index, new GridSheetColumn[]{column});
   }
 
   @Override
@@ -372,7 +370,7 @@ public class GridSheetModel implements IGridSheetModel {
   @Override
   public GridSheetColumn deleteColumn(int index) {
     GridSheetColumn column = columns.remove(index);
-    fireColumnsDeleted(index, new GridSheetColumn[] {column});
+    fireColumnsDeleted(index, new GridSheetColumn[]{column});
     return column;
   }
 
@@ -404,7 +402,7 @@ public class GridSheetModel implements IGridSheetModel {
   @Override
   public void insertRow(int index, GridSheetRow row) {
     rows.add(index, row);
-    fireRowsInserted(index, new GridSheetRow[] {row});
+    fireRowsInserted(index, new GridSheetRow[]{row});
   }
 
   @Override
@@ -425,7 +423,7 @@ public class GridSheetModel implements IGridSheetModel {
   @Override
   public GridSheetRow deleteRow(int index) {
     GridSheetRow row = rows.remove(index);
-    fireRowsDeleted(index, new GridSheetRow[] {row});
+    fireRowsDeleted(index, new GridSheetRow[]{row});
     return row;
   }
 

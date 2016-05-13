@@ -13,16 +13,6 @@
  */
 package com.smoothcsv.swing.gridsheet;
 
-import java.awt.Component;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.beans.Transient;
-
-import javax.swing.JComponent;
-import javax.swing.SwingUtilities;
-import javax.swing.UIDefaults;
-import javax.swing.UIManager;
-
 import com.smoothcsv.swing.gridsheet.event.GridSheetHeaderSelectionEvent;
 import com.smoothcsv.swing.gridsheet.event.GridSheetRowHeaderSelectionListener;
 import com.smoothcsv.swing.gridsheet.event.GridSheetRowModelEvent;
@@ -31,6 +21,15 @@ import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
 import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetHeaderCellRenderer;
 import com.smoothcsv.swing.gridsheet.renderer.GridSheetHeaderRenderer;
 import com.smoothcsv.swing.gridsheet.ui.GridSheetRowHeaderUI;
+
+import java.awt.Component;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.beans.Transient;
+import javax.swing.JComponent;
+import javax.swing.SwingUtilities;
+import javax.swing.UIDefaults;
+import javax.swing.UIManager;
 
 @SuppressWarnings("serial")
 public class GridSheetRowHeader extends AbstractGridSheetHeaderComponent
@@ -75,6 +74,7 @@ public class GridSheetRowHeader extends AbstractGridSheetHeaderComponent
   //
   // Local behavior attributes
   //
+
   /**
    * Sets the default renderer
    *
@@ -105,6 +105,7 @@ public class GridSheetRowHeader extends AbstractGridSheetHeaderComponent
   // public GridSheetRow getResizingRow() {
   // return resizingRow;
   // }
+
   /**
    * Returns the index of the row that <code>point</code> lies in, or -1 if it lies out of bounds.
    *
@@ -147,6 +148,7 @@ public class GridSheetRowHeader extends AbstractGridSheetHeaderComponent
   //
   // Managing GridSheetRowHeaderUI
   //
+
   /**
    * Returns the look and feel (L&F) object that renders this component.
    *
@@ -188,8 +190,6 @@ public class GridSheetRowHeader extends AbstractGridSheetHeaderComponent
    * Returns the suffix used to construct the name of the look and feel (L&F) class used to render
    * this component.
    *
-   * @return the string "GridSheetRowHeaderUI"
-   *
    * @return "GridSheetRowHeaderUI"
    * @see JComponent#getUIClassID
    * @see UIDefaults#getUI
@@ -204,6 +204,7 @@ public class GridSheetRowHeader extends AbstractGridSheetHeaderComponent
   //
   // Implementing GridRowModelListener interface
   //
+
   /**
    * Invoked when a row is added to the table row model.
    * <p>
@@ -233,6 +234,7 @@ public class GridSheetRowHeader extends AbstractGridSheetHeaderComponent
   //
   // Package Methods
   //
+
   /**
    * Returns a default renderer to be used when no header renderer is defined by a
    * <code>GridSheetRow</code>.

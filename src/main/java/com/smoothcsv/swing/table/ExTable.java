@@ -14,12 +14,10 @@
 package com.smoothcsv.swing.table;
 
 import java.awt.Rectangle;
-
 import javax.swing.JTable;
 
 /**
  * @author kohii
- *
  */
 public class ExTable<T> extends JTable {
   private static final long serialVersionUID = 2223569234825767520L;

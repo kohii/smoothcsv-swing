@@ -16,7 +16,6 @@ package com.smoothcsv.swing.gridsheet.renderer;
 import java.awt.Color;
 
 /**
- *
  * @author kohii
  */
 public class DefaultGridSheetColorProvider implements GridSheetColorProvider {

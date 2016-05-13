@@ -34,12 +34,13 @@ public class GridSheetRowModelEvent extends java.util.EventObject {
   //
   // Constructors
   //
+
   /**
    * Constructs a {@code TableColumnModelEvent} object.
    *
    * @param source the {@code TableColumnModel} that originated the event
-   * @param from an int specifying the index from where the column was moved or removed
-   * @param to an int specifying the index to where the column was moved or added
+   * @param from   an int specifying the index from where the column was moved or removed
+   * @param to     an int specifying the index to where the column was moved or added
    * @see #getFromIndex
    * @see #getToIndex
    */
@@ -52,6 +53,7 @@ public class GridSheetRowModelEvent extends java.util.EventObject {
   //
   // Querying Methods
   //
+
   /**
    * Returns the fromIndex. Valid for removed or moved events
    */
@@ -61,8 +63,12 @@ public class GridSheetRowModelEvent extends java.util.EventObject {
 
   ;
 
-  /** Returns the toIndex. Valid for add and moved events */
+  /**
+   * Returns the toIndex. Valid for add and moved events
+   */
   public int getToIndex() {
     return toIndex;
-  };
+  }
+
+  ;
 }

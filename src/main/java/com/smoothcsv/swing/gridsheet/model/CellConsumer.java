@@ -15,7 +15,6 @@ package com.smoothcsv.swing.gridsheet.model;
 
 /**
  * @author kohii
- *
  */
 public interface CellConsumer {
 

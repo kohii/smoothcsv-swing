@@ -13,17 +13,6 @@
  */
 package com.smoothcsv.swing.gridsheet;
 
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.Rectangle;
-
-import javax.swing.JComponent;
-import javax.swing.JViewport;
-import javax.swing.UIDefaults;
-import javax.swing.UIManager;
-
 import com.smoothcsv.commons.constants.Orientation;
 import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
 import com.smoothcsv.swing.gridsheet.renderer.GridSheetCellRenderer;
@@ -31,10 +20,20 @@ import com.smoothcsv.swing.gridsheet.ui.GridSheetColumnHeaderUI;
 import com.smoothcsv.swing.gridsheet.ui.GridSheetRowHeaderUI;
 import com.smoothcsv.swing.gridsheet.ui.GridSheetTableNoActionUI;
 
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Rectangle;
+import javax.swing.JComponent;
+import javax.swing.JViewport;
+import javax.swing.UIDefaults;
+import javax.swing.UIManager;
+
 public class GridSheetUtils {
 
   public static void moveAnchor(GridSheetPane gridSheetPane, Orientation orientation,
-      boolean reverse, boolean stayInSelection, boolean scroll) {
+                                boolean reverse, boolean stayInSelection, boolean scroll) {
     CellIterator itr =
         new CellIterator(gridSheetPane, stayInSelection, true, reverse, orientation, false);
     itr.next();
@@ -58,7 +57,7 @@ public class GridSheetUtils {
   }
 
   public static void sizeWidthToFitData(GridSheetPane gridSheetPane, int vc, int maxWidth,
-      int maxRowsToScan) {
+                                        int maxRowsToScan) {
 
     int max = 0;
     int limit = maxWidth;
@@ -84,7 +83,7 @@ public class GridSheetUtils {
   }
 
   public static void sizeWidthToFit(GridSheetPane gridSheetPane, int vc, int maxWidth,
-      int maxRowsToScan) {
+                                    int maxRowsToScan) {
     GridSheetColumnHeader header = gridSheetPane.getColumnHeader();
     int max = gridSheetPane.getColumnHeader().getDefaultRenderer()
         .getGridCellRendererComponent(header, header.getHeaderValue(vc), false, false, vc)
@@ -112,7 +111,7 @@ public class GridSheetUtils {
   }
 
   public static void sizeWidthToFitSelectedCells(GridSheetPane gridSheetPane, int vc, int maxWidth,
-      int maxRowsToScan) {
+                                                 int maxRowsToScan) {
     GridSheetTable table = gridSheetPane.getTable();
 
     int vrows = gridSheetPane.getRowCount();
@@ -181,7 +180,7 @@ public class GridSheetUtils {
   }
 
   public static boolean pointOutsidePrefSize(GridSheetPane gridSheetPane, int row, int column,
-      Point p) {
+                                             Point p) {
     if (gridSheetPane.convertColumnIndexToModel(column) != 0 || row == -1) {
       return true;
     }

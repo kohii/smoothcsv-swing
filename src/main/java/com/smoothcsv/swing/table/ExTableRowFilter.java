@@ -15,7 +15,6 @@ package com.smoothcsv.swing.table;
 
 /**
  * @author kohii
- *
  */
 public interface ExTableRowFilter<T> {
 

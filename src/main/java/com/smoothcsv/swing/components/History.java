@@ -13,13 +13,13 @@
  */
 package com.smoothcsv.swing.components;
 
+import com.smoothcsv.commons.exception.UnexpectedException;
+import com.smoothcsv.commons.utils.FileUtils;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.smoothcsv.commons.exception.UnexpectedException;
-import com.smoothcsv.commons.utils.FileUtils;
 
 
 public class History {

@@ -13,22 +13,6 @@
  */
 package com.smoothcsv.swing.gridsheet.ui;
 
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.event.MouseEvent;
-
-import javax.swing.CellRendererPane;
-import javax.swing.JComponent;
-import javax.swing.LookAndFeel;
-import javax.swing.SwingUtilities;
-import javax.swing.event.MouseInputListener;
-import javax.swing.plaf.ComponentUI;
-
 import com.smoothcsv.swing.gridsheet.GridSheetColumnHeader;
 import com.smoothcsv.swing.gridsheet.GridSheetPane;
 import com.smoothcsv.swing.gridsheet.GridSheetScrollPane;
@@ -38,8 +22,22 @@ import com.smoothcsv.swing.gridsheet.model.GridSheetColumn;
 import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
 import com.smoothcsv.swing.gridsheet.renderer.GridSheetHeaderRenderer;
 import com.smoothcsv.swing.utils.SwingUtils;
-
 import sun.swing.SwingUtilities2;
+
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.event.MouseEvent;
+import javax.swing.CellRendererPane;
+import javax.swing.JComponent;
+import javax.swing.LookAndFeel;
+import javax.swing.SwingUtilities;
+import javax.swing.event.MouseInputListener;
+import javax.swing.plaf.ComponentUI;
 
 public class GridSheetColumnHeaderUI extends AbstractGridUI {
 
@@ -272,7 +270,7 @@ public class GridSheetColumnHeaderUI extends AbstractGridUI {
         int maxIndex;
         if (dragged && sm.isColumnHeaderSelected()
             && (minIndex = sm.getMinColumnSelectionIndex()) < (maxIndex =
-                sm.getMaxColumnSelectionIndex())
+            sm.getMaxColumnSelectionIndex())
             && sm.isColumnSelected(gridSheetPane.viewIndexForColumn(resizingColumn))) {
           minIndex = Math.max(0, minIndex);
           maxIndex = Math.min(header.getColumnCount() - 1, maxIndex);
@@ -301,6 +299,7 @@ public class GridSheetColumnHeaderUI extends AbstractGridUI {
   //
   // Factory methods for the Listeners
   //
+
   /**
    * Creates the mouse listener for the GridSheetColumnHeader.
    */
@@ -371,12 +370,13 @@ public class GridSheetColumnHeaderUI extends AbstractGridUI {
   //
   // Support for mouse rollover
   //
+
   /**
    * Returns the index of the column header over which the mouse currently is. When the mouse is not
    * over the table header, -1 is returned.
    *
-   * @see #rolloverColumnUpdated(int, int)
    * @return the index of the current rollover column
+   * @see #rolloverColumnUpdated(int, int)
    * @since 1.6
    */
   protected int getRolloverColumn() {
@@ -402,6 +402,7 @@ public class GridSheetColumnHeaderUI extends AbstractGridUI {
   // }
   // return;
   // }
+
   /**
    * Used by selectColumn to scroll horizontally, if necessary, to ensure that the newly selected
    * column is visible.
@@ -431,7 +432,7 @@ public class GridSheetColumnHeaderUI extends AbstractGridUI {
   }
 
   private int changeColumnWidth(GridSheetColumn resizingColumn, GridSheetColumnHeader th,
-      int oldWidth, int newWidth) {
+                                int oldWidth, int newWidth) {
     resizingColumn.setWidth(newWidth);
     return 0;
   }
@@ -439,10 +440,11 @@ public class GridSheetColumnHeaderUI extends AbstractGridUI {
   //
   // Baseline
   //
+
   /**
    * Returns the baseline.
    *
-   * @throws NullPointerException {@inheritDoc}
+   * @throws NullPointerException     {@inheritDoc}
    * @throws IllegalArgumentException {@inheritDoc}
    * @see javax.swing.JComponent#getBaseline(int, int)
    * @since 1.6
@@ -543,7 +545,7 @@ public class GridSheetColumnHeaderUI extends AbstractGridUI {
   }
 
   private void paintFrozenGridAndCells(Graphics g, Rectangle drawRect, Rectangle clip, boolean ltr,
-      Point scrollDistance, Point frozenPoint, boolean freeze) {
+                                       Point scrollDistance, Point frozenPoint, boolean freeze) {
     int correction = freeze ? scrollDistance.x : -frozenPoint.x;
 
     drawRect.x += correction - frozenPoint.x;

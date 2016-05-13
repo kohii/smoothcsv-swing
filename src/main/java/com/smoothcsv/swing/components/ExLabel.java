@@ -14,14 +14,12 @@
 package com.smoothcsv.swing.components;
 
 import java.awt.FlowLayout;
-
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
  * @author kohii
- *
  */
 @SuppressWarnings("serial")
 public class ExLabel extends JPanel {

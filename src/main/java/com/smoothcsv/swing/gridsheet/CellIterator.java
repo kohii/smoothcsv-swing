@@ -18,7 +18,6 @@ import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
 
 /**
  * @author kohii
- *
  */
 public class CellIterator {
   private final GridSheetPane grid;
@@ -41,7 +40,7 @@ public class CellIterator {
   private int column;
 
   public CellIterator(GridSheetPane grid, boolean inSelection, boolean wrap, boolean reverse,
-      Orientation orientation, boolean startsFromFirst) {
+                      Orientation orientation, boolean startsFromFirst) {
     this.grid = grid;
     this.inSelection = inSelection;
     this.wrap = wrap;

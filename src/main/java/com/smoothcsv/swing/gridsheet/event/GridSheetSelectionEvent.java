@@ -24,7 +24,7 @@ public class GridSheetSelectionEvent extends EventObject {
   private boolean isAdjusting;
 
   public GridSheetSelectionEvent(Object source, int firstRow, int firstColumn, int lastRow,
-      int lastColumn, boolean isAdjusting) {
+                                 int lastColumn, boolean isAdjusting) {
     super(source);
     this.firstRow = firstRow;
     this.firstColumn = firstColumn;

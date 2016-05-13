@@ -13,31 +13,6 @@
  */
 package com.smoothcsv.swing.gridsheet.ui;
 
-import java.awt.Component;
-import java.awt.ComponentOrientation;
-import java.awt.Container;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.event.MouseEvent;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
-import javax.swing.CellEditor;
-import javax.swing.CellRendererPane;
-import javax.swing.JComponent;
-import javax.swing.JScrollPane;
-import javax.swing.LookAndFeel;
-import javax.swing.SwingUtilities;
-import javax.swing.TransferHandler;
-import javax.swing.UIDefaults;
-import javax.swing.UIManager;
-import javax.swing.event.MouseInputListener;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.UIResource;
-
 import com.smoothcsv.commons.constants.Direction;
 import com.smoothcsv.swing.gridsheet.GridSheetCellEditor;
 import com.smoothcsv.swing.gridsheet.GridSheetColumnHeader;
@@ -54,8 +29,31 @@ import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetColorProvider;
 import com.smoothcsv.swing.gridsheet.renderer.GridSheetCellRenderer;
 import com.smoothcsv.swing.gridsheet.renderer.GridSheetColorProvider;
 import com.smoothcsv.swing.utils.SwingUtils;
-
 import sun.swing.SwingUtilities2;
+
+import java.awt.Component;
+import java.awt.ComponentOrientation;
+import java.awt.Container;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import javax.swing.CellEditor;
+import javax.swing.CellRendererPane;
+import javax.swing.JComponent;
+import javax.swing.JScrollPane;
+import javax.swing.LookAndFeel;
+import javax.swing.SwingUtilities;
+import javax.swing.TransferHandler;
+import javax.swing.UIDefaults;
+import javax.swing.UIManager;
+import javax.swing.event.MouseInputListener;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.UIResource;
 
 public class GridSheetTableNoActionUI extends AbstractGridUI {
 
@@ -105,6 +103,7 @@ public class GridSheetTableNoActionUI extends AbstractGridUI {
   //
   // The Table's mouse and mouse motion listeners
   //
+
   /**
    * This class should be treated as a &quot;protected&quot; inner class. Instantiate it only within
    * subclasses of BasicTableUI.
@@ -767,7 +766,7 @@ public class GridSheetTableNoActionUI extends AbstractGridUI {
   /**
    * Returns the baseline.
    *
-   * @throws NullPointerException {@inheritDoc}
+   * @throws NullPointerException     {@inheritDoc}
    * @throws IllegalArgumentException {@inheritDoc}
    * @see javax.swing.JComponent#getBaseline(int, int)
    * @since 1.6
@@ -862,6 +861,7 @@ public class GridSheetTableNoActionUI extends AbstractGridUI {
   //
   // Paint methods and support
   //
+
   /**
    * Paint a representation of the <code>table</code> instance that was set in installUI().
    */
@@ -1078,7 +1078,7 @@ public class GridSheetTableNoActionUI extends AbstractGridUI {
   }
 
   private void paintRuleAndCells(Graphics g, Rectangle drawRect, boolean ltr, int correctionX,
-      int correctionY) {
+                                 int correctionY) {
     Point upperLeft = drawRect.getLocation();
     Point lowerRight = new Point(drawRect.x + drawRect.width - 1, drawRect.y + drawRect.height - 1);
 
@@ -1124,7 +1124,7 @@ public class GridSheetTableNoActionUI extends AbstractGridUI {
   }
 
   private void paintFrozenGridAndCells(Graphics g, Rectangle drawRect, Rectangle clip, boolean ltr,
-      Point scrollDistance, Point frozenPoint, boolean freezeX, boolean freezeY) {
+                                       Point scrollDistance, Point frozenPoint, boolean freezeX, boolean freezeY) {
     int correctionX = freezeX ? scrollDistance.x : -frozenPoint.x;
     int correctionY = freezeY ? scrollDistance.y : -frozenPoint.y;
 
@@ -1149,7 +1149,7 @@ public class GridSheetTableNoActionUI extends AbstractGridUI {
    * lines if <code>getShowHorizontalLines()</code> returns true.
    */
   private void paintRule(Graphics g, int rMin, int rMax, int cMin, int cMax, int correctionX,
-      int correctionY) {
+                         int correctionY) {
     GridSheetPane gridSheetPane = getGridSheetPane();
     g.setColor(gridSheetPane.getColorProvider().getRuleLineColor());
 
@@ -1199,7 +1199,7 @@ public class GridSheetTableNoActionUI extends AbstractGridUI {
   // return -1;
   // }
   protected void paintCells(Graphics g, int rMin, int rMax, int cMin, int cMax, int correctionX,
-      int correctionY) {
+                            int correctionY) {
     int cellMargin = 1;
     GridSheetPane gridSheetPane = getGridSheetPane();
     IGridSheetModel model = gridSheetPane.getModel();

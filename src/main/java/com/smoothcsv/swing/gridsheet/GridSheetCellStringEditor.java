@@ -13,18 +13,16 @@
  */
 package com.smoothcsv.swing.gridsheet;
 
+import com.smoothcsv.swing.components.LineBreakableTextField;
+import lombok.Getter;
+
 import java.awt.event.MouseEvent;
 import java.util.EventObject;
-
 import javax.swing.AbstractCellEditor;
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.text.JTextComponent;
-
-import com.smoothcsv.swing.components.LineBreakableTextField;
-
-import lombok.Getter;
 
 @SuppressWarnings("serial")
 public class GridSheetCellStringEditor extends AbstractCellEditor implements GridSheetCellEditor {

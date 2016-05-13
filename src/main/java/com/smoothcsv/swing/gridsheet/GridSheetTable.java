@@ -13,6 +13,19 @@
  */
 package com.smoothcsv.swing.gridsheet;
 
+import com.smoothcsv.commons.constants.Direction;
+import com.smoothcsv.swing.gridsheet.event.GridSheetSelectionEvent;
+import com.smoothcsv.swing.gridsheet.event.GridSheetSelectionListener;
+import com.smoothcsv.swing.gridsheet.model.GridSheetCellRange;
+import com.smoothcsv.swing.gridsheet.model.GridSheetColumn;
+import com.smoothcsv.swing.gridsheet.model.GridSheetRow;
+import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
+import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetCellRenderer;
+import com.smoothcsv.swing.gridsheet.renderer.GridSheetCellRenderer;
+import com.smoothcsv.swing.gridsheet.ui.GridSheetTableNoActionUI;
+import lombok.Getter;
+import sun.swing.PrintingStatus;
+
 import java.applet.Applet;
 import java.awt.Component;
 import java.awt.Container;
@@ -36,7 +49,6 @@ import java.text.MessageFormat;
 import java.util.EventObject;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.print.PrintService;
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
@@ -57,21 +69,6 @@ import javax.swing.event.CellEditorListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.plaf.UIResource;
-
-import com.smoothcsv.commons.constants.Direction;
-import com.smoothcsv.swing.gridsheet.event.GridSheetSelectionEvent;
-import com.smoothcsv.swing.gridsheet.event.GridSheetSelectionListener;
-import com.smoothcsv.swing.gridsheet.model.GridSheetCellRange;
-import com.smoothcsv.swing.gridsheet.model.GridSheetColumn;
-import com.smoothcsv.swing.gridsheet.model.GridSheetRow;
-import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
-import com.smoothcsv.swing.gridsheet.model.IGridSheetModel;
-import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetCellRenderer;
-import com.smoothcsv.swing.gridsheet.renderer.GridSheetCellRenderer;
-import com.smoothcsv.swing.gridsheet.ui.GridSheetTableNoActionUI;
-
-import lombok.Getter;
-import sun.swing.PrintingStatus;
 
 @SuppressWarnings("serial")
 public class GridSheetTable extends AbstractGridSheetComponent
@@ -1031,14 +1028,13 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * fail because of anomalies in calculations along the other axis. When the cell is not valid the
    * <code>includeSpacing</code> parameter is ignored.
    *
-   * @param row the row index where the desired cell is located
-   * @param column the column index where the desired cell is located in the display; this is not
-   *        necessarily the same as the column index in the data model for the table; the
-   *        {@link #convertColumnIndexToView(int)} method may be used to convert a data model column
-   *        index to a display column index
+   * @param row            the row index where the desired cell is located
+   * @param column         the column index where the desired cell is located in the display; this is not
+   *                       necessarily the same as the column index in the data model for the table; the
+   *                       {@link #convertColumnIndexToView(int)} method may be used to convert a data model column
+   *                       index to a display column index
    * @param includeSpacing if false, return the true cell bounds - computed by subtracting the
-   *        intercell spacing from the height and widths of the column and row models
-   *
+   *                       intercell spacing from the height and widths of the column and row models
    * @return the rectangle containing the cell at location <code>row</code>, <code>column</code>
    * @see #getIntercellSpacing
    */
@@ -1158,11 +1154,11 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * <p>
    * The mechanism for distributing the delta amongst the available columns is provided in a private
    * method in the <code>JTable</code> class:
-   *
+   * <p>
    * <pre>
    *   adjustSizes(long targetSize, final Resizable3 r, boolean inverse)
    * </pre>
-   *
+   * <p>
    * an explanation of which is provided in the following section. <code>Resizable3</code> is a
    * private interface that allows any data structure containing a collection of elements with a
    * size, preferred size, maximum size and minimum size to have its elements manipulated by the
@@ -1171,62 +1167,61 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * <H3>Distributing the delta</H3>
    * <p>
    * <H4>Overview</H4>
-   * <P>
+   * <p>
    * Call "DELTA" the difference between the target size and the sum of the preferred sizes of the
    * elements in r. The individual sizes are calculated by taking the original preferred sizes and
    * adding a share of the DELTA - that share being based on how far each preferred size is from its
    * limiting bound (minimum or maximum).
    * <p>
    * <H4>Definition</H4>
-   * <P>
+   * <p>
    * Call the individual constraints min[i], max[i], and pref[i].
    * <p>
    * Call their respective sums: MIN, MAX, and PREF.
    * <p>
    * Each new size will be calculated using:
    * <p>
-   *
+   * <p>
    * <pre>
    * size[i] = pref[i] + delta[i]
    * </pre>
-   *
+   * <p>
    * where each individual delta[i] is calculated according to:
    * <p>
    * If (DELTA < 0) we are in shrink mode where:
    * <p>
-   *
+   * <p>
    * <PRE>
-   *                        DELTA
-   *          delta[i] = ------------ * (pref[i] - min[i])
-   *                     (PREF - MIN)
+   * DELTA
+   * delta[i] = ------------ * (pref[i] - min[i])
+   * (PREF - MIN)
    * </PRE>
-   *
+   * <p>
    * If (DELTA > 0) we are in expand mode where:
    * <p>
-   *
+   * <p>
    * <PRE>
-   *                        DELTA
-   *          delta[i] = ------------ * (max[i] - pref[i])
-   *                      (MAX - PREF)
+   * DELTA
+   * delta[i] = ------------ * (max[i] - pref[i])
+   * (MAX - PREF)
    * </PRE>
-   * <P>
+   * <p>
    * The overall effect is that the total size moves that same percentage, k, towards the total
    * minimum or maximum and that percentage guarantees accomodation of the required space, DELTA.
-   *
+   * <p>
    * <H4>Details</H4>
-   * <P>
+   * <p>
    * Naive evaluation of the formulae presented here would be subject to the aggregated rounding
    * errors caused by doing this operation in finite precision (using ints). To deal with this, the
    * multiplying factor above, is constantly recalculated and this takes account of the rounding
    * errors in the previous iterations. The result is an algorithm that produces a set of integers
    * whose values exactly sum to the supplied <code>targetSize</code>, and does so by spreading the
    * rounding errors evenly over the given elements.
-   *
+   * <p>
    * <H4>When the MAX and MIN bounds are hit</H4>
-   * <P>
+   * <p>
    * When <code>targetSize</code> is outside the [MIN, MAX] range, the algorithm sets all sizes to
    * their appropriate limiting value (maximum or minimum).
-   *
    */
   public void doLayout() {
     GridSheetColumn resizingColumn = gridSheetPane.getColumnHeader().getResizingColumn();
@@ -1424,6 +1419,7 @@ public class GridSheetTable extends AbstractGridSheetComponent
   //
   // Managing GridSheetTableUI
   //
+
   /**
    * Returns the L&F object that renders this component.
    *
@@ -1437,9 +1433,9 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * Sets the L&F object that renders this component and repaints.
    *
    * @param ui the GridSheetTableUI L&F object
-   * @see UIDefaults#getUI
    * @beaninfo bound: true hidden: true attribute: visualUpdate true description: The UI object that
-   *           implements the Component's LookAndFeel.
+   * implements the Component's LookAndFeel.
+   * @see UIDefaults#getUI
    */
   public void setUI(GridSheetTableNoActionUI ui) {
     if (this.ui != ui) {
@@ -1476,6 +1472,7 @@ public class GridSheetTable extends AbstractGridSheetComponent
   //
   // Implementing the CellEditorListener interface
   //
+
   /**
    * Invoked when editing is finished. The changes are saved and the editor is discarded.
    * <p>
@@ -1510,11 +1507,12 @@ public class GridSheetTable extends AbstractGridSheetComponent
   //
   // Implementing the Scrollable interface
   //
+
   /**
    * Returns the preferred size of the viewport for this table.
    *
    * @return a <code>Dimension</code> object containing the <code>preferredSize</code> of the
-   *         <code>JViewport</code> which displays this table
+   * <code>JViewport</code> which displays this table
    * @see Scrollable#getPreferredScrollableViewportSize
    */
   public Dimension getPreferredScrollableViewportSize() {
@@ -1529,8 +1527,8 @@ public class GridSheetTable extends AbstractGridSheetComponent
    *
    * @param visibleRect the view area visible within the viewport
    * @param orientation either <code>SwingConstants.VERTICAL</code> or
-   *        <code>SwingConstants.HORIZONTAL</code>
-   * @param direction less than zero to scroll up/left, greater than zero for down/right
+   *                    <code>SwingConstants.HORIZONTAL</code>
+   * @param direction   less than zero to scroll up/left, greater than zero for down/right
    * @return the "unit" increment for scrolling in the specified direction
    * @see Scrollable#getScrollableUnitIncrement
    */
@@ -1890,7 +1888,7 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * the table is smaller than the viewport's height.
    *
    * @return {@code false} unless {@code getFillsViewportHeight} is {@code true} and the table needs
-   *         to be stretched to fill the viewport
+   * to be stretched to fill the viewport
    * @see Scrollable#getScrollableTracksViewportHeight
    * @see #setFillsViewportHeight
    * @see #getFillsViewportHeight
@@ -1908,12 +1906,12 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * than the viewport. The default for this property is {@code false}.
    *
    * @param fillsViewportHeight whether or not this table is always made large enough to fill the
-   *        height of an enclosing viewport
+   *                            height of an enclosing viewport
+   * @beaninfo bound: true description: Whether or not this table is always made large enough to
+   * fill the height of an enclosing viewport
    * @see #getFillsViewportHeight
    * @see #getScrollableTracksViewportHeight
    * @since 1.6
-   * @beaninfo bound: true description: Whether or not this table is always made large enough to
-   *           fill the height of an enclosing viewport
    */
   public void setFillsViewportHeight(boolean fillsViewportHeight) {
     boolean old = this.fillsViewportHeight;
@@ -1927,7 +1925,7 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * enclosing viewport.
    *
    * @return whether or not this table is always made large enough to fill the height of an
-   *         enclosing viewport
+   * enclosing viewport
    * @see #setFillsViewportHeight
    * @since 1.6
    */
@@ -2027,7 +2025,6 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * Creates default cell renderers for objects, numbers, doubles, dates, booleans, and icons.
    *
    * @see javax.swing.table.DefaultGridCellRenderer
-   *
    */
   protected GridSheetCellRenderer createDefaultRenderers() {
     return new DefaultGridSheetCellRenderer();
@@ -2126,6 +2123,7 @@ public class GridSheetTable extends AbstractGridSheetComponent
   // checkBox.setHorizontalAlignment(JCheckBox.CENTER);
   // }
   // }
+
   /**
    * Initializes table properties to their default values.
    */
@@ -2178,7 +2176,7 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * Returns the active cell editor, which is {@code null} if the table is not currently editing.
    *
    * @return the {@code GridSheetCellEditor} that does the editing, or {@code null} if the table is
-   *         not currently editing.
+   * not currently editing.
    * @see #cellEditor
    * @see #prepareCellEditor(int, int)
    */
@@ -2190,8 +2188,8 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * Sets the active cell editor.
    *
    * @param anEditor the active cell editor
-   * @see #cellEditor
    * @beaninfo bound: true description: The table's active cell editor.
+   * @see #cellEditor
    */
   public void setCellEditor(GridSheetCellEditor anEditor) {
     GridSheetCellEditor oldEditor = cellEditor;
@@ -2202,9 +2200,8 @@ public class GridSheetTable extends AbstractGridSheetComponent
   /**
    * Sets the <code>editingRow</code> and <code>editingColumn</code> variable.
    *
-   * @param aRow the row of the cell to be edited
+   * @param aRow    the row of the cell to be edited
    * @param aColumn the column of the cell to be edited
-   *
    * @see #editingRow
    * @see #editingColumn
    */
@@ -2222,10 +2219,10 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * <b>Note:</b> Throughout the table package, the internal implementations always use this method
    * to provide renderers so that this default behavior can be safely overridden by a subclass.
    *
-   * @param row the row of the cell to render, where 0 is the first row
+   * @param row    the row of the cell to render, where 0 is the first row
    * @param column the column of the cell to render, where 0 is the first column
    * @return the assigned renderer; if <code>null</code> returns the default renderer for this type
-   *         of object
+   * of object
    * @see javax.swing.table.DefaultGridCellRenderer
    * @see javax.swing.table.GridColumn#setCellRenderer
    * @see #setDefaultRenderer
@@ -2248,8 +2245,8 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * to prepare renderers so that this default behavior can be safely overridden by a subclass.
    *
    * @param renderer the <code>GridSheetCellRenderer</code> to prepare
-   * @param row the row of the cell to render, where 0 is the first row
-   * @param column the column of the cell to render, where 0 is the first column
+   * @param row      the row of the cell to render, where 0 is the first row
+   * @param column   the column of the cell to render, where 0 is the first column
    * @return the <code>Component</code> under the event location
    */
   public Component prepareRenderer(GridSheetCellRenderer renderer, int row, int column) {
@@ -2284,7 +2281,7 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * indices are in the valid range, and the cell at those indices is editable. Note that this is a
    * convenience method for <code>editCellAt(int, int, null)</code>.
    *
-   * @param row the row to be edited
+   * @param row    the row to be edited
    * @param column the column to be edited
    * @return false if for any reason the cell cannot be edited, or if the indices are invalid
    */
@@ -2298,10 +2295,10 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * <code>JTable</code> from editing a particular table, column or cell value, return false from
    * the <code>isCellEditable</code> method in the <code>GridSheetModel</code> interface.
    *
-   * @param row the row to be edited
+   * @param row    the row to be edited
    * @param column the column to be edited
-   * @param e event to pass into <code>shouldSelectCell</code>; note that as of Java 2 platform
-   *        v1.2, the call to <code>shouldSelectCell</code> is no longer made
+   * @param e      event to pass into <code>shouldSelectCell</code>; note that as of Java 2 platform
+   *               v1.2, the call to <code>shouldSelectCell</code> is no longer made
    * @return false if for any reason the cell cannot be edited, or if the indices are invalid
    */
   public boolean editCellAt(int row, int column, EventObject e) {
@@ -2361,8 +2358,7 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * user rearranges the columns in the table, the column at a given index in the view will change.
    * Meanwhile the user's actions never affect the model's column ordering.
    *
-   *
-   * @param row the row whose value is to be queried
+   * @param row    the row whose value is to be queried
    * @param column the column whose value is to be queried
    * @return true if the cell is editable
    * @see #setValueAt
@@ -2387,7 +2383,7 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * being edited, returns -1.
    *
    * @return the index of the column that contains the cell currently being edited; returns -1 if
-   *         nothing being edited
+   * nothing being edited
    * @see #editingRow
    */
   public int getEditingColumn() {
@@ -2399,7 +2395,7 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * edited, returns -1.
    *
    * @return the index of the row that contains the cell currently being edited; returns -1 if
-   *         nothing being edited
+   * nothing being edited
    * @see #editingColumn
    */
   public int getEditingRow() {
@@ -2415,10 +2411,10 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * <b>Note:</b> Throughout the table package, the internal implementations always use this method
    * to provide editors so that this default behavior can be safely overridden by a subclass.
    *
-   * @param row the row of the cell to edit, where 0 is the first row
+   * @param row    the row of the cell to edit, where 0 is the first row
    * @param column the column of the cell to edit, where 0 is the first column
    * @return the editor for this cell; if <code>null</code> return the default editor for this type
-   *         of cell
+   * of cell
    * @see DefaultCellEditor
    */
   protected GridSheetCellEditor prepareCellEditor(int row, int column) {
@@ -2455,6 +2451,7 @@ public class GridSheetTable extends AbstractGridSheetComponent
   //
   // Implementing GridSheetSelectionListener interface
   //
+
   /**
    * Invoked when the row selection changes -- repaints to show the new selection.
    * <p>
@@ -2536,6 +2533,7 @@ public class GridSheetTable extends AbstractGridSheetComponent
   // ///////////////
   // Printing Support
   // ///////////////
+
   /**
    * A convenience method that displays a printing dialog, and then prints this <code>JTable</code>
    * in mode <code>PrintMode.FIT_WIDTH</code>, with no header or footer text. A modal progress
@@ -2545,11 +2543,10 @@ public class GridSheetTable extends AbstractGridSheetComponent
    *
    * @return true, unless printing is cancelled by the user
    * @throws SecurityException if this thread is not allowed to initiate a print job request
-   * @throws PrinterException if an error in the print system causes the job to be aborted
+   * @throws PrinterException  if an error in the print system causes the job to be aborted
    * @see #print(GridTable.PrintMode, MessageFormat, MessageFormat, boolean,
-   *      PrintRequestAttributeSet, boolean, PrintService)
+   * PrintRequestAttributeSet, boolean, PrintService)
    * @see #getPrintable
-   *
    * @since 1.5
    */
   public boolean print() throws PrinterException {
@@ -2567,11 +2564,10 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * @param printMode the printing mode that the printable should use
    * @return true, unless printing is cancelled by the user
    * @throws SecurityException if this thread is not allowed to initiate a print job request
-   * @throws PrinterException if an error in the print system causes the job to be aborted
+   * @throws PrinterException  if an error in the print system causes the job to be aborted
    * @see #print(GridTable.PrintMode, MessageFormat, MessageFormat, boolean,
-   *      PrintRequestAttributeSet, boolean, PrintService)
+   * PrintRequestAttributeSet, boolean, PrintService)
    * @see #getPrintable
-   *
    * @since 1.5
    */
   public boolean print(PrintMode printMode) throws PrinterException {
@@ -2586,18 +2582,17 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * <p>
    * Note: In headless mode, no dialogs are shown and printing occurs on the default printer.
    *
-   * @param printMode the printing mode that the printable should use
+   * @param printMode    the printing mode that the printable should use
    * @param headerFormat a <code>MessageFormat</code> specifying the text to be used in printing a
-   *        header, or null for none
+   *                     header, or null for none
    * @param footerFormat a <code>MessageFormat</code> specifying the text to be used in printing a
-   *        footer, or null for none
+   *                     footer, or null for none
    * @return true, unless printing is cancelled by the user
    * @throws SecurityException if this thread is not allowed to initiate a print job request
-   * @throws PrinterException if an error in the print system causes the job to be aborted
+   * @throws PrinterException  if an error in the print system causes the job to be aborted
    * @see #print(GridTable.PrintMode, MessageFormat, MessageFormat, boolean,
-   *      PrintRequestAttributeSet, boolean, PrintService)
+   * PrintRequestAttributeSet, boolean, PrintService)
    * @see #getPrintable
-   *
    * @since 1.5
    */
   public boolean print(PrintMode printMode, MessageFormat headerFormat, MessageFormat footerFormat)
@@ -2612,30 +2607,29 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * {@link #print(GridTable.PrintMode, MessageFormat, MessageFormat, boolean, PrintRequestAttributeSet, boolean, PrintService)
    * print} method, with the default printer specified as the print service.
    *
-   * @param printMode the printing mode that the printable should use
-   * @param headerFormat a <code>MessageFormat</code> specifying the text to be used in printing a
-   *        header, or <code>null</code> for none
-   * @param footerFormat a <code>MessageFormat</code> specifying the text to be used in printing a
-   *        footer, or <code>null</code> for none
+   * @param printMode       the printing mode that the printable should use
+   * @param headerFormat    a <code>MessageFormat</code> specifying the text to be used in printing a
+   *                        header, or <code>null</code> for none
+   * @param footerFormat    a <code>MessageFormat</code> specifying the text to be used in printing a
+   *                        footer, or <code>null</code> for none
    * @param showPrintDialog whether or not to display a print dialog
-   * @param attr a <code>PrintRequestAttributeSet</code> specifying any printing attributes, or
-   *        <code>null</code> for none
-   * @param interactive whether or not to print in an interactive mode
+   * @param attr            a <code>PrintRequestAttributeSet</code> specifying any printing attributes, or
+   *                        <code>null</code> for none
+   * @param interactive     whether or not to print in an interactive mode
    * @return true, unless printing is cancelled by the user
    * @throws HeadlessException if the method is asked to show a printing dialog or run
-   *         interactively, and <code>GraphicsEnvironment.isHeadless</code> returns
-   *         <code>true</code>
+   *                           interactively, and <code>GraphicsEnvironment.isHeadless</code> returns
+   *                           <code>true</code>
    * @throws SecurityException if this thread is not allowed to initiate a print job request
-   * @throws PrinterException if an error in the print system causes the job to be aborted
+   * @throws PrinterException  if an error in the print system causes the job to be aborted
    * @see #print(GridTable.PrintMode, MessageFormat, MessageFormat, boolean,
-   *      PrintRequestAttributeSet, boolean, PrintService)
+   * PrintRequestAttributeSet, boolean, PrintService)
    * @see #getPrintable
-   *
    * @since 1.5
    */
   public boolean print(PrintMode printMode, MessageFormat headerFormat, MessageFormat footerFormat,
-      boolean showPrintDialog, PrintRequestAttributeSet attr, boolean interactive)
-          throws PrinterException, HeadlessException {
+                       boolean showPrintDialog, PrintRequestAttributeSet attr, boolean interactive)
+      throws PrinterException, HeadlessException {
 
     return print(printMode, headerFormat, footerFormat, showPrintDialog, attr, interactive, null);
   }
@@ -2681,33 +2675,32 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * <p>
    * See {@link #getPrintable} for more description on how the table is printed.
    *
-   * @param printMode the printing mode that the printable should use
-   * @param headerFormat a <code>MessageFormat</code> specifying the text to be used in printing a
-   *        header, or <code>null</code> for none
-   * @param footerFormat a <code>MessageFormat</code> specifying the text to be used in printing a
-   *        footer, or <code>null</code> for none
+   * @param printMode       the printing mode that the printable should use
+   * @param headerFormat    a <code>MessageFormat</code> specifying the text to be used in printing a
+   *                        header, or <code>null</code> for none
+   * @param footerFormat    a <code>MessageFormat</code> specifying the text to be used in printing a
+   *                        footer, or <code>null</code> for none
    * @param showPrintDialog whether or not to display a print dialog
-   * @param attr a <code>PrintRequestAttributeSet</code> specifying any printing attributes, or
-   *        <code>null</code> for none
-   * @param interactive whether or not to print in an interactive mode
-   * @param service the destination <code>PrintService</code>, or <code>null</code> to use the
-   *        default printer
+   * @param attr            a <code>PrintRequestAttributeSet</code> specifying any printing attributes, or
+   *                        <code>null</code> for none
+   * @param interactive     whether or not to print in an interactive mode
+   * @param service         the destination <code>PrintService</code>, or <code>null</code> to use the
+   *                        default printer
    * @return true, unless printing is cancelled by the user
    * @throws HeadlessException if the method is asked to show a printing dialog or run
-   *         interactively, and <code>GraphicsEnvironment.isHeadless</code> returns
-   *         <code>true</code>
+   *                           interactively, and <code>GraphicsEnvironment.isHeadless</code> returns
+   *                           <code>true</code>
    * @throws SecurityException if a security manager exists and its
-   *         {@link java.lang.SecurityManager#checkPrintJobAccess} method disallows this thread from
-   *         creating a print job request
-   * @throws PrinterException if an error in the print system causes the job to be aborted
+   *                           {@link java.lang.SecurityManager#checkPrintJobAccess} method disallows this thread from
+   *                           creating a print job request
+   * @throws PrinterException  if an error in the print system causes the job to be aborted
    * @see #getPrintable
    * @see java.awt.GraphicsEnvironment#isHeadless
-   *
    * @since 1.6
    */
   public boolean print(PrintMode printMode, MessageFormat headerFormat, MessageFormat footerFormat,
-      boolean showPrintDialog, PrintRequestAttributeSet attr, boolean interactive,
-      PrintService service) throws PrinterException, HeadlessException {
+                       boolean showPrintDialog, PrintRequestAttributeSet attr, boolean interactive,
+                       PrintService service) throws PrinterException, HeadlessException {
 
     // complain early if an invalid parameter is specified for headless mode
     boolean isHeadless = GraphicsEnvironment.isHeadless();
@@ -2868,7 +2861,7 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * Here's an example of creating a <code>MessageFormat</code> that can be used to print
    * "Duke's Table: Page - " and the current page number:
    * <p>
-   *
+   * <p>
    * <pre>
    * // notice the escaping of the single quote
    * // notice how the page number is included with &quot;{0}&quot;
@@ -2908,21 +2901,20 @@ public class GridSheetTable extends AbstractGridSheetComponent
    * fetched (invalid modifications include changes in size or underlying data). The behavior of the
    * returned <code>Printable</code> is undefined once the table has been changed.
    *
-   * @param printMode the printing mode that the printable should use
+   * @param printMode    the printing mode that the printable should use
    * @param headerFormat a <code>MessageFormat</code> specifying the text to be used in printing a
-   *        header, or null for none
+   *                     header, or null for none
    * @param footerFormat a <code>MessageFormat</code> specifying the text to be used in printing a
-   *        footer, or null for none
+   *                     footer, or null for none
    * @return a <code>Printable</code> for printing this JTable
    * @see #print(GridTable.PrintMode, MessageFormat, MessageFormat, boolean,
-   *      PrintRequestAttributeSet, boolean)
+   * PrintRequestAttributeSet, boolean)
    * @see Printable
    * @see PrinterJob
-   *
    * @since 1.5
    */
   public Printable getPrintable(PrintMode printMode, MessageFormat headerFormat,
-      MessageFormat footerFormat) {
+                                MessageFormat footerFormat) {
 
     return new GridSheetPrintable(gridSheetPane, printMode, headerFormat, footerFormat);
   }
@@ -2963,11 +2955,11 @@ public class GridSheetTable extends AbstractGridSheetComponent
      * Regardless of what thread this method is called on, all calls into the delegate will be done
      * on the event-dispatch thread.
      *
-     * @param graphics the context into which the page is drawn
+     * @param graphics   the context into which the page is drawn
      * @param pageFormat the size and orientation of the page being drawn
-     * @param pageIndex the zero based index of the page to be drawn
+     * @param pageIndex  the zero based index of the page to be drawn
      * @return PAGE_EXISTS if the page is rendered successfully, or NO_SUCH_PAGE if a non-existent
-     *         page index is specified
+     * page index is specified
      * @throws PrinterException if an error causes printing to be aborted
      */
     public int print(final Graphics graphics, final PageFormat pageFormat, final int pageIndex)

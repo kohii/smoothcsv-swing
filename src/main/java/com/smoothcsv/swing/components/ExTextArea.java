@@ -13,18 +13,16 @@
  */
 package com.smoothcsv.swing.components;
 
-import java.awt.Font;
+import com.smoothcsv.commons.exception.UnexpectedException;
+import com.smoothcsv.swing.utils.SwingUtils;
 
+import java.awt.Font;
 import javax.swing.Action;
 import javax.swing.JTextArea;
 import javax.swing.text.DefaultEditorKit;
 
-import com.smoothcsv.commons.exception.UnexpectedException;
-import com.smoothcsv.swing.utils.SwingUtils;
-
 /**
  * @author kohii
- *
  */
 public class ExTextArea extends JTextArea {
 

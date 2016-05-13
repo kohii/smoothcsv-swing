@@ -13,20 +13,19 @@
  */
 package com.smoothcsv.swing.gridsheet;
 
+import com.smoothcsv.swing.gridsheet.event.GridSheetCornerHeaderSelectionListener;
+import com.smoothcsv.swing.gridsheet.event.GridSheetHeaderSelectionEvent;
+import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
+import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetHeaderCellRenderer;
+import com.smoothcsv.swing.gridsheet.renderer.GridSheetHeaderRenderer;
+
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
 import javax.swing.JComponent;
-
-import com.smoothcsv.swing.gridsheet.event.GridSheetCornerHeaderSelectionListener;
-import com.smoothcsv.swing.gridsheet.event.GridSheetHeaderSelectionEvent;
-import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
-import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetHeaderCellRenderer;
-import com.smoothcsv.swing.gridsheet.renderer.GridSheetHeaderRenderer;
 
 @SuppressWarnings("serial")
 public class GridSheetCornerHeader extends AbstractGridSheetHeaderComponent

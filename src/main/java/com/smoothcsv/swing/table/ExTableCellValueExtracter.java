@@ -16,7 +16,6 @@ package com.smoothcsv.swing.table;
 
 /**
  * @author kohii
- *
  */
 public interface ExTableCellValueExtracter<T> extends ReadOnlyExTableCellValueExtracter<T> {
 

@@ -13,17 +13,15 @@
  */
 package com.smoothcsv.swing.gridsheet.renderer;
 
+import com.smoothcsv.swing.gridsheet.AbstractGridSheetHeaderComponent;
+
 import java.awt.Color;
 import java.awt.Component;
-
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 
-import com.smoothcsv.swing.gridsheet.AbstractGridSheetHeaderComponent;
-
 /**
  * @author kohii
- *
  */
 @SuppressWarnings("serial")
 public class DefaultGridSheetHeaderCellRenderer extends JLabel implements GridSheetHeaderRenderer {
@@ -38,7 +36,7 @@ public class DefaultGridSheetHeaderCellRenderer extends JLabel implements GridSh
 
   @Override
   public Component getGridCellRendererComponent(AbstractGridSheetHeaderComponent header,
-      Object value, boolean isSelected, boolean hasFocus, int index) {
+                                                Object value, boolean isSelected, boolean hasFocus, int index) {
 
     setValue(value);
     setBackground(DEFAULT_COLOR);

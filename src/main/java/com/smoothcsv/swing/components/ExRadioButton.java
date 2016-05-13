@@ -13,13 +13,12 @@
  */
 package com.smoothcsv.swing.components;
 
-import javax.swing.JRadioButton;
-
 import lombok.Getter;
+
+import javax.swing.JRadioButton;
 
 /**
  * @author kohii
- *
  */
 @SuppressWarnings("serial")
 public class ExRadioButton<V> extends JRadioButton {

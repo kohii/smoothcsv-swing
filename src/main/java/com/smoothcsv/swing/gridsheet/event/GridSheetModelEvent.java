@@ -19,17 +19,27 @@ import com.smoothcsv.swing.gridsheet.model.GridSheetModel;
 @SuppressWarnings("serial")
 public class GridSheetModelEvent extends java.util.EventObject {
 
-  /** Identifies the addtion of new rows or columns. */
+  /**
+   * Identifies the addtion of new rows or columns.
+   */
   public static final int INSERT = 1;
-  /** Identifies a change to existing data. */
+  /**
+   * Identifies a change to existing data.
+   */
   public static final int UPDATE = 0;
-  /** Identifies the removal of rows or columns. */
+  /**
+   * Identifies the removal of rows or columns.
+   */
   public static final int DELETE = -1;
 
-  /** Identifies the header row. */
+  /**
+   * Identifies the header row.
+   */
   public static final int HEADER_ROW = -1;
 
-  /** Specifies all columns in a row or rows. */
+  /**
+   * Specifies all columns in a row or rows.
+   */
   public static final int ALL_COLUMNS = -1;
 
   //
@@ -93,7 +103,7 @@ public class GridSheetModelEvent extends java.util.EventObject {
    * The <I>type</I> should be one of: INSERT, UPDATE and DELETE.
    */
   public GridSheetModelEvent(GridSheetModel source, int firstRow, int lastRow, int column,
-      int type) {
+                             int type) {
     super(source);
     this.firstRow = firstRow;
     this.lastRow = lastRow;
@@ -111,12 +121,18 @@ public class GridSheetModelEvent extends java.util.EventObject {
    */
   public int getFirstRow() {
     return firstRow;
-  };
+  }
 
-  /** Returns the last row that changed. */
+  ;
+
+  /**
+   * Returns the last row that changed.
+   */
   public int getLastRow() {
     return lastRow;
-  };
+  }
+
+  ;
 
   /**
    * Returns the column for the event. If the return value is ALL_COLUMNS; it means every column in
@@ -124,7 +140,9 @@ public class GridSheetModelEvent extends java.util.EventObject {
    */
   public int getColumn() {
     return column;
-  };
+  }
+
+  ;
 
   /**
    * Returns the type of event - one of: INSERT, UPDATE and DELETE.

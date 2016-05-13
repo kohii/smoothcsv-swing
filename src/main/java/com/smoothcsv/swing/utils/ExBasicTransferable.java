@@ -21,7 +21,6 @@ import java.io.InputStream;
 import java.io.Reader;
 import java.io.StringBufferInputStream;
 import java.io.StringReader;
-
 import javax.swing.plaf.UIResource;
 
 public class ExBasicTransferable implements Transferable, UIResource {
@@ -65,7 +64,7 @@ public class ExBasicTransferable implements Transferable, UIResource {
    * Returns an array of DataFlavor objects indicating the flavors the data can be provided in. The
    * array should be ordered according to preference for providing the data (from most richly
    * descriptive to least descriptive).
-   * 
+   *
    * @return an array of data flavors in which this data can be transferred
    */
   public DataFlavor[] getTransferDataFlavors() {
@@ -100,7 +99,7 @@ public class ExBasicTransferable implements Transferable, UIResource {
 
   /**
    * Returns whether or not the specified data flavor is supported for this object.
-   * 
+   *
    * @param flavor the requested flavor for the data
    * @return boolean indicating whether or not the data flavor is supported
    */
@@ -119,9 +118,9 @@ public class ExBasicTransferable implements Transferable, UIResource {
    * is defined by the representation class of the flavor.
    *
    * @param flavor the requested flavor for the data
+   * @throws IOException                if the data is no longer available in the requested flavor.
+   * @throws UnsupportedFlavorException if the requested data flavor is not supported.
    * @see DataFlavor#getRepresentationClass
-   * @exception IOException if the data is no longer available in the requested flavor.
-   * @exception UnsupportedFlavorException if the requested data flavor is not supported.
    */
   public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException {
     DataFlavor[] richerFlavors = getRicherFlavors();
@@ -188,7 +187,7 @@ public class ExBasicTransferable implements Transferable, UIResource {
 
   /**
    * Returns whether or not the specified data flavor is an HTML flavor that is supported.
-   * 
+   *
    * @param flavor the requested flavor for the data
    * @return boolean indicating whether or not the data flavor is supported
    */
@@ -221,7 +220,7 @@ public class ExBasicTransferable implements Transferable, UIResource {
 
   /**
    * Returns whether or not the specified data flavor is an plain flavor that is supported.
-   * 
+   *
    * @param flavor the requested flavor for the data
    * @return boolean indicating whether or not the data flavor is supported
    */
@@ -254,7 +253,7 @@ public class ExBasicTransferable implements Transferable, UIResource {
 
   /**
    * Returns whether or not the specified data flavor is a String flavor that is supported.
-   * 
+   *
    * @param flavor the requested flavor for the data
    * @return boolean indicating whether or not the data flavor is supported
    */

@@ -13,6 +13,11 @@
  */
 package com.smoothcsv.swing.utils;
 
+import com.smoothcsv.commons.exception.UnexpectedException;
+import com.smoothcsv.commons.utils.ObjectUtils;
+import com.smoothcsv.commons.utils.StringUtils;
+import com.smoothcsv.swing.components.ExButtonGroup;
+
 import java.applet.Applet;
 import java.awt.Color;
 import java.awt.Component;
@@ -37,7 +42,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.text.ParseException;
 import java.util.function.Consumer;
-
 import javax.swing.AbstractAction;
 import javax.swing.AbstractButton;
 import javax.swing.Action;
@@ -66,13 +70,7 @@ import javax.swing.text.JTextComponent;
 import javax.swing.text.MaskFormatter;
 import javax.swing.undo.UndoManager;
 
-import com.smoothcsv.commons.exception.UnexpectedException;
-import com.smoothcsv.commons.utils.ObjectUtils;
-import com.smoothcsv.commons.utils.StringUtils;
-import com.smoothcsv.swing.components.ExButtonGroup;
-
 /**
- *
  * @author kohii
  */
 public class SwingUtils {
@@ -133,8 +131,8 @@ public class SwingUtils {
 
     int max = table.getTableHeader() == null ? 1
         : table.getTableHeader().getDefaultRenderer()
-            .getTableCellRendererComponent(table, tc.getHeaderValue(), false, false, 0, vc)
-            .getPreferredSize().width;
+        .getTableCellRendererComponent(table, tc.getHeaderValue(), false, false, 0, vc)
+        .getPreferredSize().width;
 
     int vrows = table.getRowCount();
     for (int i = 0; i < vrows; i++) {
@@ -387,7 +385,7 @@ public class SwingUtils {
   }
 
   public static void addTextUpdateListener(JTextComponent textComponent,
-      Consumer<DocumentEvent> listener) {
+                                           Consumer<DocumentEvent> listener) {
     Document doc = textComponent.getDocument();
     doc.addDocumentListener(new DocumentListener() {
       @Override
@@ -409,7 +407,7 @@ public class SwingUtils {
 
   @SuppressWarnings("serial")
   public static void installUndoManager(JTextComponent textComponent,
-      final UndoManager undoManager) {
+                                        final UndoManager undoManager) {
 
     Document doc = textComponent.getDocument();
     doc.addUndoableEditListener(new UndoableEditListener() {
@@ -485,7 +483,7 @@ public class SwingUtils {
    * @see BasicScrollBarUI.scrollByUnits(JScrollBar, int, int, boolean)
    */
   public static void scrollByUnits(JScrollBar scrollbar, int direction, int units,
-      boolean limitToBlock) {
+                                   boolean limitToBlock) {
     // This method is called from BasicScrollPaneUI to implement wheel
     // scrolling, as well as from scrollByUnit().
     int delta;

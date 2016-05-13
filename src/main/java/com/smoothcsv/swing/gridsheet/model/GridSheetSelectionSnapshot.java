@@ -23,8 +23,8 @@ public class GridSheetSelectionSnapshot {
   private final boolean isColumnHeaderSelected;
 
   public GridSheetSelectionSnapshot(int rowAnchor, int columnAnchor,
-      GridSheetCellRange[] selections, boolean isRowHeaderSelected,
-      boolean isColumnHeaderSelected) {
+                                    GridSheetCellRange[] selections, boolean isRowHeaderSelected,
+                                    boolean isColumnHeaderSelected) {
     this.rowAnchor = rowAnchor;
     this.columnAnchor = columnAnchor;
     this.selections = selections;

@@ -13,25 +13,23 @@
  */
 package com.smoothcsv.swing.gridsheet;
 
-import java.awt.Component;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.beans.Transient;
-
-import javax.swing.JComponent;
-import javax.swing.SwingUtilities;
-import javax.swing.UIDefaults;
-import javax.swing.UIManager;
-
 import com.smoothcsv.swing.gridsheet.event.GridSheetColumnHeaderSelectionListener;
 import com.smoothcsv.swing.gridsheet.event.GridSheetColumnModelEvent;
 import com.smoothcsv.swing.gridsheet.event.GridSheetHeaderSelectionEvent;
 import com.smoothcsv.swing.gridsheet.model.GridSheetColumn;
 import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
-import com.smoothcsv.swing.gridsheet.model.IGridSheetModel;
 import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetHeaderCellRenderer;
 import com.smoothcsv.swing.gridsheet.renderer.GridSheetHeaderRenderer;
 import com.smoothcsv.swing.gridsheet.ui.GridSheetColumnHeaderUI;
+
+import java.awt.Component;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.beans.Transient;
+import javax.swing.JComponent;
+import javax.swing.SwingUtilities;
+import javax.swing.UIDefaults;
+import javax.swing.UIManager;
 
 @SuppressWarnings("serial")
 public class GridSheetColumnHeader extends AbstractGridSheetHeaderComponent implements
@@ -79,6 +77,7 @@ public class GridSheetColumnHeader extends AbstractGridSheetHeaderComponent impl
   //
   // Local behavior attributes
   //
+
   /**
    * Sets the default renderer
    *
@@ -158,6 +157,7 @@ public class GridSheetColumnHeader extends AbstractGridSheetHeaderComponent impl
   //
   // Managing GridSheetColumnHeaderUI
   //
+
   /**
    * Returns the look and feel (L&F) object that renders this component.
    *
@@ -199,8 +199,6 @@ public class GridSheetColumnHeader extends AbstractGridSheetHeaderComponent impl
    * Returns the suffix used to construct the name of the look and feel (L&F) class used to render
    * this component.
    *
-   * @return the string "GridSheetColumnHeaderUI"
-   *
    * @return "GridSheetColumnHeaderUI"
    * @see JComponent#getUIClassID
    * @see UIDefaults#getUI
@@ -215,6 +213,7 @@ public class GridSheetColumnHeader extends AbstractGridSheetHeaderComponent impl
   //
   // Implementing GridColumnModelListener interface
   //
+
   /**
    * Invoked when a column is added to the table column model.
    * <p>
@@ -244,6 +243,7 @@ public class GridSheetColumnHeader extends AbstractGridSheetHeaderComponent impl
   //
   // Package Methods
   //
+
   /**
    * Returns a default renderer to be used when no header renderer is defined by a
    * <code>GridSheetColumn</code>.

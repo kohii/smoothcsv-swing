@@ -14,7 +14,6 @@
 package com.smoothcsv.swing.table;
 
 import java.awt.Component;
-
 import javax.swing.AbstractCellEditor;
 import javax.swing.JCheckBox;
 import javax.swing.JTable;
@@ -22,7 +21,6 @@ import javax.swing.table.TableCellRenderer;
 
 /**
  * @author kohii
- *
  */
 @SuppressWarnings("serial")
 public class CheckBoxCellEditorRenderer extends AbstractCellEditor implements TableCellRenderer {
@@ -34,7 +32,7 @@ public class CheckBoxCellEditorRenderer extends AbstractCellEditor implements Ta
   }
 
   public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
-      boolean hasFocus, int row, int column) {
+                                                 boolean hasFocus, int row, int column) {
     if (value instanceof Boolean) {
       checkbox.setSelected((Boolean) value);
     }
@@ -42,7 +40,7 @@ public class CheckBoxCellEditorRenderer extends AbstractCellEditor implements Ta
   }
 
   public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected,
-      int row, int column) {
+                                               int row, int column) {
     if (value instanceof Boolean) {
       checkbox.setSelected((Boolean) value);
     }

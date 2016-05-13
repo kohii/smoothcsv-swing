@@ -13,24 +13,6 @@
  */
 package com.smoothcsv.swing.gridsheet.ui;
 
-import java.awt.Dimension;
-import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.beans.PropertyChangeEvent;
-
-import javax.swing.Action;
-import javax.swing.ActionMap;
-import javax.swing.InputMap;
-import javax.swing.JComponent;
-import javax.swing.KeyStroke;
-import javax.swing.SwingUtilities;
-import javax.swing.TransferHandler;
-import javax.swing.plaf.ComponentUI;
-
-import sun.swing.UIAction;
-
 import com.smoothcsv.commons.constants.Orientation;
 import com.smoothcsv.commons.utils.ObjectUtils;
 import com.smoothcsv.swing.gridsheet.GridSheetCellEditor;
@@ -39,6 +21,22 @@ import com.smoothcsv.swing.gridsheet.GridSheetTable;
 import com.smoothcsv.swing.gridsheet.GridSheetUtils;
 import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
 import com.smoothcsv.swing.utils.SwingUtils;
+import sun.swing.UIAction;
+
+import java.awt.Dimension;
+import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.beans.PropertyChangeEvent;
+import javax.swing.Action;
+import javax.swing.ActionMap;
+import javax.swing.InputMap;
+import javax.swing.JComponent;
+import javax.swing.KeyStroke;
+import javax.swing.SwingUtilities;
+import javax.swing.TransferHandler;
+import javax.swing.plaf.ComponentUI;
 
 public class GridSheetTableUI extends GridSheetTableNoActionUI {
 
@@ -178,7 +176,7 @@ public class GridSheetTableUI extends GridSheetTableNoActionUI {
     }
 
     private void moveWithinTableRange(GridSheetTable table, int dx, int dy,
-        GridSheetSelectionModel sm) {
+                                      GridSheetSelectionModel sm) {
       GridSheetPane gridSheetPane = table.getGridSheetPane();
       anchorRow = clipToRange(anchorRow + dy, 0, gridSheetPane.getRowCount());
       anchorColumn = clipToRange(anchorColumn + dx, 0, gridSheetPane.getColumnCount());
@@ -202,7 +200,7 @@ public class GridSheetTableUI extends GridSheetTableNoActionUI {
      * GridSheetTable directly.
      */
     private boolean moveWithinSelectedRange(GridSheetTable table, int dx, int dy,
-        GridSheetSelectionModel sm) {
+                                            GridSheetSelectionModel sm) {
       boolean stayInSelection = !sm.isSingleCellSelected();
       GridSheetUtils.moveAnchor(table.getGridSheetPane(),
           dx != 0 ? Orientation.HORIZONTAL : Orientation.VERTICAL, dx < 0 || dy < 0,

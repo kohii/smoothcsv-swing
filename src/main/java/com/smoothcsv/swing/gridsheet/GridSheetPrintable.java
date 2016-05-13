@@ -164,15 +164,15 @@ class GridSheetPrintable implements Printable {
    * provide a String, each format is given the current page number.
    *
    * @param gridSheetPane the table to print
-   * @param printMode the printing mode for this printable
-   * @param headerFormat a <code>MessageFormat</code> specifying the text to be used in printing a
-   *        header, or null for none
-   * @param footerFormat a <code>MessageFormat</code> specifying the text to be used in printing a
-   *        footer, or null for none
+   * @param printMode     the printing mode for this printable
+   * @param headerFormat  a <code>MessageFormat</code> specifying the text to be used in printing a
+   *                      header, or null for none
+   * @param footerFormat  a <code>MessageFormat</code> specifying the text to be used in printing a
+   *                      footer, or null for none
    * @throws IllegalArgumentException if passed an invalid print mode
    */
   public GridSheetPrintable(GridSheetPane gridSheetPane, GridSheetTable.PrintMode printMode,
-      MessageFormat headerFormat, MessageFormat footerFormat) {
+                            MessageFormat headerFormat, MessageFormat footerFormat) {
 
     this.gridSheetPane = gridSheetPane;
 
@@ -192,11 +192,11 @@ class GridSheetPrintable implements Printable {
    * Prints the specified page of the table into the given {@link Graphics} context, in the
    * specified format.
    *
-   * @param graphics the context into which the page is drawn
+   * @param graphics   the context into which the page is drawn
    * @param pageFormat the size and orientation of the page being drawn
-   * @param pageIndex the zero based index of the page to be drawn
+   * @param pageIndex  the zero based index of the page to be drawn
    * @return PAGE_EXISTS if the page is rendered successfully, or NO_SUCH_PAGE if a non-existent
-   *         page index is specified
+   * page index is specified
    * @throws PrinterException if an error causes printing to be aborted
    */
   public int print(Graphics graphics, PageFormat pageFormat, int pageIndex)
@@ -211,7 +211,7 @@ class GridSheetPrintable implements Printable {
     }
 
     // to pass the page number when formatting the header and footer text
-    Object[] pageNumber = new Object[] {Integer.valueOf(pageIndex + 1)};
+    Object[] pageNumber = new Object[]{Integer.valueOf(pageIndex + 1)};
 
     // fetch the formatted header text, if any
     String headerText = null;
@@ -375,10 +375,10 @@ class GridSheetPrintable implements Printable {
   /**
    * A helper method that encapsulates common code for rendering the header and footer text.
    *
-   * @param g2d the graphics to draw into
-   * @param text the text to draw, non null
-   * @param rect the bounding rectangle for this text, as calculated at the given font, non null
-   * @param font the font to draw the text in, non null
+   * @param g2d      the graphics to draw into
+   * @param text     the text to draw, non null
+   * @param rect     the bounding rectangle for this text, as calculated at the given font, non null
+   * @param font     the font to draw the text in, non null
    * @param imgWidth the width of the area to draw into
    */
   private void printText(Graphics2D g2d, String text, Rectangle2D rect, Font font, int imgWidth) {
@@ -408,7 +408,7 @@ class GridSheetPrintable implements Printable {
   /**
    * Calculate the area of the table to be printed for the next page. This should only be called if
    * there are rows and columns left to print.
-   *
+   * <p>
    * To avoid an infinite loop in printing, this will always put at least one cell on each page.
    *
    * @param pw the width of the area to print in

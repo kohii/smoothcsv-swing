@@ -18,7 +18,6 @@ import javax.swing.event.ListSelectionListener;
 
 /**
  * @author kohii
- *
  */
 public class ExTableNoSelecteionModel implements ListSelectionModel {
 

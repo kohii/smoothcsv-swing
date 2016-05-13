@@ -16,7 +16,6 @@ package com.smoothcsv.swing.components;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-
 import javax.swing.JSplitPane;
 import javax.swing.UIManager;
 import javax.swing.border.Border;
@@ -25,7 +24,6 @@ import javax.swing.plaf.basic.BasicSplitPaneUI;
 
 /**
  * @author kohii
- *
  */
 public class ExSplitPane extends JSplitPane {
   private static final long serialVersionUID = -2243392782426503970L;

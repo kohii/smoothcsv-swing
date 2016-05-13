@@ -20,7 +20,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.font.TextAttribute;
 import java.util.Map;
-
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 

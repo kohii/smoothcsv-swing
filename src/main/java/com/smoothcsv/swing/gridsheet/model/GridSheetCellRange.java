@@ -14,7 +14,6 @@
 package com.smoothcsv.swing.gridsheet.model;
 
 import com.smoothcsv.commons.constants.Direction;
-
 import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode

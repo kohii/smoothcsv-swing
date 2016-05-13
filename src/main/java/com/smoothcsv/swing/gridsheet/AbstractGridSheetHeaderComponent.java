@@ -13,9 +13,9 @@
  */
 package com.smoothcsv.swing.gridsheet;
 
-import javax.swing.JComponent;
-
 import lombok.Getter;
+
+import javax.swing.JComponent;
 
 @SuppressWarnings("serial")
 public abstract class AbstractGridSheetHeaderComponent extends JComponent {
@@ -49,6 +49,7 @@ public abstract class AbstractGridSheetHeaderComponent extends JComponent {
   //
   // Local behavior attributes
   //
+
   /**
    * Sets whether the user can resize rows by dragging between headers.
    *

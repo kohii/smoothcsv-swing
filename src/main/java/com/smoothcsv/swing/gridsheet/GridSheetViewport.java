@@ -13,16 +13,15 @@
  */
 package com.smoothcsv.swing.gridsheet;
 
+import com.smoothcsv.swing.utils.SwingUtils;
+
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
-
 import javax.swing.JComponent;
 import javax.swing.JViewport;
 import javax.swing.RepaintManager;
-
-import com.smoothcsv.swing.utils.SwingUtils;
 
 public class GridSheetViewport extends JViewport {
 
@@ -69,10 +68,10 @@ public class GridSheetViewport extends JViewport {
 
       dx = isFrozenAreaSelectedX ? 0
           : positionAdjustment(getWidth(), contentRect.width, contentRect.x, divisionPointX,
-              frozenPointX);
+          frozenPointX);
       dy = isFrozenAreaSelectedY ? 0
           : positionAdjustment(getHeight(), contentRect.height, contentRect.y, divisionPointY,
-              frozenPointY);
+          frozenPointY);
 
       if (dx != 0 || dy != 0) {
         Point viewPosition = getViewPosition();
@@ -140,11 +139,10 @@ public class GridSheetViewport extends JViewport {
    * Customized {@link JViewport#positionAdjustment} that considers frozen area.
    *
    * @param frozenPoint
-   *
    * @see JViewport#positionAdjustment
    */
   private int positionAdjustment(int parentWidth, int childWidth, int childAt, int divisionPoint,
-      int frozenPoint) {
+                                 int frozenPoint) {
     parentWidth -= divisionPoint - frozenPoint;
     childAt -= divisionPoint;
 

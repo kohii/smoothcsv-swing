@@ -13,18 +13,16 @@
  */
 package com.smoothcsv.swing.components;
 
+import com.smoothcsv.commons.utils.ArrayUtils;
+import com.smoothcsv.commons.utils.StringUtils;
+import lombok.Getter;
+
 import javax.swing.JTextField;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
-import lombok.Getter;
-
-import com.smoothcsv.commons.utils.ArrayUtils;
-import com.smoothcsv.commons.utils.StringUtils;
-
 /**
- *
  * @author kohii
  */
 public class RegulatedTextField extends JTextField {
@@ -33,7 +31,9 @@ public class RegulatedTextField extends JTextField {
 
   public static enum Type {
     ANY, NUMERIC, HEX, ALPHABET, LETTER, UPPER, LOWER, CUSTOM
-  };
+  }
+
+  ;
 
   @Getter
   private final int maxLength;

@@ -13,16 +13,6 @@
  */
 package com.smoothcsv.swing.gridsheet;
 
-import java.awt.BorderLayout;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.util.Arrays;
-
-import javax.swing.JLayer;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.plaf.LayerUI;
-
 import com.smoothcsv.swing.gridsheet.event.GridSheetDataEvent;
 import com.smoothcsv.swing.gridsheet.event.GridSheetStructureEvent;
 import com.smoothcsv.swing.gridsheet.model.DefaultGridSheetSelectionModel;
@@ -34,8 +24,16 @@ import com.smoothcsv.swing.gridsheet.model.IGridSheetModel;
 import com.smoothcsv.swing.gridsheet.model.IGridSheetStructure;
 import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetColorProvider;
 import com.smoothcsv.swing.gridsheet.renderer.GridSheetColorProvider;
-
 import lombok.Getter;
+
+import java.awt.BorderLayout;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.util.Arrays;
+import javax.swing.JLayer;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.plaf.LayerUI;
 
 public class GridSheetPane extends JPanel implements IGridSheetStructure {
 
@@ -273,7 +271,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
    * selected.
    *
    * @return true if <code>row</code> is a valid index and the row at that index is selected (where
-   *         0 is the first row)
+   * 0 is the first row)
    */
   public boolean isRowSelected(int row) {
     return selectionModel.isRowSelected(row);
@@ -285,7 +283,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
    *
    * @param column the column in the column model
    * @return true if <code>column</code> is a valid index and the column at that index is selected
-   *         (where 0 is the first column)
+   * (where 0 is the first column)
    */
   public boolean isColumnSelected(int column) {
     return selectionModel.isColumnSelected(column);
@@ -295,12 +293,11 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
    * Returns true if the specified indices are in the valid range of rows and columns and the cell
    * at the specified position is selected.
    *
-   * @param row the row being queried
+   * @param row    the row being queried
    * @param column the column being queried
-   *
    * @return true if <code>row</code> and <code>column</code> are valid indices and the cell at
-   *         index <code>(row, column)</code> is selected, where the first row and first column are
-   *         at index 0
+   * index <code>(row, column)</code> is selected, where the first row and first column are
+   * at index 0
    */
   public boolean isCellSelected(int row, int column) {
     return selectionModel.isCellSelected(row, column);
@@ -315,9 +312,9 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
    * notifications from the new data model.
    *
    * @param dataModel the new data source for this table
-   * @exception IllegalArgumentException if <code>newModel</code> is <code>null</code>
-   * @see #getStructure
+   * @throws IllegalArgumentException if <code>newModel</code> is <code>null</code>
    * @beaninfo bound: true description: The model that is the source of the data for this view.
+   * @see #getStructure
    */
   public void setModel(IGridSheetModel dataModel) {
     if (dataModel == null) {
@@ -373,7 +370,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
    * user rearranges the columns in the table, the column at a given index in the view will change.
    * Meanwhile the user's actions never affect the model's column ordering.
    *
-   * @param row the row whose value is to be queried
+   * @param row    the row whose value is to be queried
    * @param column the column whose value is to be queried
    * @return the Object at the specified cell
    */
@@ -388,11 +385,11 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
    * <code>GridSheetModel</code>'s column order. This is an important distinction because as the
    * user rearranges the columns in the table, the column at a given index in the view will change.
    * Meanwhile the user's actions never affect the model's column ordering.
-   *
+   * <p>
    * <code>aValue</code> is the new value.
    *
    * @param aValue the new value
-   * @param row the row of the cell to be changed
+   * @param row    the row of the cell to be changed
    * @param column the column of the cell to be changed
    * @see #getValueAt
    */
@@ -403,13 +400,14 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
   //
   // Cover methods for various models and helper methods
   //
+
   /**
    * Returns the index of the column that <code>point</code> lies in, or -1 if the result is not in
    * the range [0, <code>getColumnCount()</code>-1].
    *
    * @param point the location of interest
    * @return the index of the column that <code>point</code> lies in, or -1 if the result is not in
-   *         the range [0, <code>getColumnCount()</code> -1]
+   * the range [0, <code>getColumnCount()</code> -1]
    * @see #rowAtPoint
    */
   public int columnAtPoint(Point point) {
@@ -422,7 +420,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
    *
    * @param point the location of interest
    * @return the index of the column that <code>point</code> lies in, or -1 if the result is not in
-   *         the range [0, <code>getColumnCount()</code> -1]
+   * the range [0, <code>getColumnCount()</code> -1]
    * @see #rowAtPoint
    */
   public int columnAtPoint(int point) {
@@ -460,7 +458,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
    *
    * @param point the location of interest
    * @return the index of the row that <code>point</code> lies in, or -1 if the result is not in the
-   *         range [0, <code>getRowCount()</code>-1]
+   * range [0, <code>getRowCount()</code>-1]
    * @see #columnAtPoint
    */
   public int rowAtPoint(Point point) {
@@ -473,7 +471,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
    *
    * @param point the location of interest
    * @return the index of the row that <code>point</code> lies in, or -1 if the result is not in the
-   *         range [0, <code>getRowCount()</code>-1]
+   * range [0, <code>getRowCount()</code>-1]
    * @see #columnAtPoint
    */
   public int rowAtPoint(int point) {
@@ -530,6 +528,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
   //
   // Implementing GridSheetModelListener interface
   //
+
   /**
    * Invoked when this table's <code>GridSheetModel</code> generates a
    * <code>GridSheetModelEvent</code>. The <code>GridSheetModelEvent</code> should be constructed in
@@ -777,6 +776,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
   //
   // Informally implement the GridSheetModel interface.
   //
+
   /**
    * Maps the index of the column in the view at <code>viewColumnIndex</code> to the index of the
    * column in the table model. Returns the index of the corresponding column in the model. If
@@ -784,7 +784,6 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
    *
    * @param viewColumnIndex the index of the column in the view
    * @return the index of the corresponding column in the model
-   *
    * @see #convertColumnIndexToView
    */
   public int convertColumnIndexToModel(int viewColumnIndex) {
@@ -829,7 +828,7 @@ public class GridSheetPane extends JPanel implements IGridSheetStructure {
    * @param viewRowIndex the index of the row in the view
    * @return the index of the corresponding row in the model
    * @throws IndexOutOfBoundsException if sorting is enabled and passed an index outside the range
-   *         of the <code>JTable</code> as determined by the method <code>getRowCount</code>
+   *                                   of the <code>JTable</code> as determined by the method <code>getRowCount</code>
    * @see javax.swing.table.TableRowSorter
    * @see #getRowCount
    * @since 1.6

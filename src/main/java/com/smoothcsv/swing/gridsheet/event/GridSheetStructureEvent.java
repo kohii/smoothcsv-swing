@@ -17,7 +17,6 @@ import lombok.Getter;
 
 /**
  * @author kohii
- *
  */
 @SuppressWarnings("serial")
 public class GridSheetStructureEvent extends java.util.EventObject {
@@ -60,7 +59,7 @@ public class GridSheetStructureEvent extends java.util.EventObject {
    * @param newColumnCount
    */
   public GridSheetStructureEvent(Object source, int type, boolean adjusting, int index,
-      int numRows, int newRowCount, int newColumnCount) {
+                                 int numRows, int newRowCount, int newColumnCount) {
     super(source);
     this.type = type;
     this.adjusting = adjusting;

@@ -13,19 +13,17 @@
  */
 package com.smoothcsv.swing.components;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-
-import javax.swing.JTextField;
-import javax.swing.text.Document;
-
 import lombok.Getter;
 import lombok.Setter;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import javax.swing.JTextField;
+import javax.swing.text.Document;
+
 /**
  * @author kohii
- *
  */
 public class ExTextField extends JTextField {
 
@@ -36,7 +34,7 @@ public class ExTextField extends JTextField {
   private String placeholder;
 
   /**
-   * 
+   *
    */
   public ExTextField() {
     super();

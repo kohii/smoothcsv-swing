@@ -22,7 +22,7 @@ public class GridSheetHeaderSelectionEvent extends java.util.EventObject {
   private boolean isAdjusting;
 
   public GridSheetHeaderSelectionEvent(Object source, int firstIndex, int lastIndex,
-      boolean isHeaderSelected, boolean isAdjusting) {
+                                       boolean isHeaderSelected, boolean isAdjusting) {
     super(source);
     this.firstIndex = firstIndex;
     this.lastIndex = lastIndex;

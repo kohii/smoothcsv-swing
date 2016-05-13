@@ -13,17 +13,16 @@
  */
 package com.smoothcsv.swing.gridsheet.model;
 
-import java.util.List;
-
 import com.smoothcsv.swing.gridsheet.event.GridSheetColumnHeaderSelectionListener;
 import com.smoothcsv.swing.gridsheet.event.GridSheetCornerHeaderSelectionListener;
 import com.smoothcsv.swing.gridsheet.event.GridSheetFocusListener;
 import com.smoothcsv.swing.gridsheet.event.GridSheetRowHeaderSelectionListener;
 import com.smoothcsv.swing.gridsheet.event.GridSheetSelectionListener;
 
+import java.util.List;
+
 /**
  * @author kohii
- *
  */
 public interface GridSheetSelectionModel {
 
@@ -70,7 +69,7 @@ public interface GridSheetSelectionModel {
   void setSelectionInterval(int rowAnchor, int columnAnchor, int rowLead, int columnLead);
 
   void setSelectionIntervalNoChangeAnchor(int minRowIndex, int minColumnIndex, int maxRowIndex,
-      int maxColumnIndex);
+                                          int maxColumnIndex);
 
   void changeLeadSelection(int row, int column, int option);
 

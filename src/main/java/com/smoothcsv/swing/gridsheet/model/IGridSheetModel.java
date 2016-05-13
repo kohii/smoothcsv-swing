@@ -13,13 +13,12 @@
  */
 package com.smoothcsv.swing.gridsheet.model;
 
-import java.util.function.Consumer;
-
 import com.smoothcsv.swing.gridsheet.event.GridSheetStructureEvent;
+
+import java.util.function.Consumer;
 
 /**
  * @author kohii
- *
  */
 public interface IGridSheetModel extends IGridSheetData, IGridSheetStructure {
 

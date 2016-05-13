@@ -13,6 +13,9 @@
  */
 package com.smoothcsv.swing.gridsheet;
 
+import com.smoothcsv.swing.gridsheet.model.GridSheetCellRange;
+import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
+
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -22,16 +25,11 @@ import java.awt.Shape;
 import java.awt.Stroke;
 import java.awt.geom.Area;
 import java.util.List;
-
 import javax.swing.JComponent;
 import javax.swing.plaf.LayerUI;
 
-import com.smoothcsv.swing.gridsheet.model.GridSheetCellRange;
-import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
-
 /**
  * @author kohii
- *
  */
 public class GridSheetLayerUI extends LayerUI<GridSheetTable> {
 
@@ -99,7 +97,7 @@ public class GridSheetLayerUI extends LayerUI<GridSheetTable> {
         rect.y -= 1;
         Stroke defaultStroke = g2.getStroke();
         Stroke dashed =
-            new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[] {3}, 0);
+            new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{3}, 0);
         g2.setStroke(dashed);
         g2.drawRect(rect.x, rect.y, rect.width, rect.height);
         g2.setStroke(defaultStroke);

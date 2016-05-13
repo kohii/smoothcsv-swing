@@ -13,6 +13,16 @@
  */
 package com.smoothcsv.swing.gridsheet.ui;
 
+import com.smoothcsv.swing.gridsheet.GridSheetPane;
+import com.smoothcsv.swing.gridsheet.GridSheetRowHeader;
+import com.smoothcsv.swing.gridsheet.GridSheetScrollPane;
+import com.smoothcsv.swing.gridsheet.GridSheetUtils;
+import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
+import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetHeaderCellRenderer;
+import com.smoothcsv.swing.gridsheet.renderer.GridSheetHeaderRenderer;
+import com.smoothcsv.swing.utils.SwingUtils;
+import sun.swing.SwingUtilities2;
+
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -23,7 +33,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-
 import javax.swing.CellRendererPane;
 import javax.swing.JComponent;
 import javax.swing.LookAndFeel;
@@ -33,17 +42,6 @@ import javax.swing.UIManager;
 import javax.swing.event.MouseInputListener;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.UIResource;
-
-import com.smoothcsv.swing.gridsheet.GridSheetPane;
-import com.smoothcsv.swing.gridsheet.GridSheetRowHeader;
-import com.smoothcsv.swing.gridsheet.GridSheetScrollPane;
-import com.smoothcsv.swing.gridsheet.GridSheetUtils;
-import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
-import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetHeaderCellRenderer;
-import com.smoothcsv.swing.gridsheet.renderer.GridSheetHeaderRenderer;
-import com.smoothcsv.swing.utils.SwingUtils;
-
-import sun.swing.SwingUtilities2;
 
 public class GridSheetRowHeaderUI extends AbstractGridUI {
 
@@ -68,6 +66,7 @@ public class GridSheetRowHeaderUI extends AbstractGridUI {
   //
   // The Table's mouse and mouse motion listeners
   //
+
   /**
    * This class should be treated as a &quot;protected&quot; inner class. Instantiate it only within
    * subclasses of BasicTableUI.
@@ -417,7 +416,7 @@ public class GridSheetRowHeaderUI extends AbstractGridUI {
   /**
    * Returns the baseline.
    *
-   * @throws NullPointerException {@inheritDoc}
+   * @throws NullPointerException     {@inheritDoc}
    * @throws IllegalArgumentException {@inheritDoc}
    * @see javax.swing.JComponent#getBaseline(int, int)
    * @since 1.6
@@ -569,7 +568,7 @@ public class GridSheetRowHeaderUI extends AbstractGridUI {
   }
 
   private void paintFrozenGridAndCells(Graphics g, Rectangle drawRect, Rectangle clip,
-      Point scrollDistance, Point frozenPoint, boolean freeze) {
+                                       Point scrollDistance, Point frozenPoint, boolean freeze) {
     int correction = freeze ? scrollDistance.y : -frozenPoint.y;
 
     drawRect.y += correction - frozenPoint.y;
