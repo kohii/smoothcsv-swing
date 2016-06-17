@@ -19,6 +19,8 @@ import com.smoothcsv.commons.utils.FileUtils;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -28,7 +30,7 @@ public class History {
 
   private static final int DEFAULT_MAX_SIZE = 15;
 
-  private List<String> values;
+  private ArrayList<String> values;
 
   private final File file;
 
@@ -36,22 +38,35 @@ public class History {
 
   private int maxSize;
 
+  private final boolean disallowEmpty;
 
   public History(File file, boolean autoFlush) {
     this(file, autoFlush, DEFAULT_MAX_SIZE);
   }
 
   public History(File file, boolean autoFlush, int maxSize) {
+    this(file, autoFlush, maxSize, false);
+  }
+
+  public History(File file, boolean autoFlush, int maxSize, boolean disallowEmpty) {
     this.maxSize = maxSize;
     this.autoFlush = autoFlush;
     this.file = file;
+    this.disallowEmpty = disallowEmpty;
     if (!file.exists() || !file.canRead()) {
-      values = new ArrayList<String>(maxSize);
+      values = new ArrayList<>(maxSize);
     } else {
       try {
-        values = FileUtils.read(file, CHARSET);
+        values = new ArrayList<>(FileUtils.read(file, CHARSET));
+        if (disallowEmpty) {
+          for (Iterator<String> it = values.iterator(); it.hasNext(); ) {
+            if (it.next().isEmpty()) {
+              it.remove();
+            }
+          }
+        }
       } catch (IOException e) {
-        values = new ArrayList<String>(maxSize);
+        values = new ArrayList<>(maxSize);
       }
       trimToMaxSize();
     }
@@ -59,6 +74,9 @@ public class History {
 
   public boolean put(String value) {
     boolean ret = true;
+    if (disallowEmpty && value.isEmpty()) {
+      return false;
+    }
     values.add(value);
     for (int i = 0; i < values.size() - 1; i++) {
       if (value.equals(values.get(i))) {
@@ -103,7 +121,9 @@ public class History {
 
   @SuppressWarnings("unchecked")
   public List<String> getAll() {
-    return (List<String>) ((ArrayList<String>) values).clone();
+    List<String> ret = new ArrayList<>(values);
+    Collections.reverse(ret);
+    return ret;
   }
 
   public String get(int i) {
