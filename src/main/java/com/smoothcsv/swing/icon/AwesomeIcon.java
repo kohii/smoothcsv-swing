@@ -28,7 +28,7 @@ import java.io.InputStream;
 import javax.swing.Icon;
 
 /**
- * Create icon from Font-Awesome 4.0.3
+ * Create icon from Font-Awesome 4.4.0
  *
  * @author kohii
  * @see http://fortawesome.github.io/Font-Awesome/
