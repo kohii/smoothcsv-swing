@@ -272,8 +272,8 @@ public class GridSheetModel implements IGridSheetModel {
 
   private List<Consumer<GridSheetStructureEvent>> structureChangelistenerList = new ArrayList<>();
 
-  private List<GridSheetColumn> columns;
-  private List<GridSheetRow> rows;
+  protected List<GridSheetColumn> columns;
+  protected List<GridSheetRow> rows;
 
   @Getter
   @Setter
@@ -349,13 +349,13 @@ public class GridSheetModel implements IGridSheetModel {
   @Override
   public void insertColumn(int index, GridSheetColumn column) {
     columns.add(index, column);
-    fireColumnsInserted(index, new GridSheetColumn[]{column});
+    fireColumnsInserted(index, new GridSheetColumn[]{column}, true);
   }
 
   @Override
   public void insertColumn(int index, GridSheetColumn[] column) {
     columns.addAll(index, Arrays.asList(column));
-    fireColumnsInserted(index, column);
+    fireColumnsInserted(index, column, true);
   }
 
   @Override
@@ -491,8 +491,10 @@ public class GridSheetModel implements IGridSheetModel {
   }
 
 
-  protected void fireColumnsInserted(int index, GridSheetColumn[] columnsInserted) {
-    insertColumnData(index, columnsInserted.length);
+  protected void fireColumnsInserted(int index, GridSheetColumn[] columnsInserted, boolean createData) {
+    if (createData) {
+      insertColumnData(index, columnsInserted.length);
+    }
     invalidateWidthCache();
     if (!structureChangelistenerList.isEmpty()) {
       GridSheetStructureEvent e =
