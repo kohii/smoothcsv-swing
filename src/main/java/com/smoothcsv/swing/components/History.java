@@ -15,13 +15,15 @@ package com.smoothcsv.swing.components;
 
 import com.smoothcsv.commons.exception.UnexpectedException;
 import com.smoothcsv.commons.utils.FileUtils;
+import lombok.Getter;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Consumer;
 
 
 public class History {
@@ -30,7 +32,10 @@ public class History {
 
   private static final int DEFAULT_MAX_SIZE = 15;
 
-  private ArrayList<String> values;
+  @Getter
+  private static final List<History> allHistories = new ArrayList<>();
+
+  private LinkedList<String> values;
 
   private final File file;
 
@@ -39,6 +44,8 @@ public class History {
   private int maxSize;
 
   private final boolean disallowEmpty;
+
+  private List<Consumer<List<String>>> listeners;
 
   public History(File file, boolean autoFlush) {
     this(file, autoFlush, DEFAULT_MAX_SIZE);
@@ -54,10 +61,10 @@ public class History {
     this.file = file;
     this.disallowEmpty = disallowEmpty;
     if (!file.exists() || !file.canRead()) {
-      values = new ArrayList<>(maxSize);
+      values = new LinkedList<>();
     } else {
       try {
-        values = new ArrayList<>(FileUtils.read(file, CHARSET));
+        values = new LinkedList<>(FileUtils.read(file, CHARSET));
         if (disallowEmpty) {
           for (Iterator<String> it = values.iterator(); it.hasNext(); ) {
             if (it.next().isEmpty()) {
@@ -66,36 +73,29 @@ public class History {
           }
         }
       } catch (IOException e) {
-        values = new ArrayList<>(maxSize);
+        values = new LinkedList<>();
       }
       trimToMaxSize();
     }
+    allHistories.add(this);
   }
 
   public boolean put(String value) {
-    boolean ret = true;
     if (disallowEmpty && value.isEmpty()) {
       return false;
     }
-    values.add(value);
-    for (int i = 0; i < values.size() - 1; i++) {
-      if (value.equals(values.get(i))) {
-        values.remove(i);
-        ret = false;
-      }
-    }
+    boolean replaced = values.remove(value);
+    values.addFirst(value);
     trimToMaxSize();
     if (autoFlush) {
       flush();
     }
-    return ret;
-  }
-
-  public void trimToMaxSize() {
-    int over = values.size() - maxSize;
-    if (0 < over) {
-      values.subList(0, over).clear();
+    if (listeners != null) {
+      for (Consumer<List<String>> listener : listeners) {
+        listener.accept(values);
+      }
     }
+    return !replaced;
   }
 
   public void clear() {
@@ -121,13 +121,11 @@ public class History {
 
   @SuppressWarnings("unchecked")
   public List<String> getAll() {
-    List<String> ret = new ArrayList<>(values);
-    Collections.reverse(ret);
-    return ret;
+    return new ArrayList<>(values);
   }
 
   public String get(int i) {
-    return values.get(values.size() - i - 1);
+    return values.get(i);
   }
 
   public int getMaxSize() {
@@ -139,4 +137,27 @@ public class History {
     trimToMaxSize();
   }
 
+  public void addListener(Consumer<List<String>> l) {
+    if (listeners == null) {
+      listeners = new ArrayList<>(2);
+    }
+    listeners.add(l);
+  }
+
+  public void removeListener(Consumer<List<String>> l) {
+    if (listeners != null) {
+      listeners.remove(l);
+    }
+  }
+
+  public boolean flushesAutomatically() {
+    return autoFlush;
+  }
+
+  private void trimToMaxSize() {
+    int over = values.size() - maxSize;
+    if (0 < over) {
+      values.subList(0, over).clear();
+    }
+  }
 }
