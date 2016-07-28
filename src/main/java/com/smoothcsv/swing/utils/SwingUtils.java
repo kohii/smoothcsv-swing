@@ -52,6 +52,7 @@ import javax.swing.InputMap;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
+import javax.swing.JLabel;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollBar;
 import javax.swing.JTable;
@@ -616,5 +617,9 @@ public class SwingUtils {
         walkComponents((Container) component, callback);
       }
     }
+  }
+
+  public static void disableHtml(JLabel label) {
+    label.putClientProperty("html.disable", Boolean.TRUE);
   }
 }
