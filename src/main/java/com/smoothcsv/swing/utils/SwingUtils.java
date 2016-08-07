@@ -622,4 +622,10 @@ public class SwingUtils {
   public static void disableHtml(JLabel label) {
     label.putClientProperty("html.disable", Boolean.TRUE);
   }
+
+  public static void removeButtonDecoration(AbstractButton button) {
+    button.setBorderPainted(false);
+    button.setFocusPainted(false);
+    button.setContentAreaFilled(false);
+  }
 }
