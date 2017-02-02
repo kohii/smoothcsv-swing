@@ -13,14 +13,14 @@
  */
 package com.smoothcsv.swing.components;
 
-import com.smoothcsv.commons.utils.ArrayUtils;
-import com.smoothcsv.commons.utils.StringUtils;
-import lombok.Getter;
-
 import javax.swing.JTextField;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
+
+import com.smoothcsv.commons.utils.ArrayUtils;
+import com.smoothcsv.commons.utils.StringUtils;
+import lombok.Getter;
 
 /**
  * @author kohii

@@ -13,9 +13,6 @@
  */
 package com.smoothcsv.swing.gridsheet;
 
-import com.smoothcsv.swing.gridsheet.model.GridSheetCellRange;
-import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
-
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -25,8 +22,12 @@ import java.awt.Shape;
 import java.awt.Stroke;
 import java.awt.geom.Area;
 import java.util.List;
+
 import javax.swing.JComponent;
 import javax.swing.plaf.LayerUI;
+
+import com.smoothcsv.swing.gridsheet.model.GridSheetCellRange;
+import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
 
 /**
  * @author kohii

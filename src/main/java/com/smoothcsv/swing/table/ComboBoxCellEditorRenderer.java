@@ -13,8 +13,6 @@
  */
 package com.smoothcsv.swing.table;
 
-import lombok.Getter;
-
 import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -25,6 +23,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.EventObject;
 import java.util.function.Function;
+
 import javax.swing.AbstractCellEditor;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComboBox;
@@ -33,6 +32,8 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
+
+import lombok.Getter;
 
 /**
  * @author kohii

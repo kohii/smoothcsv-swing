@@ -13,9 +13,9 @@
  */
 package com.smoothcsv.swing.gridsheet.model;
 
-import lombok.Getter;
-
 import java.util.Objects;
+
+import lombok.Getter;
 
 public class GridSheetColumn {
 

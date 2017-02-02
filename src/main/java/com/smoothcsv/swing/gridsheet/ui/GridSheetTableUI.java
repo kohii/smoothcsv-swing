@@ -13,6 +13,22 @@
  */
 package com.smoothcsv.swing.gridsheet.ui;
 
+import java.awt.Dimension;
+import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.beans.PropertyChangeEvent;
+
+import javax.swing.Action;
+import javax.swing.ActionMap;
+import javax.swing.InputMap;
+import javax.swing.JComponent;
+import javax.swing.KeyStroke;
+import javax.swing.SwingUtilities;
+import javax.swing.TransferHandler;
+import javax.swing.plaf.ComponentUI;
+
 import com.smoothcsv.commons.constants.Orientation;
 import com.smoothcsv.commons.utils.ObjectUtils;
 import com.smoothcsv.swing.gridsheet.GridSheetCellEditor;
@@ -22,21 +38,6 @@ import com.smoothcsv.swing.gridsheet.GridSheetUtils;
 import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
 import com.smoothcsv.swing.utils.SwingUtils;
 import sun.swing.UIAction;
-
-import java.awt.Dimension;
-import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.beans.PropertyChangeEvent;
-import javax.swing.Action;
-import javax.swing.ActionMap;
-import javax.swing.InputMap;
-import javax.swing.JComponent;
-import javax.swing.KeyStroke;
-import javax.swing.SwingUtilities;
-import javax.swing.TransferHandler;
-import javax.swing.plaf.ComponentUI;
 
 public class GridSheetTableUI extends GridSheetTableNoActionUI {
 

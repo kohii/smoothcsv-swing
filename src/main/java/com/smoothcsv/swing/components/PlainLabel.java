@@ -1,9 +1,9 @@
 package com.smoothcsv.swing.components;
 
-import com.smoothcsv.swing.utils.SwingUtils;
-
 import javax.swing.Icon;
 import javax.swing.JLabel;
+
+import com.smoothcsv.swing.utils.SwingUtils;
 
 /**
  * @author kohii

@@ -13,14 +13,15 @@
  */
 package com.smoothcsv.swing.gridsheet.renderer;
 
-import com.smoothcsv.swing.gridsheet.GridSheetTable;
-import com.smoothcsv.swing.gridsheet.GridSheetUtils;
-
 import java.awt.Color;
 import java.awt.Component;
+
 import javax.swing.JLabel;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
+
+import com.smoothcsv.swing.gridsheet.GridSheetTable;
+import com.smoothcsv.swing.gridsheet.GridSheetUtils;
 
 @SuppressWarnings("serial")
 public class DefaultGridSheetCellRenderer extends JLabel implements GridSheetCellRenderer {

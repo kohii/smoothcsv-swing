@@ -13,8 +13,6 @@
  */
 package com.smoothcsv.swing.components;
 
-import com.smoothcsv.swing.icon.AwesomeIcon;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GradientPaint;
@@ -23,10 +21,13 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
+
 import javax.swing.Action;
 import javax.swing.DefaultButtonModel;
 import javax.swing.Icon;
 import javax.swing.JToggleButton;
+
+import com.smoothcsv.swing.icon.AwesomeIcon;
 
 public class RoundedToggleButton extends JToggleButton {
 

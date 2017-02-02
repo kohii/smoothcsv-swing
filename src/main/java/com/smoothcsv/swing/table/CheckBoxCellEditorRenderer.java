@@ -14,6 +14,7 @@
 package com.smoothcsv.swing.table;
 
 import java.awt.Component;
+
 import javax.swing.AbstractCellEditor;
 import javax.swing.JCheckBox;
 import javax.swing.JTable;

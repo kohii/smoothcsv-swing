@@ -3,6 +3,7 @@ package com.smoothcsv.swing.components.text;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.Shape;
+
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Element;
 import javax.swing.text.ParagraphView;

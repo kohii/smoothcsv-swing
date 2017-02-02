@@ -13,10 +13,6 @@
  */
 package com.smoothcsv.swing.components;
 
-import com.smoothcsv.commons.exception.UnexpectedException;
-import com.smoothcsv.commons.utils.FileUtils;
-import lombok.Getter;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,6 +20,10 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Consumer;
+
+import com.smoothcsv.commons.exception.UnexpectedException;
+import com.smoothcsv.commons.utils.FileUtils;
+import lombok.Getter;
 
 
 public class History {

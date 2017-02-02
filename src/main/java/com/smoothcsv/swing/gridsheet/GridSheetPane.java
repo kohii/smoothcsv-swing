@@ -13,6 +13,16 @@
  */
 package com.smoothcsv.swing.gridsheet;
 
+import java.awt.BorderLayout;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.util.Arrays;
+
+import javax.swing.JLayer;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.plaf.LayerUI;
+
 import com.smoothcsv.swing.gridsheet.event.GridSheetDataEvent;
 import com.smoothcsv.swing.gridsheet.event.GridSheetStructureEvent;
 import com.smoothcsv.swing.gridsheet.model.DefaultGridSheetSelectionModel;
@@ -25,15 +35,6 @@ import com.smoothcsv.swing.gridsheet.model.IGridSheetStructure;
 import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetColorProvider;
 import com.smoothcsv.swing.gridsheet.renderer.GridSheetColorProvider;
 import lombok.Getter;
-
-import java.awt.BorderLayout;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.util.Arrays;
-import javax.swing.JLayer;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.plaf.LayerUI;
 
 public class GridSheetPane extends JPanel implements IGridSheetStructure {
 

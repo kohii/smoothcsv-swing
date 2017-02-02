@@ -2,6 +2,7 @@ package com.smoothcsv.swing.components.text;
 
 import java.awt.Font;
 import java.awt.FontMetrics;
+
 import javax.swing.JTextPane;
 import javax.swing.JViewport;
 import javax.swing.text.AbstractDocument;

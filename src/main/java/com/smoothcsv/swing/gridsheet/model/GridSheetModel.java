@@ -13,16 +13,16 @@
  */
 package com.smoothcsv.swing.gridsheet.model;
 
-import com.smoothcsv.swing.gridsheet.event.GridSheetDataEvent;
-import com.smoothcsv.swing.gridsheet.event.GridSheetStructureEvent;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
+
+import com.smoothcsv.swing.gridsheet.event.GridSheetDataEvent;
+import com.smoothcsv.swing.gridsheet.event.GridSheetStructureEvent;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author kohii

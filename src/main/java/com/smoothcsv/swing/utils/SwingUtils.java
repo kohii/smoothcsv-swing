@@ -13,11 +13,6 @@
  */
 package com.smoothcsv.swing.utils;
 
-import com.smoothcsv.commons.exception.UnexpectedException;
-import com.smoothcsv.commons.utils.ObjectUtils;
-import com.smoothcsv.commons.utils.StringUtils;
-import com.smoothcsv.swing.components.ExButtonGroup;
-
 import java.applet.Applet;
 import java.awt.Color;
 import java.awt.Component;
@@ -42,6 +37,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.text.ParseException;
 import java.util.function.Consumer;
+
 import javax.swing.AbstractAction;
 import javax.swing.AbstractButton;
 import javax.swing.Action;
@@ -70,6 +66,11 @@ import javax.swing.text.Document;
 import javax.swing.text.JTextComponent;
 import javax.swing.text.MaskFormatter;
 import javax.swing.undo.UndoManager;
+
+import com.smoothcsv.commons.exception.UnexpectedException;
+import com.smoothcsv.commons.utils.ObjectUtils;
+import com.smoothcsv.commons.utils.StringUtils;
+import com.smoothcsv.swing.components.ExButtonGroup;
 
 /**
  * @author kohii

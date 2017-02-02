@@ -13,8 +13,6 @@
  */
 package com.smoothcsv.swing.icon;
 
-import com.smoothcsv.commons.exception.UnexpectedException;
-
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -25,7 +23,10 @@ import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
+
 import javax.swing.Icon;
+
+import com.smoothcsv.commons.exception.UnexpectedException;
 
 /**
  * Create icon from Font-Awesome 4.4.0

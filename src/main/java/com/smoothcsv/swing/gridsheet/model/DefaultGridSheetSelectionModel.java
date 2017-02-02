@@ -13,6 +13,13 @@
  */
 package com.smoothcsv.swing.gridsheet.model;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.IntConsumer;
+
+import javax.swing.event.EventListenerList;
+
 import com.smoothcsv.commons.functions.IntRangeConsumer;
 import com.smoothcsv.swing.gridsheet.GridSheetPane;
 import com.smoothcsv.swing.gridsheet.event.GridSheetColumnHeaderSelectionListener;
@@ -23,12 +30,6 @@ import com.smoothcsv.swing.gridsheet.event.GridSheetHeaderSelectionEvent;
 import com.smoothcsv.swing.gridsheet.event.GridSheetRowHeaderSelectionListener;
 import com.smoothcsv.swing.gridsheet.event.GridSheetSelectionEvent;
 import com.smoothcsv.swing.gridsheet.event.GridSheetSelectionListener;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.IntConsumer;
-import javax.swing.event.EventListenerList;
 
 public class DefaultGridSheetSelectionModel implements GridSheetSelectionModel {
 

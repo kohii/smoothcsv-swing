@@ -14,6 +14,7 @@
 package com.smoothcsv.swing.table;
 
 import java.awt.Rectangle;
+
 import javax.swing.JTable;
 
 /**

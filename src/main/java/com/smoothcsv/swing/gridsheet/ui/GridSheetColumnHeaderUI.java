@@ -13,6 +13,22 @@
  */
 package com.smoothcsv.swing.gridsheet.ui;
 
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.event.MouseEvent;
+
+import javax.swing.CellRendererPane;
+import javax.swing.JComponent;
+import javax.swing.LookAndFeel;
+import javax.swing.SwingUtilities;
+import javax.swing.event.MouseInputListener;
+import javax.swing.plaf.ComponentUI;
+
 import com.smoothcsv.swing.gridsheet.GridSheetColumnHeader;
 import com.smoothcsv.swing.gridsheet.GridSheetPane;
 import com.smoothcsv.swing.gridsheet.GridSheetScrollPane;
@@ -23,21 +39,6 @@ import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
 import com.smoothcsv.swing.gridsheet.renderer.GridSheetHeaderRenderer;
 import com.smoothcsv.swing.utils.SwingUtils;
 import sun.swing.SwingUtilities2;
-
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.event.MouseEvent;
-import javax.swing.CellRendererPane;
-import javax.swing.JComponent;
-import javax.swing.LookAndFeel;
-import javax.swing.SwingUtilities;
-import javax.swing.event.MouseInputListener;
-import javax.swing.plaf.ComponentUI;
 
 public class GridSheetColumnHeaderUI extends AbstractGridUI {
 

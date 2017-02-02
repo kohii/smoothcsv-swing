@@ -15,6 +15,7 @@ package com.smoothcsv.swing.gridsheet;
 
 import java.awt.Color;
 import java.awt.Point;
+
 import javax.swing.BorderFactory;
 import javax.swing.JScrollPane;
 import javax.swing.JViewport;

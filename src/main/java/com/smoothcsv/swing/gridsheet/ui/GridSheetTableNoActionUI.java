@@ -13,6 +13,31 @@
  */
 package com.smoothcsv.swing.gridsheet.ui;
 
+import java.awt.Component;
+import java.awt.ComponentOrientation;
+import java.awt.Container;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
+import javax.swing.CellEditor;
+import javax.swing.CellRendererPane;
+import javax.swing.JComponent;
+import javax.swing.JScrollPane;
+import javax.swing.LookAndFeel;
+import javax.swing.SwingUtilities;
+import javax.swing.TransferHandler;
+import javax.swing.UIDefaults;
+import javax.swing.UIManager;
+import javax.swing.event.MouseInputListener;
+import javax.swing.plaf.ComponentUI;
+import javax.swing.plaf.UIResource;
+
 import com.smoothcsv.commons.constants.Direction;
 import com.smoothcsv.swing.gridsheet.GridSheetCellEditor;
 import com.smoothcsv.swing.gridsheet.GridSheetColumnHeader;
@@ -30,30 +55,6 @@ import com.smoothcsv.swing.gridsheet.renderer.GridSheetCellRenderer;
 import com.smoothcsv.swing.gridsheet.renderer.GridSheetColorProvider;
 import com.smoothcsv.swing.utils.SwingUtils;
 import sun.swing.SwingUtilities2;
-
-import java.awt.Component;
-import java.awt.ComponentOrientation;
-import java.awt.Container;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.event.MouseEvent;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import javax.swing.CellEditor;
-import javax.swing.CellRendererPane;
-import javax.swing.JComponent;
-import javax.swing.JScrollPane;
-import javax.swing.LookAndFeel;
-import javax.swing.SwingUtilities;
-import javax.swing.TransferHandler;
-import javax.swing.UIDefaults;
-import javax.swing.UIManager;
-import javax.swing.event.MouseInputListener;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.UIResource;
 
 public class GridSheetTableNoActionUI extends AbstractGridUI {
 

@@ -13,22 +13,23 @@
  */
 package com.smoothcsv.swing.gridsheet;
 
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.Rectangle;
+
+import javax.swing.JComponent;
+import javax.swing.JViewport;
+import javax.swing.UIDefaults;
+import javax.swing.UIManager;
+
 import com.smoothcsv.commons.constants.Orientation;
 import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
 import com.smoothcsv.swing.gridsheet.renderer.GridSheetCellRenderer;
 import com.smoothcsv.swing.gridsheet.ui.GridSheetColumnHeaderUI;
 import com.smoothcsv.swing.gridsheet.ui.GridSheetRowHeaderUI;
 import com.smoothcsv.swing.gridsheet.ui.GridSheetTableNoActionUI;
-
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.Rectangle;
-import javax.swing.JComponent;
-import javax.swing.JViewport;
-import javax.swing.UIDefaults;
-import javax.swing.UIManager;
 
 public class GridSheetUtils {
 

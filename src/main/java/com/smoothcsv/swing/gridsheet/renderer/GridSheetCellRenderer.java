@@ -13,9 +13,9 @@
  */
 package com.smoothcsv.swing.gridsheet.renderer;
 
-import com.smoothcsv.swing.gridsheet.GridSheetTable;
-
 import java.awt.Component;
+
+import com.smoothcsv.swing.gridsheet.GridSheetTable;
 
 public interface GridSheetCellRenderer {
 

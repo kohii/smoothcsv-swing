@@ -14,6 +14,7 @@
 package com.smoothcsv.swing.model;
 
 import java.util.ArrayList;
+
 import javax.swing.AbstractListModel;
 import javax.swing.ListModel;
 import javax.swing.event.ListDataEvent;

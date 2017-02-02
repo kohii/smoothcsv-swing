@@ -13,12 +13,13 @@
  */
 package com.smoothcsv.swing.gridsheet.renderer;
 
-import com.smoothcsv.swing.gridsheet.AbstractGridSheetHeaderComponent;
-
 import java.awt.Color;
 import java.awt.Component;
+
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+
+import com.smoothcsv.swing.gridsheet.AbstractGridSheetHeaderComponent;
 
 /**
  * @author kohii

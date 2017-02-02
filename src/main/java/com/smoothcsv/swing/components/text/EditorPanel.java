@@ -1,9 +1,8 @@
 package com.smoothcsv.swing.components.text;
 
-import lombok.Getter;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
+
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -16,6 +15,8 @@ import javax.swing.text.DefaultStyledDocument;
 import javax.swing.text.Document;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
+
+import lombok.Getter;
 
 /**
  * @author kohii

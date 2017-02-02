@@ -13,19 +13,6 @@
  */
 package com.smoothcsv.swing.gridsheet;
 
-import com.smoothcsv.commons.constants.Direction;
-import com.smoothcsv.swing.gridsheet.event.GridSheetSelectionEvent;
-import com.smoothcsv.swing.gridsheet.event.GridSheetSelectionListener;
-import com.smoothcsv.swing.gridsheet.model.GridSheetCellRange;
-import com.smoothcsv.swing.gridsheet.model.GridSheetColumn;
-import com.smoothcsv.swing.gridsheet.model.GridSheetRow;
-import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
-import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetCellRenderer;
-import com.smoothcsv.swing.gridsheet.renderer.GridSheetCellRenderer;
-import com.smoothcsv.swing.gridsheet.ui.GridSheetTableNoActionUI;
-import lombok.Getter;
-import sun.swing.PrintingStatus;
-
 import java.applet.Applet;
 import java.awt.Component;
 import java.awt.Container;
@@ -49,6 +36,7 @@ import java.text.MessageFormat;
 import java.util.EventObject;
 import java.util.HashMap;
 import java.util.Map;
+
 import javax.print.PrintService;
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
@@ -69,6 +57,19 @@ import javax.swing.event.CellEditorListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.plaf.UIResource;
+
+import com.smoothcsv.commons.constants.Direction;
+import com.smoothcsv.swing.gridsheet.event.GridSheetSelectionEvent;
+import com.smoothcsv.swing.gridsheet.event.GridSheetSelectionListener;
+import com.smoothcsv.swing.gridsheet.model.GridSheetCellRange;
+import com.smoothcsv.swing.gridsheet.model.GridSheetColumn;
+import com.smoothcsv.swing.gridsheet.model.GridSheetRow;
+import com.smoothcsv.swing.gridsheet.model.GridSheetSelectionModel;
+import com.smoothcsv.swing.gridsheet.renderer.DefaultGridSheetCellRenderer;
+import com.smoothcsv.swing.gridsheet.renderer.GridSheetCellRenderer;
+import com.smoothcsv.swing.gridsheet.ui.GridSheetTableNoActionUI;
+import lombok.Getter;
+import sun.swing.PrintingStatus;
 
 @SuppressWarnings("serial")
 public class GridSheetTable extends AbstractGridSheetComponent

@@ -13,11 +13,12 @@
  */
 package com.smoothcsv.swing.gridsheet.ui;
 
-import com.smoothcsv.swing.gridsheet.GridSheetPane;
-
 import java.awt.Graphics;
 import java.awt.Rectangle;
+
 import javax.swing.plaf.ComponentUI;
+
+import com.smoothcsv.swing.gridsheet.GridSheetPane;
 
 public abstract class AbstractGridUI extends ComponentUI {
 

@@ -13,9 +13,9 @@
  */
 package com.smoothcsv.swing.gridsheet;
 
-import lombok.Getter;
-
 import javax.swing.JComponent;
+
+import lombok.Getter;
 
 @SuppressWarnings("serial")
 public abstract class AbstractGridSheetHeaderComponent extends JComponent {

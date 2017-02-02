@@ -13,15 +13,16 @@
  */
 package com.smoothcsv.swing.gridsheet;
 
-import com.smoothcsv.swing.utils.SwingUtils;
-
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
+
 import javax.swing.JComponent;
 import javax.swing.JViewport;
 import javax.swing.RepaintManager;
+
+import com.smoothcsv.swing.utils.SwingUtils;
 
 public class GridSheetViewport extends JViewport {
 

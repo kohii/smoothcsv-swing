@@ -13,9 +13,9 @@
  */
 package com.smoothcsv.swing.gridsheet.renderer;
 
-import com.smoothcsv.swing.gridsheet.AbstractGridSheetHeaderComponent;
-
 import java.awt.Component;
+
+import com.smoothcsv.swing.gridsheet.AbstractGridSheetHeaderComponent;
 
 public interface GridSheetHeaderRenderer {
 

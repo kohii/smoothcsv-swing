@@ -13,9 +13,9 @@
  */
 package com.smoothcsv.swing.components;
 
-import lombok.Getter;
-
 import javax.swing.JRadioButton;
+
+import lombok.Getter;
 
 /**
  * @author kohii

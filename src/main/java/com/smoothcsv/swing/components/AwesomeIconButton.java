@@ -13,10 +13,11 @@
  */
 package com.smoothcsv.swing.components;
 
-import com.smoothcsv.swing.icon.AwesomeIcon;
-
 import java.awt.Color;
+
 import javax.swing.JButton;
+
+import com.smoothcsv.swing.icon.AwesomeIcon;
 
 /**
  * @author kohii

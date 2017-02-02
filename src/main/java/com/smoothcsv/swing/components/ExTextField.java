@@ -13,14 +13,15 @@
  */
 package com.smoothcsv.swing.components;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+
 import javax.swing.JTextField;
 import javax.swing.text.Document;
+
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author kohii
