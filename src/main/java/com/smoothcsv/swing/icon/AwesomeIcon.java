@@ -29,14 +29,14 @@ import javax.swing.Icon;
 import com.smoothcsv.commons.exception.UnexpectedException;
 
 /**
- * Create icon from Font-Awesome 4.4.0
+ * Create icon from Font-Awesome 4.7.0
  *
  * @author kohii
  * @see http://fortawesome.github.io/Font-Awesome/
  */
 public class AwesomeIcon implements Icon, AwesomeIconConstants {
 
-  private static final String FONTAWESOME_TTF = "/font-awesome-4.4.0/fonts/fontawesome-webfont.ttf";
+  private static final String FONTAWESOME_TTF = "/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf";
 
   private static final Font AWESOME;
 
