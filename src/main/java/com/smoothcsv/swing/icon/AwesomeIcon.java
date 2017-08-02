@@ -41,7 +41,7 @@ public class AwesomeIcon implements Icon, AwesomeIconConstants {
   private static final Font AWESOME;
 
   private static int defaultIconSize = 16;
-  private static Color defaultIconColor = Color.DARK_GRAY;
+  private static Color defaultIconColor = new Color(80, 80, 80);
 
   private static Font defaultFont;
 
