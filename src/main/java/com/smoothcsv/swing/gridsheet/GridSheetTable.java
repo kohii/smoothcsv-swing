@@ -1044,10 +1044,11 @@ public class GridSheetTable extends AbstractGridSheetComponent
     if (row < 0) {
       // y = height = 0;
     } else if (row >= gridSheetPane.getRowCount()) {
-      r.y = getHeight(); // FIXME
+      r.height = gridSheetPane.getRow(0).getHeight(); // FIXME
+      r.y = row * r.height;
     } else {
       r.height = gridSheetPane.getRow(row).getHeight();
-      r.y = row * r.height;
+      r.y = row * r.height; // FIXME
     }
 
     if (column < 0) {

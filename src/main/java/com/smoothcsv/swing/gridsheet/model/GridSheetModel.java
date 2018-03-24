@@ -111,6 +111,9 @@ public class GridSheetModel implements IGridSheetModel {
    * @throws ArrayIndexOutOfBoundsException if an invalid row or column was given
    */
   public Object getValueAt(int row, int column) {
+    if (dataList.size() <= row) {
+      return null;
+    }
     List rowData = dataList.get(row);
     if (rowData.size() <= column) {
       return null;
