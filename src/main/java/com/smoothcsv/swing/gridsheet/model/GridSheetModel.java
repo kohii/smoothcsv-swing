@@ -481,6 +481,15 @@ public class GridSheetModel implements IGridSheetModel {
     return String.valueOf(row + 1);
   }
 
+  public List<String> getColumnNames() {
+    int columnCount = getColumnCount();
+    List<String> columnNames = new ArrayList<>(columnCount);
+    for (int i = 0; i < columnCount; i++) {
+      columnNames.add(getColumnName(i));
+    }
+    return columnNames;
+  }
+
   // Events -------------------------
 
   @Override
@@ -581,6 +590,10 @@ public class GridSheetModel implements IGridSheetModel {
 
   protected GridSheetColumn createDefaultColumn() {
     return new GridSheetColumn(defaultColumnWidth, this);
+  }
+
+  protected GridSheetColumn createDefaultColumn(long id) {
+    return new GridSheetColumn(id, defaultColumnWidth, this);
   }
 
   protected GridSheetRow createDefaultRow() {

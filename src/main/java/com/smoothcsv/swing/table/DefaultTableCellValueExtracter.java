@@ -47,7 +47,8 @@ public class DefaultTableCellValueExtracter implements ExTableCellValueExtracter
     } catch (SecurityException | IllegalAccessException | InvocationTargetException e) {
       // fallback
       try {
-        Field field = rowData.getClass().getField(fieldName);
+        Field field = rowData.getClass().getDeclaredField(fieldName);
+        field.setAccessible(true);
         return field.get(rowData);
       } catch (NoSuchFieldException | SecurityException | IllegalAccessException e1) {
         throw new RuntimeException(e1);

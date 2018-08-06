@@ -629,4 +629,15 @@ public class SwingUtils {
     button.setFocusPainted(false);
     button.setContentAreaFilled(false);
   }
+
+  public static Window getFrontWindow() {
+    Window[] windows = Window.getWindows();
+    for (int i = windows.length - 1; i >= 0; i--) {
+      Window window = windows[i];
+      if (window.isVisible()) {
+        return window;
+      }
+    }
+    return null;
+  }
 }

@@ -19,6 +19,11 @@ import lombok.Getter;
 
 public class GridSheetColumn {
 
+  private static long seq = 0;
+
+  @Getter
+  private final long id;
+
   private int width;
 
   private boolean visible = true;
@@ -29,7 +34,7 @@ public class GridSheetColumn {
   private String name;
 
   public GridSheetColumn(int width) {
-    this.width = width;
+    this(width, null);
   }
 
   public GridSheetColumn() {
@@ -37,7 +42,12 @@ public class GridSheetColumn {
   }
 
   protected GridSheetColumn(int width, GridSheetModel model) {
-    this(width);
+    this(seq++, width, model);
+  }
+
+  protected GridSheetColumn(long id, int width, GridSheetModel model) {
+    this.id = id;
+    this.width = width;
     this.model = model;
   }
 
